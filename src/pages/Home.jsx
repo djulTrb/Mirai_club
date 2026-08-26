@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
@@ -41,12 +42,12 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="bg-black text-[#ffffff] px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all hover:scale-105 duration-300">
+            <Link to="/recruitment" className="bg-black text-white px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all hover:scale-105 duration-300">
               {t('home_join')}
-            </button>
-            <button className="bg-transparent text-black px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] border border-black hover:bg-black hover:text-[#ffffff] transition-all duration-300">
+            </Link>
+            <Link to="/events" className="bg-transparent text-black px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] border border-black hover:bg-black hover:text-white transition-all duration-300">
               {t('home_explore')}
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -269,6 +270,37 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="w-full py-32 px-6 bg-[#240046] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#5a189a]">
+        {/* Background ambient lighting */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#3c096c] rounded-full blur-[120px] opacity-60"></div>
+          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-40"></div>
+        </div>
+        
+        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
+          <span className="font-accent font-semibold text-xs text-[#c77dff] uppercase tracking-wider mb-6">{t('home_join')} Mirai</span>
+          <h2 className="font-display font-bold text-5xl md:text-7xl text-white tracking-tighter mb-8 leading-tight">
+            SHAPE THE FUTURE <br className="hidden md:block"/>OF AI WITH US
+          </h2>
+          <p className="font-body text-[#e0b1cb] text-lg md:text-xl mb-16 max-w-2xl font-light">
+            Join a community of innovators, researchers, and creators pushing the boundaries of artificial intelligence. Let's build the future together.
+          </p>
+          
+          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-[#5a189a] to-[#3c096c] border-4 border-[#7b2cbf] hover:border-[#c77dff] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_rgba(157,78,221,0.5)] relative overflow-hidden">
+             {/* Circular text SVG? A minimalist arrow */}
+             <span className="font-display font-bold text-white text-2xl md:text-3xl uppercase tracking-widest z-10 flex flex-col items-center gap-2">
+               JOIN
+               <svg className="w-8 h-8 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+               </svg>
+             </span>
+             {/* Ripple effect rings */}
+             <div className="absolute inset-0 rounded-full border border-[#c77dff] opacity-0 group-hover:animate-ping"></div>
+          </Link>
         </div>
       </section>
     </main>
