@@ -13,7 +13,7 @@ const Home = () => {
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
       <section 
-        className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-cover bg-center bg-no-repeat"
+        className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#e6e0f4] bg-[length:100%_auto] md:bg-cover bg-top md:bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* Subtle overlay to ensure text contrast */}
