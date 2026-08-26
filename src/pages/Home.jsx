@@ -21,10 +21,6 @@ const Home = () => {
         
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center text-center max-w-4xl w-full px-6 mb-24 mt-4">
-          <p className="font-accent font-semibold text-[10px] sm:text-xs uppercase tracking-[0.3em] text-secondary mb-4 md:mb-6">
-            {t('home_subtitle')}
-          </p>
-          
           <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tighter text-black mb-4 uppercase leading-tight">
             MIRAI<br />CLUB
           </h1>
@@ -51,7 +47,7 @@ const Home = () => {
       </section>
 
       {/* Marquee Section */}
-      <section className="w-full overflow-hidden mt-8 relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#3c096c] py-8 shadow-lg">
+      <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#3c096c] py-8 shadow-lg">
         <div className="flex w-max font-display font-bold whitespace-nowrap group">
           <div className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
             <span className="uppercase text-[#ffffff]">{t('marquee_heritage')}</span><span className="text-[#c77dff] text-5xl translate-y-1">*</span>
@@ -240,8 +236,11 @@ const Home = () => {
       </section>
 
       {/* Current projects */}
-      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center">
-        <div className="w-full max-w-[1400px] mx-auto relative group">
+      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
+        {/* High blurred decorative blob */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[600px] bg-secondary opacity-[0.07] dark:opacity-10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+        
+        <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
           <div className="w-full flex flex-col items-center mb-16">
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
