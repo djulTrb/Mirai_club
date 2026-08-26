@@ -154,74 +154,79 @@ const Home = () => {
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('team_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('team_title')}</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex flex-col gap-4">
             {/* Member 1 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-[2rem] flex flex-col justify-between transition-all hover:scale-[1.02] px-8 py-8">
-              <div className="flex justify-between items-start">
-                <span className="font-accent text-xs font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider">{t('team_pres')}</span>
-                <div className="w-16 h-16 rounded-full overflow-hidden bg-surface-variant/80">
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
+                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
                   <img alt="Amine Hamidi" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7DXVGhLTvu5SQ9jeBh_5LBUN6oz6p1eYLjOlMHqbg0Yw7t4WKqVNE4hTBPqryOG694CrKZGB5iyOA4-vHMedFwZgITTKcVZv2N-7OuvXZQppHV5AsgWTZXWCYOcnGQ8Fjqzb-Py6PViLSb-gg_1DiKnLJU8NI7TfQEYij5Tu4-hSFSyjgeBKcdV_Ohjs-Gm-0WacZjnRyGO5rs5hYi8Jq9QVnK8BoFcVd7yu3kAOCMP-occR1wW4ElRVWL0kkyj4Cc" />
                 </div>
-              </div>
-              <div className="mt-4">
-                <h3 className="text-2xl sm:text-3xl font-display font-bold leading-tight text-on-surface tracking-tight">Amine Hamidi</h3>
-                <div className="mt-4">
-                  <p className="font-accent font-semibold text-xs uppercase tracking-wider text-on-surface-variant mb-2">{t('team_skills')}</p>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_mgt')}</span>
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_str')}</span>
+                <div className="flex flex-col justify-center">
+                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Amine Hamidi</h3>
+                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_pres')}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_mgt')}</span>
+                    <span className="font-body text-xs font-medium text-outline">|</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_str')}</span>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 mt-8 w-full">
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
+                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
               </div>
             </div>
+
             {/* Member 2 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-[2rem] flex flex-col justify-between transition-all hover:scale-[1.02] px-8 py-8">
-              <div className="flex justify-between items-start">
-                <span className="font-accent text-xs font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider">{t('team_vp')}</span>
-                <div className="w-16 h-16 rounded-full overflow-hidden bg-surface-variant/80">
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
+                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
                   <img alt="Sara Moussaoui" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NfbPsOTPBIeO9tc09MXmHjTSEPl5bD3zly9MRvLIfkcCfc-rVGcxW0xk4N8SdpzwJX82JCV4Np5Mt-ijbVDk8xC6T-CivUK19elmM3tTHd9QEvMsR949NNgZljq53ZrlcDvvLtpS16r4GwTFmAaB7pC-e18_-ykLCLbq0YWS9bBDB_kag6uuCTR0p0uo3TSadA-G4a2k2iIJrioWOFlC5LEG5dz5zyDGs-kbQTgFnI_t88Pyaljk6JUpZ16BPrzSIY" />
                 </div>
-              </div>
-              <div className="mt-4">
-                <h3 className="text-2xl sm:text-3xl font-display font-bold leading-tight text-on-surface tracking-tight">Sara Moussaoui</h3>
-                <div className="mt-4">
-                  <p className="font-accent font-semibold text-xs uppercase tracking-wider text-on-surface-variant mb-2">{t('team_skills')}</p>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_ops')}</span>
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_log')}</span>
+                <div className="flex flex-col justify-center">
+                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Sara Moussaoui</h3>
+                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_vp')}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_ops')}</span>
+                    <span className="font-body text-xs font-medium text-outline">|</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_log')}</span>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 mt-8 w-full">
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
+                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
               </div>
             </div>
+
             {/* Member 3 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-[2rem] flex flex-col justify-between transition-all hover:scale-[1.02] px-8 py-8">
-              <div className="flex justify-between items-start">
-                <span className="font-accent text-xs font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider">{t('team_sec')}</span>
-                <div className="w-16 h-16 rounded-full overflow-hidden bg-surface-variant/80">
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
+                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
                   <img alt="Member Name" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8id0Vtz_n1xSUF5dzm3zhOuGdswxHtgIFJwuvB92swpAVJnEFWfsIPGj6qVcqh7M-bRIpr6fPvY0SfICO6GSgW1M60ph440pHmg1pklMqEinaVyB7g5tB_a8MiND5ZWkAuR0Y-Cjl6SUA5fxm3jQh_3qTmVJIdPRP_ArgnHyTKXe-bsOUaS0joQKnyIMjL_c9j9Ifwk2nGO0WighAXArYvRMiOYcYAeXkXw2zW6CUFt-hO2XTeDBX1BD4TR5qD5M10ys-TIP7mMLx" />
                 </div>
-              </div>
-              <div className="mt-4">
-                <h3 className="text-2xl sm:text-3xl font-display font-bold leading-tight text-on-surface tracking-tight">Member Name</h3>
-                <div className="mt-4">
-                  <p className="font-accent font-semibold text-xs uppercase tracking-wider text-on-surface-variant mb-2">{t('team_skills')}</p>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_out')}</span>
-                    <span className="font-body text-xs font-medium bg-surface-variant/40 px-2.5 py-1 rounded-full text-on-surface-variant uppercase">{t('team_sup')}</span>
+                <div className="flex flex-col justify-center">
+                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Member Name</h3>
+                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_sec')}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_out')}</span>
+                    <span className="font-body text-xs font-medium text-outline">|</span>
+                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_sup')}</span>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 mt-8 w-full">
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2 px-3 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
+                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
               </div>
             </div>
           </div>
