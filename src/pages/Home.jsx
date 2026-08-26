@@ -287,13 +287,23 @@ const Home = () => {
             {t('home_cta_title')}
           </h2>
           
-          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-[#240046] hover:bg-[#3c096c] transition-all duration-300 hover:scale-105 relative overflow-hidden">
-             <span className="font-display font-bold text-white text-2xl md:text-3xl uppercase tracking-widest z-10 flex flex-col items-center gap-2">
-               JOIN
-               <svg className="w-8 h-8 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-               </svg>
-             </span>
+          <Link to="/recruitment" className="group relative flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full transition-transform duration-500 hover:scale-105">
+             {/* The Spinning Circular Text */}
+             <svg className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
+               <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
+               <text className="font-display font-bold text-[9px] fill-[#240046] uppercase tracking-[0.2em]">
+                 <textPath href="#circlePath" startOffset="0%">
+                   {t('home_join_circle')} • {t('home_join_circle')} • {t('home_join_circle')} • 
+                 </textPath>
+               </text>
+             </svg>
+             
+             {/* The Static Arrow in the Middle */}
+             <div className="w-16 h-16 md:w-20 md:h-20 bg-[#240046] rounded-full flex items-center justify-center text-white z-10 group-hover:bg-[#3c096c] transition-colors shadow-lg">
+               <span className="material-symbols-outlined text-3xl md:text-4xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                 arrow_outward
+               </span>
+             </div>
           </Link>
         </div>
       </section>

@@ -46,6 +46,7 @@ const resources = {
       "footer_slogan": "Heritage · Intelligence · Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
       
       "home_cta_title": "READY TO SHAPE THE FUTURE?", "home_cta_desc": "",
+      "home_join_circle": "JOIN MIRAI CLUB",
 
       // Recruitment Form
       "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI Club? *", "form_submit": "Submit Application",
@@ -103,6 +104,7 @@ const resources = {
       "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
       "home_cta_title": "PRÊT À FAÇONNER L'AVENIR ?", "home_cta_desc": "",
+      "home_join_circle": "REJOINDRE MIRAI",
 
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
       "app_closed_tag": "Candidatures Fermées", "app_closed_title": "Les candidatures sont actuellement fermées", "app_closed_desc": "Le Club MIRAI n'accepte pas de nouveaux membres pour le moment. Suivez-nous pour être notifié de la prochaine session.",
@@ -156,6 +158,7 @@ const resources = {
       "footer_slogan": "تراث · ذكاء · مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
       
       "home_cta_title": "جاهز لتشكيل المستقبل؟", "home_cta_desc": "",
+      "home_join_circle": "انضم إلى نادي ميراي",
 
       "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_submit": "تقديم الطلب",
       "app_closed_tag": "التسجيل مغلق", "app_closed_title": "التطبيقات مغلقة حاليا", "app_closed_desc": "نادي MIRAI لا يقبل أعضاء جدد حاليا. تابع قنواتنا ليتم إعلامك عند فتح الدورة القادمة.",
