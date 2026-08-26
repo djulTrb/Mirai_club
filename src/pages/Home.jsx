@@ -13,19 +13,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-surface">
         
-        {/* Scattered Image Placeholders */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-50 md:opacity-100">
-          {/* Under content */}
-          <img src={heroSticker2} alt="Sticker" className="absolute top-[8%] left-[2%] md:top-[12%] md:left-[10%] w-16 h-16 md:w-32 md:h-32 object-contain transform -rotate-[15deg] opacity-90" />
-          <img src={heroSticker1} alt="Sticker" className="absolute top-[25%] right-[2%] md:right-[8%] w-20 h-20 md:w-40 md:h-40 object-contain transform rotate-[8deg] opacity-95" />
-          <div className="hidden md:block absolute bottom-[20%] left-[12%] w-24 h-32 bg-outline-variant/20 rounded-xl transform rotate-[20deg]"></div>
-          <img src={heroSticker3} alt="Sticker" className="absolute bottom-[28%] right-[5%] md:bottom-[18%] md:right-[20%] w-24 h-24 md:w-48 md:h-48 object-contain transform -rotate-[5deg]" />
-          
-          {/* Over content (z-30) */}
-          <div className="hidden md:block absolute top-[40%] left-[8%] w-20 h-20 bg-outline-variant/30 rounded-xl transform -rotate-[25deg] z-30"></div>
-          <div className="hidden md:block absolute top-[55%] right-[12%] w-16 h-16 bg-outline-variant/30 rounded-full z-30"></div>
-          <div className="hidden md:block absolute bottom-[15%] left-[40%] w-28 h-20 bg-outline-variant/30 rounded-lg transform rotate-[15deg] z-30"></div>
-        </div>
+        {/* Content */}
         
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center text-center max-w-4xl w-full px-6 mb-24 mt-4">
@@ -101,8 +89,21 @@ const Home = () => {
       </section>
 
       {/* {t('mission_title')} */}
-      <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background">
-        <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto">
+      <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background relative overflow-hidden">
+        
+        {/* Scattered Stickers (Randomized Placement) */}
+        <div className="absolute inset-0 pointer-events-none z-0 opacity-40 md:opacity-100">
+          <img src={heroSticker1} alt="Sticker 1" className="absolute top-[5%] left-[2%] md:left-[5%] w-24 h-24 md:w-40 md:h-40 object-contain transform -rotate-12" />
+          <img src={heroSticker2} alt="Sticker 2" className="absolute top-[40%] right-[3%] md:right-[8%] w-20 h-20 md:w-36 md:h-36 object-contain transform rotate-[15deg]" />
+          <img src={heroSticker3} alt="Sticker 3" className="absolute bottom-[10%] left-[8%] md:left-[15%] w-32 h-32 md:w-48 md:h-48 object-contain transform -rotate-6" />
+          
+          {/* Placeholders for the 3 future images */}
+          <div className="hidden md:block absolute top-[15%] right-[25%] w-24 h-24 bg-outline-variant/20 rounded-xl transform rotate-[20deg]"></div>
+          <div className="hidden md:block absolute top-[60%] left-[5%] w-32 h-32 bg-outline-variant/20 rounded-full transform -rotate-[10deg]"></div>
+          <div className="hidden md:block absolute bottom-[5%] right-[10%] w-28 h-20 bg-outline-variant/20 rounded-xl transform rotate-[5deg]"></div>
+        </div>
+
+        <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto relative z-10">
           <div className="w-full flex flex-col items-center mb-8">
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('mission_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('mission_title')}</h2>
@@ -274,7 +275,7 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="w-full py-32 px-6 bg-[#f3e8ff] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#e0b1cb]">
+      <section className="w-full py-20 px-6 bg-[#f3e8ff] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#e0b1cb]">
         {/* Background ambient lighting */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-20"></div>
@@ -282,24 +283,17 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <span className="font-accent font-semibold text-xs text-[#5a189a] uppercase tracking-wider mb-6">{t('home_join')} Mirai</span>
-          <h2 className="font-display font-bold text-5xl md:text-7xl text-[#240046] tracking-tighter mb-8 leading-tight">
+          <h2 className="font-display font-bold text-4xl md:text-6xl text-[#240046] tracking-tighter mb-12 leading-tight">
             {t('home_cta_title')}
           </h2>
-          <p className="font-body text-[#3c096c] text-lg md:text-xl mb-16 max-w-2xl font-medium">
-            {t('home_cta_desc')}
-          </p>
           
-          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-[#240046] border-4 border-[#3c096c] hover:border-[#5a189a] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_rgba(36,0,70,0.3)] relative overflow-hidden">
-             {/* Circular text SVG? A minimalist arrow */}
+          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-[#240046] hover:bg-[#3c096c] transition-all duration-300 hover:scale-105 relative overflow-hidden">
              <span className="font-display font-bold text-white text-2xl md:text-3xl uppercase tracking-widest z-10 flex flex-col items-center gap-2">
                JOIN
                <svg className="w-8 h-8 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                </svg>
              </span>
-             {/* Ripple effect rings */}
-             <div className="absolute inset-0 rounded-full border border-[#9d4edd] opacity-0 group-hover:animate-ping"></div>
           </Link>
         </div>
       </section>

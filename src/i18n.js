@@ -45,7 +45,7 @@ const resources = {
       "form_name": "Full Name *", "form_email": "Email *", "form_uni_email": "University Email *", "form_msg": "Message *", "form_send": "Send Message",
       "footer_slogan": "Heritage · Intelligence · Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
       
-      "home_cta_title": "SHAPE THE FUTURE OF AI WITH US", "home_cta_desc": "Join a community of innovators, researchers, and creators pushing the boundaries of artificial intelligence. Let's build the future together.",
+      "home_cta_title": "READY TO SHAPE THE FUTURE?", "home_cta_desc": "",
 
       // Recruitment Form
       "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI Club? *", "form_submit": "Submit Application",
@@ -102,7 +102,7 @@ const resources = {
       "form_name": "Nom Complet *", "form_email": "Email *", "form_uni_email": "Email Universitaire *", "form_msg": "Message *", "form_send": "Envoyer le Message",
       "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
-      "home_cta_title": "FAÇONNEZ L'AVENIR DE L'IA AVEC NOUS", "home_cta_desc": "Rejoignez une communauté d'innovateurs, de chercheurs et de créateurs repoussant les limites de l'intelligence artificielle. Construisons l'avenir ensemble.",
+      "home_cta_title": "PRÊT À FAÇONNER L'AVENIR ?", "home_cta_desc": "",
 
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
       "app_closed_tag": "Candidatures Fermées", "app_closed_title": "Les candidatures sont actuellement fermées", "app_closed_desc": "Le Club MIRAI n'accepte pas de nouveaux membres pour le moment. Suivez-nous pour être notifié de la prochaine session.",
@@ -155,6 +155,8 @@ const resources = {
       "form_name": "الاسم الكامل *", "form_email": "البريد الإلكتروني *", "form_uni_email": "البريد الجامعي *", "form_msg": "الرسالة *", "form_send": "إرسال الرسالة",
       "footer_slogan": "تراث · ذكاء · مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
       
+      "home_cta_title": "جاهز لتشكيل المستقبل؟", "home_cta_desc": "",
+
       "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_submit": "تقديم الطلب",
       "app_closed_tag": "التسجيل مغلق", "app_closed_title": "التطبيقات مغلقة حاليا", "app_closed_desc": "نادي MIRAI لا يقبل أعضاء جدد حاليا. تابع قنواتنا ليتم إعلامك عند فتح الدورة القادمة.",
       
