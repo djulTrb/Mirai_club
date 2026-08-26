@@ -43,10 +43,12 @@ const resources = {
       "address_val": "Département d'Informatique, Faculté de Génie Électrique et d'Informatique, Université Mouloud Mammeri, Tizi Ouzou, Algérie",
       "contact_msg_title": "Send us a direct message",
       "form_name": "Full Name *", "form_email": "Email *", "form_uni_email": "University Email *", "form_msg": "Message *", "form_send": "Send Message",
-      "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Your university email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
+      "footer_slogan": "Heritage · Intelligence · Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
       
+      "home_cta_title": "SHAPE THE FUTURE OF AI WITH US", "home_cta_desc": "Join a community of innovators, researchers, and creators pushing the boundaries of artificial intelligence. Let's build the future together.",
+
       // Recruitment Form
-      "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI CLUB? *", "form_submit": "Submit Application",
+      "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI Club? *", "form_submit": "Submit Application",
       "app_closed_tag": "Applications Closed", "app_closed_title": "Applications are currently closed", "app_closed_desc": "MIRAI Club is not currently accepting new members. Follow our announcement channels to be notified when the next recruitment cohort opens.",
       
       // Chatbot
@@ -98,8 +100,10 @@ const resources = {
       "address_val": "Département d'Informatique, Faculté de Génie Électrique et d'Informatique, Université Mouloud Mammeri, Tizi Ouzou, Algérie",
       "contact_msg_title": "Envoyez-nous un message direct",
       "form_name": "Nom Complet *", "form_email": "Email *", "form_uni_email": "Email Universitaire *", "form_msg": "Message *", "form_send": "Envoyer le Message",
-      "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Votre email universitaire", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
+      "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
+      "home_cta_title": "FAÇONNEZ L'AVENIR DE L'IA AVEC NOUS", "home_cta_desc": "Rejoignez une communauté d'innovateurs, de chercheurs et de créateurs repoussant les limites de l'intelligence artificielle. Construisons l'avenir ensemble.",
+
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
       "app_closed_tag": "Candidatures Fermées", "app_closed_title": "Les candidatures sont actuellement fermées", "app_closed_desc": "Le Club MIRAI n'accepte pas de nouveaux membres pour le moment. Suivez-nous pour être notifié de la prochaine session.",
       
@@ -149,7 +153,7 @@ const resources = {
       "address_val": "قسم الإعلام الآلي، كلية الهندسة الكهربائية والإعلام الآلي، جامعة مولود معمري، تيزي وزو، الجزائر",
       "contact_msg_title": "أرسل لنا رسالة مباشرة",
       "form_name": "الاسم الكامل *", "form_email": "البريد الإلكتروني *", "form_uni_email": "البريد الجامعي *", "form_msg": "الرسالة *", "form_send": "إرسال الرسالة",
-      "footer_slogan": "تراث · ذكاء · مستقبل", "footer_email_ph": "بريدك الجامعي", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
+      "footer_slogan": "تراث · ذكاء · مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
       
       "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_submit": "تقديم الطلب",
       "app_closed_tag": "التسجيل مغلق", "app_closed_title": "التطبيقات مغلقة حاليا", "app_closed_desc": "نادي MIRAI لا يقبل أعضاء جدد حاليا. تابع قنواتنا ليتم إعلامك عند فتح الدورة القادمة.",

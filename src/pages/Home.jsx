@@ -274,23 +274,23 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="w-full py-32 px-6 bg-[#240046] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#5a189a]">
+      <section className="w-full py-32 px-6 bg-[#f3e8ff] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#e0b1cb]">
         {/* Background ambient lighting */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#3c096c] rounded-full blur-[120px] opacity-60"></div>
-          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-40"></div>
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-20"></div>
+          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-15"></div>
         </div>
         
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <span className="font-accent font-semibold text-xs text-[#c77dff] uppercase tracking-wider mb-6">{t('home_join')} Mirai</span>
-          <h2 className="font-display font-bold text-5xl md:text-7xl text-white tracking-tighter mb-8 leading-tight">
-            SHAPE THE FUTURE <br className="hidden md:block"/>OF AI WITH US
+          <span className="font-accent font-semibold text-xs text-[#5a189a] uppercase tracking-wider mb-6">{t('home_join')} Mirai</span>
+          <h2 className="font-display font-bold text-5xl md:text-7xl text-[#240046] tracking-tighter mb-8 leading-tight">
+            {t('home_cta_title')}
           </h2>
-          <p className="font-body text-[#e0b1cb] text-lg md:text-xl mb-16 max-w-2xl font-light">
-            Join a community of innovators, researchers, and creators pushing the boundaries of artificial intelligence. Let's build the future together.
+          <p className="font-body text-[#3c096c] text-lg md:text-xl mb-16 max-w-2xl font-medium">
+            {t('home_cta_desc')}
           </p>
           
-          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-[#5a189a] to-[#3c096c] border-4 border-[#7b2cbf] hover:border-[#c77dff] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_rgba(157,78,221,0.5)] relative overflow-hidden">
+          <Link to="/recruitment" className="group flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full bg-[#240046] border-4 border-[#3c096c] hover:border-[#5a189a] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_rgba(36,0,70,0.3)] relative overflow-hidden">
              {/* Circular text SVG? A minimalist arrow */}
              <span className="font-display font-bold text-white text-2xl md:text-3xl uppercase tracking-widest z-10 flex flex-col items-center gap-2">
                JOIN
@@ -299,7 +299,7 @@ const Home = () => {
                </svg>
              </span>
              {/* Ripple effect rings */}
-             <div className="absolute inset-0 rounded-full border border-[#c77dff] opacity-0 group-hover:animate-ping"></div>
+             <div className="absolute inset-0 rounded-full border border-[#9d4edd] opacity-0 group-hover:animate-ping"></div>
           </Link>
         </div>
       </section>
