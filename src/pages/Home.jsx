@@ -5,15 +5,19 @@ import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
+import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
   const { t } = useTranslation();
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-surface">
-        
-        {/* Content */}
+      <section 
+        className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        {/* Subtle overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-[#ffffff]/20 dark:bg-[#000000]/70 backdrop-blur-[1px] md:backdrop-blur-none z-10 pointer-events-none"></div>
         
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center text-center max-w-4xl w-full px-6 mb-24 mt-4">

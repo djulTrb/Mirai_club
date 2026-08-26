@@ -84,7 +84,7 @@ const Footer = () => {
 
       {/* Violet Noisy Blob */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute bottom-[-80px] left-1/2 -translate-x-1/2 w-[80%] max-w-[800px] h-[300px] bg-[#7b2cbf] opacity-50 dark:opacity-30 blur-[100px] rounded-[100%]" />
+        <div className="absolute bottom-[-80px] -left-1/4 dark:left-1/2 dark:-translate-x-1/2 w-[80%] max-w-[800px] h-[300px] bg-[#7b2cbf] opacity-50 dark:opacity-30 blur-[100px] rounded-[100%] transition-all duration-700" />
         <div 
           className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
           style={{ 
