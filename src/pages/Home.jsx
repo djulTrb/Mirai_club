@@ -52,20 +52,20 @@ const Home = () => {
         <div className="absolute inset-0 bg-[#ffffff]/20 dark:bg-[#000000]/70 backdrop-blur-[1px] md:backdrop-blur-none z-10 pointer-events-none"></div>
         
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center max-w-4xl w-full px-6 mb-24 mt-4">
-          <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tighter text-black mb-4 uppercase leading-tight">
+        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-16 md:mb-20 mt-12 md:mt-24">
+          <h1 className="font-display font-black text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] tracking-[-0.04em] text-black uppercase leading-[0.85] drop-shadow-sm mb-8">
             MIRAI<br />CLUB
           </h1>
           
-          <p className="font-body text-base sm:text-lg text-on-surface-variant mb-10 max-w-xl leading-relaxed font-light mt-4">
+          <p className="font-body text-base md:text-xl text-black/90 dark:text-white/90 mb-12 max-w-2xl leading-relaxed font-medium backdrop-blur-md bg-white/20 dark:bg-black/20 px-8 py-5 rounded-3xl border border-white/30 dark:border-black/30 shadow-sm">
             {t('home_build')} AI. {t('home_desc')}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/recruitment" className="bg-black text-white px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all hover:scale-105 duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
+            <Link to="/recruitment" className="w-full sm:w-auto bg-black dark:bg-white text-white dark:text-black px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] hover:bg-secondary dark:hover:bg-secondary hover:text-white transition-all hover:scale-105 duration-300 shadow-xl">
               {t('home_join')}
             </Link>
-            <Link to="/events" className="bg-transparent text-black px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-[0.2em] border border-black hover:bg-black hover:text-white transition-all duration-300">
+            <Link to="/events" className="w-full sm:w-auto bg-white/40 dark:bg-black/40 backdrop-blur-md text-black dark:text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all hover:scale-105 duration-300 shadow-lg">
               {t('home_explore')}
             </Link>
           </div>
@@ -316,7 +316,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center bg-[#240046] text-[#f3e8ff] rounded-full z-10 group-hover:bg-[#3c096c] transition-colors shadow-lg">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-on-surface z-10 group-hover:text-secondary transition-colors">
                <span className="material-symbols-outlined text-5xl md:text-7xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
                  arrow_outward
                </span>
