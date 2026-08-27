@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero_illustration.png';
@@ -9,6 +9,38 @@ import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
   const { t } = useTranslation();
+
+  const [showAllMembers, setShowAllMembers] = useState(false);
+
+  const TEAM_MEMBERS = [
+    {
+      name: "Amine Hamidi", role: t('team_pres'), skills: [t('team_mgt'), t('team_str')],
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7DXVGhLTvu5SQ9jeBh_5LBUN6oz6p1eYLjOlMHqbg0Yw7t4WKqVNE4hTBPqryOG694CrKZGB5iyOA4-vHMedFwZgITTKcVZv2N-7OuvXZQppHV5AsgWTZXWCYOcnGQ8Fjqzb-Py6PViLSb-gg_1DiKnLJU8NI7TfQEYij5Tu4-hSFSyjgeBKcdV_Ohjs-Gm-0WacZjnRyGO5rs5hYi8Jq9QVnK8BoFcVd7yu3kAOCMP-occR1wW4ElRVWL0kkyj4Cc"
+    },
+    {
+      name: "Sara Moussaoui", role: t('team_vp'), skills: [t('team_ops'), t('team_log')],
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NfbPsOTPBIeO9tc09MXmHjTSEPl5bD3zly9MRvLIfkcCfc-rVGcxW0xk4N8SdpzwJX82JCV4Np5Mt-ijbVDk8xC6T-CivUK19elmM3tTHd9QEvMsR949NNgZljq53ZrlcDvvLtpS16r4GwTFmAaB7pC-e18_-ykLCLbq0YWS9bBDB_kag6uuCTR0p0uo3TSadA-G4a2k2iIJrioWOFlC5LEG5dz5zyDGs-kbQTgFnI_t88Pyaljk6JUpZ16BPrzSIY"
+    },
+    {
+      name: "Member Name 3", role: t('team_sec'), skills: [t('team_out'), t('team_sup')],
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8id0Vtz_n1xSUF5dzm3zhOuGdswxHtgIFJwuvB92swpAVJnEFWfsIPGj6qVcqh7M-bRIpr6fPvY0SfICO6GSgW1M60ph440pHmg1pklMqEinaVyB7g5tB_a8MiND5ZWkAuR0Y-Cjl6SUA5fxm3jQh_3qTmVJIdPRP_ArgnHyTKXe-bsOUaS0joQKnyIMjL_c9j9Ifwk2nGO0WighAXArYvRMiOYcYAeXkXw2zW6CUFt-hO2XTeDBX1BD4TR5qD5M10ys-TIP7mMLx"
+    },
+    { name: "John Doe", role: "Design Lead", skills: ["UI/UX", "Branding"], image: "" },
+    { name: "Jane Smith", role: "Tech Lead", skills: ["React", "Node.js"], image: "" },
+    { name: "Alex Johnson", role: "Events", skills: ["Planning", "Social"], image: "" },
+    { name: "Emily Davis", role: "Marketing", skills: ["Social Media", "Copy"], image: "" },
+    { name: "Michael Brown", role: "Manager", skills: ["Agile", "Scrum"], image: "" },
+    { name: "Sarah Wilson", role: "AI Research", skills: ["Python", "TensorFlow"], image: "" },
+    { name: "David Martinez", role: "Web Dev", skills: ["Frontend", "Tailwind"], image: "" },
+    { name: "Jessica Taylor", role: "Design", skills: ["Illustrator", "Figma"], image: "" },
+    { name: "Thomas Anderson", role: "Data", skills: ["SQL", "Pandas"], image: "" },
+    { name: "Laura White", role: "Content", skills: ["Video", "Editing"], image: "" },
+    { name: "James Harris", role: "Workshop", skills: ["Speaking", "Teaching"], image: "" },
+    { name: "Olivia Martin", role: "Community", skills: ["Discord", "Engagement"], image: "" }
+  ];
+
+  const visibleMembers = showAllMembers ? TEAM_MEMBERS : TEAM_MEMBERS.slice(0, 5);
+
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
@@ -156,80 +188,62 @@ const Home = () => {
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('team_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('team_title')}</h2>
           </div>
-          <div className="flex flex-col gap-4">
-            {/* Member 1 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
-                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
-                  <img alt="Amine Hamidi" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7DXVGhLTvu5SQ9jeBh_5LBUN6oz6p1eYLjOlMHqbg0Yw7t4WKqVNE4hTBPqryOG694CrKZGB5iyOA4-vHMedFwZgITTKcVZv2N-7OuvXZQppHV5AsgWTZXWCYOcnGQ8Fjqzb-Py6PViLSb-gg_1DiKnLJU8NI7TfQEYij5Tu4-hSFSyjgeBKcdV_Ohjs-Gm-0WacZjnRyGO5rs5hYi8Jq9QVnK8BoFcVd7yu3kAOCMP-occR1wW4ElRVWL0kkyj4Cc" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
-                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Amine Hamidi</h3>
-                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_pres')}</span>
+          
+          <div className="relative">
+            <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[850px]' : 'max-h-[3000px]'}`}>
+              {visibleMembers.map((member, idx) => (
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 h-[150px]">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
+                    <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
+                      {member.image ? (
+                        <img alt={member.name} className="w-full h-full object-cover" src={member.image} />
+                      ) : (
+                        member.name.charAt(0)
+                      )}
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">{member.name}</h3>
+                        <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{member.role}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                        <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
+                        {member.skills.map((skill, sIdx) => (
+                          <React.Fragment key={sIdx}>
+                            <span className="font-body text-xs font-semibold text-secondary uppercase">{skill}</span>
+                            {sIdx < member.skills.length - 1 && <span className="font-body text-xs font-medium text-outline">|</span>}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
-                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_mgt')}</span>
-                    <span className="font-body text-xs font-medium text-outline">|</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_str')}</span>
+                  <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
+                    <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                    <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
-                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-              </div>
+              ))}
             </div>
 
-            {/* Member 2 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
-                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
-                  <img alt="Sara Moussaoui" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NfbPsOTPBIeO9tc09MXmHjTSEPl5bD3zly9MRvLIfkcCfc-rVGcxW0xk4N8SdpzwJX82JCV4Np5Mt-ijbVDk8xC6T-CivUK19elmM3tTHd9QEvMsR949NNgZljq53ZrlcDvvLtpS16r4GwTFmAaB7pC-e18_-ykLCLbq0YWS9bBDB_kag6uuCTR0p0uo3TSadA-G4a2k2iIJrioWOFlC5LEG5dz5zyDGs-kbQTgFnI_t88Pyaljk6JUpZ16BPrzSIY" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
-                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Sara Moussaoui</h3>
-                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_vp')}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
-                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_ops')}</span>
-                    <span className="font-body text-xs font-medium text-outline">|</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_log')}</span>
-                  </div>
-                </div>
+            {!showAllMembers && (
+              <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent pointer-events-none z-10 flex flex-col justify-end">
               </div>
-              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
-                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-              </div>
-            </div>
-
-            {/* Member 3 */}
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
-                <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm">
-                  <img alt="Member Name" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8id0Vtz_n1xSUF5dzm3zhOuGdswxHtgIFJwuvB92swpAVJnEFWfsIPGj6qVcqh7M-bRIpr6fPvY0SfICO6GSgW1M60ph440pHmg1pklMqEinaVyB7g5tB_a8MiND5ZWkAuR0Y-Cjl6SUA5fxm3jQh_3qTmVJIdPRP_ArgnHyTKXe-bsOUaS0joQKnyIMjL_c9j9Ifwk2nGO0WighAXArYvRMiOYcYAeXkXw2zW6CUFt-hO2XTeDBX1BD4TR5qD5M10ys-TIP7mMLx" />
+            )}
+            
+            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-6' : 'mt-12'}`}>
+              <button 
+                onClick={() => setShowAllMembers(!showAllMembers)}
+                className="group flex flex-col items-center justify-center gap-2 text-on-surface hover:text-secondary transition-colors"
+              >
+                <span className="font-body font-bold text-sm uppercase tracking-[0.2em] bg-surface px-4">
+                  {showAllMembers ? "Collapse Team" : "Meet all the team"}
+                </span>
+                <div className="w-12 h-12 rounded-full border border-outline-variant bg-surface flex items-center justify-center group-hover:border-secondary transition-colors group-hover:-translate-y-1">
+                  <span className={`material-symbols-outlined transition-transform duration-300 ${showAllMembers ? 'rotate-180' : ''}`}>
+                    arrow_downward
+                  </span>
                 </div>
-                <div className="flex flex-col justify-center">
-                  <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
-                    <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">Member Name</h3>
-                    <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{t('team_sec')}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
-                    <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_out')}</span>
-                    <span className="font-body text-xs font-medium text-outline">|</span>
-                    <span className="font-body text-xs font-semibold text-secondary uppercase">{t('team_sup')}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
-                <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-              </div>
+              </button>
             </div>
           </div>
         </div>
