@@ -299,8 +299,8 @@ const Home = () => {
           <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07]"></div>
         </div>
         
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left w-full max-w-[1200px] mx-auto gap-12 md:gap-24">
-          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
+          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line">
             {t('home_cta_title')}
           </h2>
           
@@ -316,7 +316,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-on-surface z-10 group-hover:text-secondary transition-colors">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center bg-[#240046] text-[#f3e8ff] rounded-full z-10 group-hover:bg-[#3c096c] transition-colors shadow-lg">
                <span className="material-symbols-outlined text-5xl md:text-7xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
                  arrow_outward
                </span>
