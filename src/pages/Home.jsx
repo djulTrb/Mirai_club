@@ -251,8 +251,8 @@ const Home = () => {
 
       {/* Current projects */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
-        {/* High blurred decorative blob */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[600px] bg-secondary opacity-[0.07] dark:opacity-10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+        {/* Wide lamp source lighting */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[30%] w-[120%] md:w-[100%] h-[500px] bg-[#9d4edd] opacity-[0.15] dark:opacity-[0.15] blur-[100px] md:blur-[150px] rounded-[100%] pointer-events-none z-0"></div>
         
         <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
           <div className="w-full flex flex-col items-center mb-16">
@@ -292,23 +292,23 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="w-full py-20 px-6 bg-[#f3e8ff] flex flex-col items-center justify-center relative overflow-hidden border-t border-[#e0b1cb]">
+      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative overflow-hidden">
         {/* Background ambient lighting */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-20"></div>
-          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-15"></div>
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-10"></div>
+          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07]"></div>
         </div>
         
-        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <h2 className="font-display font-bold text-4xl md:text-6xl text-[#240046] tracking-tighter mb-12 leading-tight">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left w-full max-w-[1200px] mx-auto gap-12 md:gap-24">
+          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1">
             {t('home_cta_title')}
           </h2>
           
-          <Link to="/recruitment" className="group relative flex items-center justify-center w-36 h-36 md:w-48 md:h-48 rounded-full transition-transform duration-500 hover:scale-105">
+          <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-full transition-transform duration-500 hover:scale-105 shrink-0">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
-               <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
-               <text className="font-display font-bold text-[9px] fill-[#240046] uppercase tracking-[0.2em]">
+               <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
+               <text className="font-display font-black text-[12px] fill-on-surface uppercase tracking-[0.2em]">
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')} • {t('home_join_circle')} • {t('home_join_circle')} • 
                  </textPath>
@@ -316,8 +316,8 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-[#240046] z-10 group-hover:text-[#3c096c] transition-colors">
-               <span className="material-symbols-outlined text-3xl md:text-4xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-on-surface z-10 group-hover:text-secondary transition-colors">
+               <span className="material-symbols-outlined text-5xl md:text-7xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
                  arrow_outward
                </span>
              </div>
