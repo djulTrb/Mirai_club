@@ -161,19 +161,19 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-            <div className="bg-white/80 rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
+            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
               <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">14</span>
               <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_members')}</span>
             </div>
-            <div className="bg-white/80 rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
+            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
               <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">3</span>
               <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_events')}</span>
             </div>
-            <div className="bg-white/80 rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
+            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
               <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">3</span>
               <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_projects')}</span>
             </div>
-            <div className="bg-white/80 rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
+            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
               <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">5</span>
               <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_resources')}</span>
             </div>
@@ -226,7 +226,7 @@ const Home = () => {
             </div>
 
             {!showAllMembers && (
-              <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent pointer-events-none z-10 flex flex-col justify-end">
+              <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-surface via-surface/90 to-transparent pointer-events-none z-10 flex flex-col justify-end">
               </div>
             )}
             
@@ -238,7 +238,7 @@ const Home = () => {
                 <span className="font-body font-bold text-sm uppercase tracking-[0.2em] bg-surface px-4">
                   {showAllMembers ? "Collapse Team" : "Meet all the team"}
                 </span>
-                <div className="w-12 h-12 rounded-full border border-outline-variant bg-surface flex items-center justify-center group-hover:border-secondary transition-colors group-hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:text-secondary transition-colors group-hover:-translate-y-1">
                   <span className={`material-symbols-outlined transition-transform duration-300 ${showAllMembers ? 'rotate-180' : ''}`}>
                     arrow_downward
                   </span>
@@ -316,7 +316,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-16 h-16 md:w-20 md:h-20 bg-[#240046] rounded-full flex items-center justify-center text-white z-10 group-hover:bg-[#3c096c] transition-colors shadow-lg">
+             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-[#240046] z-10 group-hover:text-[#3c096c] transition-colors">
                <span className="material-symbols-outlined text-3xl md:text-4xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                  arrow_outward
                </span>
