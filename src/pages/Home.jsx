@@ -474,7 +474,7 @@ const Home = () => {
               i18nKey="home_cta_title"
               components={{
                 pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner"><img src={ctaImg1} alt="" className="absolute bottom-[2px] left-0 w-full h-auto rounded-b-[3rem] pointer-events-none" /></span>,
-                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner"><img src={heroSticker2} alt="" className="absolute bottom-[2px] left-0 w-full h-auto rounded-b-[3rem] pointer-events-none scale-150 origin-bottom" /></span>,
+                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner"></span>,
                 br: <br />,
                 brDesktop: <br className="hidden md:block" />
               }}
