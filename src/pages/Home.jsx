@@ -217,10 +217,10 @@ const Home = () => {
           </div>
           
           <div className="relative">
-            <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[1100px] sm:max-h-[580px]' : 'max-h-[3000px]'}`}>
+            <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[620px] sm:max-h-[480px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between px-6 pt-6 pb-10 sm:py-6 gap-6 min-h-[120px]">
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 flex-1 text-center sm:text-left">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center p-6 gap-6 h-auto w-full overflow-hidden">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 flex-1 w-full text-center sm:text-left">
                     <div className="w-20 h-20 rounded-2xl overflow-hidden bg-surface-variant/50 shrink-0 border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
                         <img alt={member.name} className="w-full h-full object-cover" src={member.image} />
@@ -244,7 +244,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-row sm:flex-col gap-2 shrink-0 w-full sm:w-40 mt-4 sm:mt-0">
+                  <div className="grid grid-cols-2 sm:flex sm:flex-col gap-2 shrink-0 w-full sm:w-40 mt-4 sm:mt-0">
                     <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
                     <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
                   </div>
@@ -316,7 +316,7 @@ const Home = () => {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[280px] md:min-w-[calc(33.333%-1rem)] lg:min-w-[calc(25%-1.5rem)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                      <div key={proj.id} className="w-full min-w-full sm:min-w-[calc(50%-8px)] sm:w-[calc(50%-8px)] lg:min-w-[calc(33.3333%-21.33px)] lg:w-[calc(33.3333%-21.33px)] h-auto snap-center shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
                         <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
