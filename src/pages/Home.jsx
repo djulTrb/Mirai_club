@@ -338,7 +338,7 @@ const Home = () => {
                 <span className="font-body font-bold text-sm uppercase tracking-[0.2em] bg-surface px-4">
                   {showAllMembers ? "Collapse Team" : "Meet all the team"}
                 </span>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:text-secondary transition-colors group-hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:-translate-y-1">
                   <span className={`material-symbols-outlined transition-transform duration-300 ${showAllMembers ? 'rotate-180' : ''}`}>
                     arrow_downward
                   </span>
@@ -469,12 +469,12 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-16 md:gap-8 text-center md:text-left rtl:md:text-right">
-          <h2 className={`md:col-span-2 font-display font-bold tracking-tighter leading-[1.1] whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]'}`}>
+          <h2 className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.3] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.1]'}`}>
             <Trans 
               i18nKey="home_cta_title"
               components={{
-                pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"><img src={ctaImg1} alt="" className="w-full h-full object-cover" /></span>,
-                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"><img src={heroSticker2} alt="" className="w-full h-full object-cover scale-150" /></span>,
+                pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner bg-cover bg-center" style={{ backgroundImage: `url(${ctaImg1})` }}></span>,
+                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner bg-center" style={{ backgroundImage: `url(${heroSticker2})`, backgroundSize: "150%" }}></span>,
                 br: <br />,
                 brDesktop: <br className="hidden md:block" />
               }}
