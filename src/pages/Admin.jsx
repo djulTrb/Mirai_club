@@ -38,6 +38,15 @@ const Admin = () => {
     const saved = localStorage.getItem('mirai_projects');
     if (saved) {
       setProjects(JSON.parse(saved));
+    } else {
+      const defaultProjects = [
+        { id: 1, title: 'Sentiment Analyzer DZ', category: 'NLP', description: 'Analyse de sentiments sur le dialecte algérien. Modèle BERT fine-tuné.', link: '#' },
+        { id: 2, title: 'Détection Objets Temps Réel', category: 'VISION', description: 'Système de détection basé sur YOLOv8 pour applications locales.', link: '#' },
+        { id: 3, title: 'Prédiction Agricole Locale', category: 'ML', description: "Modèle de prédiction de rendements pour l'agriculture en Kabylie.", link: '#' },
+        { id: 4, title: 'Smart Campus Assistant', category: 'AI', description: 'Chatbot intelligent multilingue pour guider les étudiants sur le campus universitaire.', link: '#' }
+      ];
+      setProjects(defaultProjects);
+      localStorage.setItem('mirai_projects', JSON.stringify(defaultProjects));
     }
   }, []);
 
