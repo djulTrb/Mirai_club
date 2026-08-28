@@ -311,12 +311,9 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className={`font-display font-black text-[11px] fill-[#c77dff] dark:fill-white capitalize tracking-[0.15em] ${i18n.language?.startsWith('ar') ? 'font-sans' : ''}`} style={{ fontFamily: i18n.language?.startsWith('ar') ? 'system-ui, sans-serif' : 'Bricolage Grotesque, sans-serif' }}>
-                 <textPath href="#circlePath" startOffset="0%">
-                   {t('home_join_circle')} &bull; 
-                 </textPath>
-                 <textPath href="#circlePath" startOffset="50%">
-                   {t('home_join_circle')} &bull; 
+               <text className={`font-display font-black text-[10.5px] fill-[#c77dff] dark:fill-white capitalize tracking-[0.1em] ${i18n.language?.startsWith('ar') ? 'font-sans' : ''}`} style={{ fontFamily: i18n.language?.startsWith('ar') ? 'system-ui, sans-serif' : 'Bricolage Grotesque, sans-serif' }}>
+                 <textPath href="#circlePath" startOffset="0%" textLength="236" lengthAdjust="spacing">
+                   {t('home_join_circle')} &bull; {t('home_join_circle')} &bull; 
                  </textPath>
                </text>
              </svg>
