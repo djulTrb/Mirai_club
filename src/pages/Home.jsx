@@ -297,9 +297,19 @@ const Home = () => {
       {/* Final CTA Section */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative overflow-hidden">
         {/* Background ambient lighting */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-10"></div>
-          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07]"></div>
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Noise overlay specific to CTA section */}
+          <div className="absolute inset-0 mix-blend-overlay opacity-[0.4] z-0">
+            <svg className="w-full h-full">
+              <filter id="ctaNoise">
+                <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+              </filter>
+              <rect width="100%" height="100%" filter="url(#ctaNoise)"></rect>
+            </svg>
+          </div>
+          
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-10 z-0"></div>
+          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07] z-0"></div>
         </div>
         
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
@@ -307,8 +317,8 @@ const Home = () => {
             <Trans 
               i18nKey="home_cta_title"
               components={{
-                pill1: <span className="inline-block align-middle w-24 md:w-36 h-12 md:h-16 lg:h-20 bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
-                pill2: <span className="inline-block align-middle w-8 md:w-12 h-12 md:h-16 lg:h-20 bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
+                pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
+                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
                 br: <br />
               }}
             />
@@ -318,9 +328,9 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className={`font-display font-black text-[10.5px] fill-[#c77dff] dark:fill-white capitalize tracking-[0.1em] ${i18n.language?.startsWith('ar') ? 'font-sans' : ''}`} style={{ fontFamily: i18n.language?.startsWith('ar') ? 'system-ui, sans-serif' : 'Bricolage Grotesque, sans-serif' }}>
+               <text className={`font-display font-black text-[14px] fill-[#c77dff] dark:fill-white capitalize tracking-normal ${i18n.language?.startsWith('ar') ? 'font-sans' : ''}`} style={{ fontFamily: i18n.language?.startsWith('ar') ? 'system-ui, sans-serif' : 'Bricolage Grotesque, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%" textLength="236" lengthAdjust="spacing">
-                   {t('home_join_circle')} &bull; {t('home_join_circle')} &bull; 
+                   {t('home_join_circle')}          {t('home_join_circle')}          
                  </textPath>
                </text>
              </svg>
