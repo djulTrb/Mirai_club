@@ -9,6 +9,27 @@ import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
   const { t, i18n } = useTranslation();
+  const [projects, setProjects] = useState([]);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('mirai_projects');
+    if (saved) {
+      setProjects(JSON.parse(saved));
+    } else {
+      // Temporarily clear it out so empty state shows as requested
+      setProjects([]); 
+    }
+  }, []);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
 
   const [showAllMembers, setShowAllMembers] = useState(false);
 
@@ -276,36 +297,52 @@ const Home = () => {
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full relative z-10">
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
-              <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">NLP</p>
-              <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">Sentiment Analyzer DZ</h3>
-              <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">Analyse de sentiments sur le dialecte algérien. Modèle BERT fine-tuné.</p>
-              <div className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider">
-                {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </div>
-            </div>
-            
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
-              <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">VISION</p>
-              <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">Détection Objets Temps Réel</h3>
-              <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">Système de détection basé sur YOLOv8 pour applications locales.</p>
-              <div className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider">
-                {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </div>
-            </div>
-            
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
-              <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">ML</p>
-              <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">Prédiction Agricole Locale</h3>
-              <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">Modèle de prédiction de rendements pour l'agriculture en Kabylie.</p>
-              <div className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider">
-                {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </div>
+          <div className="w-full relative z-10">
+              {projects.length === 0 ? (
+                <div className="w-full flex justify-center items-center py-16">
+                  <p className="text-on-surface-variant font-body text-lg italic">No projects for the moment.</p>
+                </div>
+              ) : (
+                <div className="relative group/carousel">
+                  <div 
+                    ref={scrollRef}
+                    className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 w-full pb-8 scrollbar-hide [&::-webkit-scrollbar]:hidden"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  >
+                    {projects.map(proj => (
+                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[300px] md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.5rem)] snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                        <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
+                        <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
+                        <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">{proj.description}</p>
+                        <a href={proj.link || '#'} className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
+                          {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Left Button */}
+                  <button 
+                    onClick={() => scroll('left')}
+                    className="absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-outline-variant/30 rounded-full flex items-center justify-center text-black shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-surface-variant z-20"
+                    aria-label="Scroll left"
+                  >
+                    <span className="material-symbols-outlined">chevron_left</span>
+                  </button>
+
+                  {/* Right Button */}
+                  <button 
+                    onClick={() => scroll('right')}
+                    className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-outline-variant/30 rounded-full flex items-center justify-center text-black shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-surface-variant z-20"
+                    aria-label="Scroll right"
+                  >
+                    <span className="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Final CTA Section */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative overflow-hidden">
