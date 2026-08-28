@@ -6,8 +6,6 @@ import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
 import heroBg from '../assets/hero_bg.png';
-import { LampContainer } from "../components/ui/Lamp";
-import { motion } from "framer-motion";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -184,7 +182,7 @@ const Home = () => {
       </section>
 
       {/* Meet the members */}
-      <section className="px-6 md:px-24 bg-surface py-24">
+      <section id="team-section" className="px-6 md:px-24 bg-surface py-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="w-full flex flex-col items-center mb-16">
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('team_tag')}</span>
@@ -233,7 +231,14 @@ const Home = () => {
             
             <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-6' : 'mt-12'}`}>
               <button 
-                onClick={() => setShowAllMembers(!showAllMembers)}
+                onClick={() => {
+                  setShowAllMembers(!showAllMembers);
+                  if (showAllMembers) {
+                    setTimeout(() => {
+                      document.getElementById('team-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50);
+                  }
+                }}
                 className="group flex flex-col items-center justify-center gap-2 text-on-surface hover:text-secondary transition-colors"
               >
                 <span className="font-body font-bold text-sm uppercase tracking-[0.2em] bg-surface px-4">
@@ -252,22 +257,11 @@ const Home = () => {
 
       {/* Current projects */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
-        <div className="w-full max-w-[1400px] mx-auto relative z-10 group flex flex-col items-center">
-          <LampContainer className="-mb-32 md:-mb-16 -mt-32 scale-75 md:scale-100">
-            <motion.div
-              initial={{ opacity: 0.5, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="w-full flex flex-col items-center z-50 pt-32"
-            >
-              <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4 relative z-50">{t('proj_tag')}</span>
-              <h2 className="text-black text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight relative z-50">{t('proj_title')}</h2>
-            </motion.div>
-          </LampContainer>
+        <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
+          <div className="w-full flex flex-col items-center mb-16">
+            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
+            <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
@@ -308,16 +302,16 @@ const Home = () => {
           <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07]"></div>
         </div>
         
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
           <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line">
             {t('home_cta_title')}
           </h2>
           
-          <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden transition-transform duration-500 hover:scale-105 shrink-0 bg-[#240046] shadow-xl hover:bg-[#3c096c]">
+          <Link to="/recruitment" className="relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c77dff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className="font-display font-black text-[10px] md:text-[10px] fill-[#c77dff] uppercase tracking-[0.2em]">
+               <text className="font-display font-black text-[10px] md:text-[10px] fill-[#c77dff] dark:fill-white italic capitalize tracking-[0.2em]">
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')} • {t('home_join_circle')} • {t('home_join_circle')} • 
                  </textPath>
@@ -325,8 +319,8 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] z-10 transition-colors">
-               <span className="material-symbols-outlined text-5xl md:text-7xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10">
+               <span className="material-symbols-outlined text-5xl md:text-7xl">
                  arrow_outward
                </span>
              </div>
