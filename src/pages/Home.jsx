@@ -66,7 +66,7 @@ const Home = () => {
     { name: "Olivia Martin", role: "Community", skills: ["Discord", "Engagement"], image: "" }
   ];
 
-  const visibleMembers = showAllMembers ? TEAM_MEMBERS : TEAM_MEMBERS.slice(0, 5);
+  const visibleMembers = showAllMembers ? TEAM_MEMBERS : TEAM_MEMBERS.slice(0, 4);
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
@@ -219,8 +219,8 @@ const Home = () => {
           <div className="relative">
             <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[850px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 min-h-[150px]">
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-4 sm:px-6 py-4 sm:py-6 gap-4 sm:gap-6 min-h-[120px]">
+                  <div className="flex flex-row items-center sm:items-start gap-4 sm:gap-6 flex-1 text-left">
                     <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
                         <img alt={member.name} className="w-full h-full object-cover" src={member.image} />
@@ -229,11 +229,11 @@ const Home = () => {
                       )}
                     </div>
                     <div className="flex flex-col justify-center">
-                      <div className="flex flex-col md:flex-row items-center md:items-center gap-3 mb-2">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-2">
                         <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">{member.name}</h3>
                         <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{member.role}</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mt-1 justify-center md:justify-start">
+                      <div className="flex flex-wrap gap-2 mt-1 justify-start">
                         <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
                         {member.skills.map((skill, sIdx) => (
                           <React.Fragment key={sIdx}>
@@ -244,16 +244,16 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-row md:flex-col gap-2 shrink-0 w-full md:w-40 mt-4 md:mt-0">
-                    <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                    <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                  <div className="flex flex-col gap-2 shrink-0 w-24 sm:w-40 mt-0">
+                    <a className="py-2 px-2 sm:px-4 sm:py-2.5 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                    <a className="py-2 px-2 sm:px-4 sm:py-2.5 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
                   </div>
                 </div>
               ))}
             </div>
 
             {!showAllMembers && (
-              <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-surface via-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-t from-surface to-transparent pointer-events-none z-10"></div>
             )}
             
             <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-16' : 'mt-12'}`}>
@@ -316,10 +316,10 @@ const Home = () => {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[280px] md:min-w-[calc(33.333%-1rem)] lg:min-w-[calc(25%-1.5rem)] min-h-[350px] snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[280px] md:min-w-[calc(33.333%-1rem)] lg:min-w-[calc(25%-1.5rem)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
                         <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
-                        <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">{proj.description}</p>
+                        <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
                         <a href={proj.link || '#'} className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
                           {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
