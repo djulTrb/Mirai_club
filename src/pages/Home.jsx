@@ -226,8 +226,7 @@ const Home = () => {
             </div>
 
             {!showAllMembers && (
-              <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-surface via-surface/90 to-transparent pointer-events-none z-10 flex flex-col justify-end">
-              </div>
+              <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-surface via-surface to-transparent pointer-events-none z-10"></div>
             )}
             
             <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-6' : 'mt-12'}`}>
@@ -304,11 +303,11 @@ const Home = () => {
             {t('home_cta_title')}
           </h2>
           
-          <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-full transition-transform duration-500 hover:scale-105 shrink-0">
+          <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-full transition-transform duration-500 hover:scale-105 shrink-0 bg-[#240046] shadow-xl hover:bg-[#3c096c]">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className="font-display font-black text-[12px] fill-on-surface uppercase tracking-[0.2em]">
+               <text className="font-display font-black text-[12px] fill-[#c77dff] uppercase tracking-[0.2em]">
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')} • {t('home_join_circle')} • {t('home_join_circle')} • 
                  </textPath>
@@ -316,7 +315,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-on-surface z-10 group-hover:text-secondary transition-colors">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] z-10 transition-colors">
                <span className="material-symbols-outlined text-5xl md:text-7xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
                  arrow_outward
                </span>
