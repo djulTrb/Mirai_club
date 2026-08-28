@@ -104,7 +104,7 @@ const resources = {
       "footer_slogan": "Héritage • Intelligence • Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
       "home_cta_title": "Voir l\'IA <pill1></pill1> <brDesktop/> Sous un autre <brDesktop/> angle <pill2></pill2>", "home_cta_desc": "",
-      "home_join_circle": "Rejoindre le Club MIRAI *",
+      "home_join_circle": "Rejoindre MIRAI *"     ,
 
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
       "app_closed_tag": "Candidatures Fermées", "app_closed_title": "Les candidatures sont actuellement fermées", "app_closed_desc": "Le Club MIRAI n'accepte pas de nouveaux membres pour le moment. Suivez-nous pour être notifié de la prochaine session.",
