@@ -36,8 +36,21 @@ const Home = () => {
     }
   };
 
+  const handleProjectScroll = (e) => {
+    if (!e.target || e.target.children.length === 0) return;
+    const scrollLeft = e.target.scrollLeft;
+    const itemWidth = e.target.children.length > 1 
+      ? (e.target.children[1].offsetLeft - e.target.children[0].offsetLeft) 
+      : e.target.children[0].offsetWidth;
+    const idx = Math.round(scrollLeft / itemWidth);
+    if (idx !== activeProjectIdx && idx >= 0 && idx < projects.length) {
+      setActiveProjectIdx(idx);
+    }
+  };
+
 
   const [showAllMembers, setShowAllMembers] = useState(false);
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
 
   const TEAM_MEMBERS = [
     {
@@ -66,7 +79,7 @@ const Home = () => {
     { name: "Olivia Martin", role: "Community", skills: ["Discord", "Engagement"], image: "" }
   ];
 
-  const visibleMembers = showAllMembers ? TEAM_MEMBERS : TEAM_MEMBERS.slice(0, 4);
+  const visibleMembers = TEAM_MEMBERS;
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
@@ -282,7 +295,7 @@ const Home = () => {
             </div>
 
             {!showAllMembers && (
-              <div className="absolute bottom-0 left-0 w-full h-[160px] bg-gradient-to-t from-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute bottom-0 left-0 w-full h-[220px] bg-gradient-to-t from-surface via-surface/80 to-transparent pointer-events-none z-10"></div>
             )}
             
             <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? 'mt-4 sm:mt-6' : 'mt-16'}`}>
@@ -341,11 +354,12 @@ const Home = () => {
                 <div className="relative group/carousel">
                   <div 
                     ref={scrollRef}
+                    onScroll={handleProjectScroll}
                     className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 w-full px-4 md:px-8 pb-8 scrollbar-hide [&::-webkit-scrollbar]:hidden"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="w-full min-w-full sm:min-w-[calc(50%-8px)] sm:w-[calc(50%-8px)] lg:min-w-[calc(33.3333%-21.33px)] lg:w-[calc(33.3333%-21.33px)] h-auto snap-center shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                      <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-center shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
                         <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
@@ -366,14 +380,31 @@ const Home = () => {
                   </button>
 
                   {/* Right Button */}
-                  <button 
-                    onClick={() => scroll('right')}
-                    className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
-                    aria-label="Scroll right"
-                  >
-                    <span className="material-symbols-outlined">chevron_right</span>
-                  </button>
-                </div>
+                    <button 
+                      onClick={() => scroll('right')}
+                      className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
+                      aria-label="Scroll right"
+                    >
+                      <span className="material-symbols-outlined">chevron_right</span>
+                    </button>
+                  </div>
+                  
+                  {/* Dots Indicator */}
+                  <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+                    {projects.map((_, idx) => (
+                      <button 
+                        key={idx}
+                        onClick={() => {
+                          const container = scrollRef.current;
+                          if (container && container.children[idx]) {
+                            container.children[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                          }
+                        }}
+                        className={`h-2 rounded-full transition-all duration-300 ${activeProjectIdx === idx ? 'w-6 bg-[#c77dff]' : 'w-2 bg-outline-variant/40 hover:bg-outline-variant'}`}
+                        aria-label={`Go to project ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
               )}
             </div>
           </div>
