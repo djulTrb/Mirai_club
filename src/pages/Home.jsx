@@ -64,6 +64,18 @@ const Home = () => {
 
   const [showAllMembers, setShowAllMembers] = useState(false);
   const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(1);
+
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth >= 1280) setVisibleCards(3);
+      else if (window.innerWidth >= 768) setVisibleCards(2);
+      else setVisibleCards(1);
+    };
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   const TEAM_MEMBERS = [
     {
@@ -373,7 +385,7 @@ const Home = () => {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-center shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                      <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
                         <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
@@ -413,19 +425,24 @@ const Home = () => {
                   
                   {/* Dots Indicator */}
                   <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-                    {projects.map((_, idx) => (
-                      <button 
-                        key={idx}
-                        onClick={() => {
-                          const container = scrollRef.current;
-                          if (container && container.children[idx]) {
-                            container.children[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                          }
-                        }}
-                        className={`h-2 rounded-full transition-all duration-300 ${activeProjectIdx === idx ? 'w-6 bg-[#c77dff]' : 'w-2 border-[1.5px] border-outline-variant/50 bg-transparent hover:border-outline-variant'}`}
-                        aria-label={`Go to project ${idx + 1}`}
-                      />
-                    ))}
+                    {Array.from({ length: Math.ceil(projects.length / visibleCards) }).map((_, pageIdx) => {
+                      const isActive = Math.floor(activeProjectIdx / visibleCards) === pageIdx;
+                      return (
+                        <button 
+                          key={pageIdx}
+                          onClick={() => {
+                            const container = scrollRef.current;
+                            const targetProjectIdx = pageIdx * visibleCards;
+                            if (container && container.children[targetProjectIdx]) {
+                              // We use 'start' because pages align to the left side in standard LTR, but standard behavior in RTL is also handled by 'start' (which means inline-start).
+                              container.children[targetProjectIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                            }
+                          }}
+                          className={`h-2 rounded-full transition-all duration-300 ${isActive ? 'w-6 bg-[#c77dff]' : 'w-2 border-[1.5px] border-outline-variant/50 bg-transparent hover:border-outline-variant'}`}
+                          aria-label={`Go to page ${pageIdx + 1}`}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               )}
