@@ -5,6 +5,7 @@ import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
+import ctaImg1 from '../assets/cta_img_1.webp';
 import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
@@ -435,8 +436,8 @@ const Home = () => {
             <Trans 
               i18nKey="home_cta_title"
               components={{
-                pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
-                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
+                pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"><img src={ctaImg1} alt="" className="w-full h-full object-cover" /></span>,
+                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"><img src={heroSticker2} alt="" className="w-full h-full object-cover scale-150" /></span>,
                 br: <br />,
                 brDesktop: <br className="hidden md:block" />
               }}

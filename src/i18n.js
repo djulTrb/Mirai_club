@@ -157,7 +157,7 @@ const resources = {
       "form_name": "الاسم الكامل *", "form_email": "البريد الإلكتروني *", "form_uni_email": "البريد الجامعي *", "form_msg": "الرسالة *", "form_send": "إرسال الرسالة",
       "footer_slogan": "تراث • ذكاء • مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
       
-      "home_cta_title": "انظر إلى الذكاء الاصطناعي <pill1></pill1> <brDesktop/> من <brDesktop/> منظور مختلف <pill2></pill2>", "home_cta_desc": "",
+      "home_cta_title": "<pill2></pill2> رؤية جديدة <brDesktop/> <pill1></pill1> للذكاء الاصطناعي", "home_cta_desc": "",
       "home_join_circle": "Join Mirai Club *",
 
       "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_submit": "تقديم الطلب",
