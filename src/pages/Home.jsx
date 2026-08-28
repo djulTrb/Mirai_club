@@ -45,7 +45,7 @@ const Home = () => {
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
       <section 
-        className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-24 bg-[#e6e0f4] bg-[length:100%_auto] md:bg-cover bg-top md:bg-center bg-no-repeat"
+        className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#e6e0f4] bg-[length:100%_auto] md:bg-cover bg-top md:bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* Subtle overlay to ensure text contrast */}
@@ -229,7 +229,7 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-surface via-surface to-transparent pointer-events-none z-10"></div>
             )}
             
-            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-24' : 'mt-12'}`}>
+            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-16' : 'mt-12'}`}>
               <button 
                 onClick={() => {
                   setShowAllMembers(!showAllMembers);
