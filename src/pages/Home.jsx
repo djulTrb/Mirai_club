@@ -6,6 +6,7 @@ import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
 import ctaImg1 from '../assets/cta_img_1.webp';
+import ctaImg2 from '../assets/cta_img_2.png';
 import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
@@ -481,7 +482,14 @@ const Home = () => {
                     </div>
                   </span>
                 ),
-                pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner"></span>,
+                pill2: (
+                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                    <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
+                    <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
+                      <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
+                    </div>
+                  </span>
+                ),
                 br: <br />,
                 brDesktop: <br className="hidden md:block" />
               }}
