@@ -110,21 +110,21 @@ const Home = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#240046] dark:bg-[#c77dff]">
+      <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#240046] dark:bg-[#c87fff]">
         
         
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-16 md:mb-20 mt-12 md:mt-24">
-          <h1 className="font-display font-black text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] tracking-[-0.04em] text-[#c77dff] dark:text-[#3c096c] uppercase leading-[0.85] drop-shadow-sm mb-8">
+          <h1 className="font-display font-black text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] tracking-[-0.04em] text-[#c87fff] dark:text-[#3c096c] uppercase leading-[0.85] drop-shadow-sm mb-8">
             MIRAI<br />CLUB
           </h1>
           
-          <p className="font-body text-base md:text-xl text-[#c77dff] dark:text-[#3c096c] mb-12 max-w-2xl leading-relaxed font-medium backdrop-blur-md bg-black/20 dark:bg-white/20 px-8 py-5 rounded-3xl border border-black/30 dark:border-white/30 shadow-sm">
+          <p className="font-body text-base md:text-xl text-[#c87fff] dark:text-[#3c096c] mb-12 max-w-2xl leading-relaxed font-medium backdrop-blur-md bg-black/20 dark:bg-white/20 px-8 py-5 rounded-3xl border border-black/30 dark:border-white/30 shadow-sm">
             {t('home_build')} AI. {t('home_desc')}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
-            <Link to="/recruitment" className="w-full sm:w-auto bg-[#c77dff] dark:bg-[#3c096c] text-[#240046] dark:text-[#c77dff] px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] hover:opacity-90 transition-all hover:scale-105 duration-300 shadow-xl">
+            <Link to="/recruitment" className="w-full sm:w-auto bg-[#c87fff] dark:bg-[#3c096c] text-[#240046] dark:text-[#c87fff] px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] hover:opacity-90 transition-all hover:scale-105 duration-300 shadow-xl">
               {t('home_join')}
             </Link>
             <Link to="/events" className="w-full sm:w-auto bg-white/40 dark:bg-black/40 backdrop-blur-md text-black dark:text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all hover:scale-105 duration-300 shadow-lg">
@@ -137,43 +137,43 @@ const Home = () => {
       </section>
 
       {/* Marquee Section */}
-      <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c77dff] py-8 shadow-lg">
+      <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c87fff] py-8 shadow-lg">
         <div className="flex w-max font-display font-bold whitespace-nowrap group">
           <div className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c77dff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
           </div>
         </div>
       </section>
@@ -355,7 +355,7 @@ const Home = () => {
         
         {/* Decorative Noisy Blob */}
         <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[200px] h-[200px] md:w-[300px] md:h-[300px] pointer-events-none z-0">
-          <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-15 blur-[50px] md:blur-[80px] rounded-full"></div>
+          <div className="absolute inset-0 bg-[#c87fff] opacity-40 dark:opacity-15 blur-[50px] md:blur-[80px] rounded-full"></div>
           <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-30" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
             <svg className="w-full h-full">
               <filter id="projBlobNoise">
@@ -400,7 +400,7 @@ const Home = () => {
                   {/* Left Button */}
                   <button 
                       onClick={() => scroll('left')}
-                      className={`absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                      className={`absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
                         i18n.language?.startsWith('ar')
                           ? (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')
                           : (activeProjectIdx === 0 ? 'hidden' : '')
@@ -413,7 +413,7 @@ const Home = () => {
                   {/* Right Button */}
                     <button 
                       onClick={() => scroll('right')}
-                      className={`absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                      className={`absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
                         i18n.language?.startsWith('ar')
                           ? (activeProjectIdx === 0 ? 'hidden' : '')
                           : (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')
@@ -439,7 +439,7 @@ const Home = () => {
                               container.children[targetProjectIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
                             }
                           }}
-                          className={`h-2 rounded-full transition-all duration-300 ${isActive ? 'w-6 bg-[#c77dff]' : 'w-2 border-[1.5px] border-outline-variant/50 bg-transparent hover:border-outline-variant'}`}
+                          className={`h-2 rounded-full transition-all duration-300 ${isActive ? 'w-6 bg-[#c87fff]' : 'w-2 border-[1.5px] border-outline-variant/50 bg-transparent hover:border-outline-variant'}`}
                           aria-label={`Go to page ${pageIdx + 1}`}
                         />
                       );
@@ -465,7 +465,7 @@ const Home = () => {
             </svg>
           </div>
           
-          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#9d4edd] rounded-full blur-[120px] opacity-10 z-0"></div>
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[150%] bg-[#c87fff] rounded-full blur-[120px] opacity-10 z-0"></div>
           <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07] z-0"></div>
         </div>
         
@@ -475,7 +475,7 @@ const Home = () => {
               i18nKey="home_cta_title"
               components={{
                 pill1: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg1} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg1} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
@@ -483,7 +483,7 @@ const Home = () => {
                   </span>
                 ),
                 pill2: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
@@ -498,11 +498,11 @@ const Home = () => {
           </h2>
           
           <div className="md:col-span-1 flex justify-center md:justify-start rtl:md:justify-end w-full">
-            <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c77dff] shadow-xl">
+            <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text dir="ltr" className={`font-accent font-black fill-[#c77dff] dark:fill-white ${i18n.language?.startsWith('fr') ? 'text-[9.5px] tracking-widest' : 'text-[10px] tracking-widest'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
+               <text dir="ltr" className={`font-accent font-black fill-[#c87fff] dark:fill-white ${i18n.language?.startsWith('fr') ? 'text-[9.5px] tracking-widest' : 'text-[10px] tracking-widest'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')}
                  </textPath>
@@ -513,7 +513,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c87fff] dark:text-white z-10">
                <span className="material-symbols-outlined text-5xl md:text-7xl">
                  arrow_outward
                </span>

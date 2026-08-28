@@ -17,7 +17,7 @@ const Chatbot = () => {
       {/* Floating Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 z-50 w-[54px] h-[54px] rounded-[1.25rem] bg-[#c77dff] text-[#240046] shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center hover:scale-105 transition-all focus:outline-none group"
+        className="fixed bottom-6 left-6 z-50 w-[54px] h-[54px] rounded-[1.25rem] bg-[#c87fff] text-[#240046] shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center hover:scale-105 transition-all focus:outline-none group"
         aria-label="Toggle AI Chatbot"
       >
         <span className="material-symbols-outlined text-[28px]">
@@ -29,7 +29,7 @@ const Chatbot = () => {
       {isOpen && (
         <div className="fixed bottom-24 left-6 z-50 w-[calc(100vw-3rem)] sm:w-[380px] h-[500px] max-h-[calc(100vh-8rem)] bg-white border border-outline-variant/30 rounded-2xl shadow-xl flex flex-col overflow-hidden font-body animate-in slide-in-from-bottom-5">
           {/* Header */}
-          <div className="p-4 bg-[#c77dff] flex justify-between items-center rounded-t-2xl">
+          <div className="p-4 bg-[#c87fff] flex justify-between items-center rounded-t-2xl">
             <div className="flex items-center gap-3">
               <span className="material-symbols-outlined text-[#240046]">auto_awesome</span>
               <div>
@@ -56,7 +56,7 @@ const Chatbot = () => {
               placeholder={t('ai_placeholder')}
               className="flex-grow bg-surface-container-low border border-outline-variant/30 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-secondary transition-colors"
             />
-            <button className="w-10 h-10 rounded-full bg-[#c77dff] text-[#240046] flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0 shadow-sm">
+            <button className="w-10 h-10 rounded-full bg-[#c87fff] text-[#240046] flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0 shadow-sm">
               <span className="material-symbols-outlined text-[18px]">send</span>
             </button>
           </div>

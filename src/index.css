@@ -144,10 +144,10 @@ html {
 /* Custom Selection Colors */
 ::selection {
   background-color: #240046;
-  color: #c77dff;
+  color: #c87fff;
 }
 .dark ::selection {
-  background-color: #c77dff;
+  background-color: #c87fff;
   color: #ffffff;
 }
 
