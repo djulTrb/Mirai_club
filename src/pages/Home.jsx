@@ -313,7 +313,7 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
-          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line uppercase">
+          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line capitalize">
             <Trans 
               i18nKey="home_cta_title"
               components={{
@@ -328,9 +328,12 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className={`font-display font-black text-[14px] fill-[#c77dff] dark:fill-white capitalize tracking-normal ${i18n.language?.startsWith('ar') ? 'font-sans' : ''}`} style={{ fontFamily: i18n.language?.startsWith('ar') ? 'system-ui, sans-serif' : 'Bricolage Grotesque, sans-serif' }}>
-                 <textPath href="#circlePath" startOffset="0%" textLength="236" lengthAdjust="spacing">
-                   {t('home_join_circle')}          {t('home_join_circle')}          
+               <text className="font-display font-black text-[10.5px] fill-[#c77dff] dark:fill-white tracking-[0.2em]" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                 <textPath href="#circlePath" startOffset="0%">
+                   {t('home_join_circle')}
+                 </textPath>
+                 <textPath href="#circlePath" startOffset="50%">
+                   {t('home_join_circle')}
                  </textPath>
                </text>
              </svg>

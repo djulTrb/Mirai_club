@@ -17,7 +17,7 @@ const Chatbot = () => {
       {/* Floating Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 z-50 w-[54px] h-[54px] rounded-[1.25rem] bg-[#240046] text-[#c77dff] shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center hover:scale-105 transition-all focus:outline-none group"
+        className="fixed bottom-6 left-6 z-50 w-[54px] h-[54px] rounded-[1.25rem] bg-[#240046] text-[#c77dff] dark:bg-[#c77dff] dark:text-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center hover:scale-105 transition-all focus:outline-none group"
         aria-label="Toggle AI Chatbot"
       >
         <span className="material-symbols-outlined text-[28px]">
