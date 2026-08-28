@@ -136,7 +136,7 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto relative z-10">
-          <div className="w-full flex flex-col items-center mb-8">
+          <div className="w-full flex flex-col items-center mb-8 relative z-10">
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('mission_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('mission_title')}</h2>
           </div>
@@ -257,13 +257,26 @@ const Home = () => {
 
       {/* Current projects */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
+        
+        {/* Decorative Noisy Blob */}
+        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] pointer-events-none z-0">
+          <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-40 blur-[50px] md:blur-[80px] rounded-full"></div>
+          <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-50" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
+            <svg className="w-full h-full">
+              <filter id="projBlobNoise">
+                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+              </filter>
+              <rect width="100%" height="100%" filter="url(#projBlobNoise)"></rect>
+            </svg>
+          </div>
+        </div>
         <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
           <div className="w-full flex flex-col items-center mb-16">
             <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full relative z-10">
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
               <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">NLP</p>
               <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">Sentiment Analyzer DZ</h3>
@@ -341,10 +354,10 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10">
-               <span className="material-symbols-outlined text-5xl md:text-7xl animate-eager group-hover:animate-none">
-                  arrow_outward
-                </span>
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10 animate-eager group-hover:animate-none">
+               <span className="material-symbols-outlined text-5xl md:text-7xl">
+                 arrow_outward
+               </span>
              </div>
           </Link>
           </div>

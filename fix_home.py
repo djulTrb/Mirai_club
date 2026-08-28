@@ -1,45 +1,53 @@
 import re
 
 with open('src/pages/Home.jsx', 'r', encoding='utf-8') as f:
-    home = f.read()
+    text = f.read()
 
-# Add imports
-if 'LampContainer' not in home:
-    # find last import
-    imports_end = home.rfind('import')
-    # find the next newline after the last import
-    next_newline = home.find('\n', imports_end)
-    home = home[:next_newline] + '\nimport { LampContainer } from "../components/ui/Lamp";\nimport { motion } from "framer-motion";' + home[next_newline:]
+# 1. Add Decorative Noisy Blob to Projects section
+# I will find the start of the Projects section
+proj_start_match = re.search(r'\{/\* Current Projects Section \*/\}\s*<section.*?id="projects".*?>', text, re.DOTALL)
+if proj_start_match:
+    original = proj_start_match.group(0)
+    blob_html = """
+        {/* Decorative Noisy Blob */}
+        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] pointer-events-none z-0">
+          <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-40 blur-[50px] md:blur-[80px] rounded-full"></div>
+          <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-50" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
+            <svg className="w-full h-full">
+              <filter id="projBlobNoise">
+                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+              </filter>
+              <rect width="100%" height="100%" filter="url(#projBlobNoise)"></rect>
+            </svg>
+          </div>
+        </div>
+"""
+    new_start = original + blob_html
+    text = text.replace(original, new_start)
+else:
+    print("Failed to find Projects Section")
 
-# Replace the projects section title
-old_projects_header = """        {/* Wide lamp source lighting */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[30%] w-[120%] md:w-[100%] h-[500px] bg-[#9d4edd] opacity-[0.15] dark:opacity-[0.15] blur-[100px] md:blur-[150px] rounded-[100%] pointer-events-none z-0"></div>
-        
-        <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
-          <div className="w-full flex flex-col items-center mb-16">
-            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
-            <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
-          </div>"""
 
-new_projects_header = """        <div className="w-full max-w-[1400px] mx-auto relative z-10 group flex flex-col items-center">
-          <LampContainer className="-mb-32 md:-mb-16 -mt-32 scale-75 md:scale-100">
-            <motion.div
-              initial={{ opacity: 0.5, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="w-full flex flex-col items-center z-50 pt-32"
-            >
-              <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4 relative z-50">{t('proj_tag')}</span>
-              <h2 className="text-black text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight relative z-50">{t('proj_title')}</h2>
-            </motion.div>
-          </LampContainer>"""
+# 2. Make the Projects gap smaller on mobile (gap-4 md:gap-8)
+old_gap = '<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">'
+new_gap = '<div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full relative z-10">'
+text = text.replace(old_gap, new_gap)
 
-home = home.replace(old_projects_header, new_projects_header)
+# 3. Add z-10 to the wrapper containing mission_title and proj_title to make sure they are above the blob
+old_title_wrap = '<div className="w-full flex flex-col items-center mb-8">'
+new_title_wrap = '<div className="w-full flex flex-col items-center mb-8 relative z-10">'
+text = text.replace(old_title_wrap, new_title_wrap)
+
+
+# 4. Move animate-eager to the DIV in the CTA section
+# It is currently on the span. I will remove it from the span and put it on the wrapper.
+old_arrow = r'<div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-\[#c77dff\] dark:text-white z-10">\s*<span className="material-symbols-outlined text-5xl md:text-7xl animate-eager group-hover:animate-none">\s*arrow_outward\s*</span>\s*</div>'
+new_arrow = """<div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10 animate-eager group-hover:animate-none">
+               <span className="material-symbols-outlined text-5xl md:text-7xl">
+                 arrow_outward
+               </span>
+             </div>"""
+text = re.sub(old_arrow, new_arrow, text)
 
 with open('src/pages/Home.jsx', 'w', encoding='utf-8') as f:
-    f.write(home)
-print("Home.jsx updated")
+    f.write(text)
