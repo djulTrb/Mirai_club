@@ -20,7 +20,7 @@ const EventDetails = () => {
     return (
       <main className="flex-grow flex flex-col items-center justify-center pt-32 pb-16 font-body">
         <h1 className="text-4xl font-display font-bold text-black mb-4">Event Not Found</h1>
-        <button onClick={() => navigate('/events')} className="text-secondary hover:underline">
+        <button onClick={() => navigate('/events')} className="text-[#9D4EDD] hover:underline">
           Return to Events
         </button>
       </main>
@@ -47,7 +47,7 @@ const EventDetails = () => {
       <div className="max-w-[1200px] mx-auto w-full px-4 sm:px-6 md:px-12 py-12">
         <button 
           onClick={() => navigate('/events')}
-          className="flex items-center gap-2 text-on-surface-variant hover:text-secondary mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
+          className="flex items-center gap-2 text-on-surface-variant hover:text-[#9D4EDD] mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
         >
           <span className="material-symbols-outlined text-lg rtl:rotate-180">arrow_back</span>
           {t('go_back', 'Go Back')}
@@ -59,18 +59,18 @@ const EventDetails = () => {
             <div className="w-full aspect-video rounded-3xl overflow-hidden relative shadow-sm border border-outline-variant/30">
               <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
               {isEnded && (
-                <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-secondary text-white px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest text-xs shadow-md">
+                <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-[#9D4EDD] text-white px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest text-xs shadow-md">
                   {t('event_ended')}
                 </div>
               )}
             </div>
             
             <div>
-              <p className="font-accent font-semibold text-xs text-secondary tracking-wide uppercase mb-2">{event.date}</p>
+              <p className="font-accent font-semibold text-xs text-[#9D4EDD] tracking-wide uppercase mb-2">{event.date}</p>
               <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight mb-4">{event.title}</h1>
               
               <div className="flex items-center gap-2 text-on-surface-variant text-sm font-body mb-8 bg-surface-variant/40 p-4 rounded-2xl border border-outline-variant/20">
-                <span className="material-symbols-outlined text-secondary shrink-0">location_on</span>
+                <span className="material-symbols-outlined text-[#9D4EDD] shrink-0">location_on</span>
                 <p className="font-medium">{event.location}</p>
               </div>
 
@@ -98,7 +98,7 @@ const EventDetails = () => {
                   <p className="text-sm mt-1">The deadline for this event has passed.</p>
                 </div>
               ) : submitted ? (
-                <div className="bg-secondary/10 border border-secondary/30 text-secondary p-6 rounded-2xl text-center">
+                <div className="bg-[#9D4EDD]/10 border border-[#9D4EDD]/30 text-[#9D4EDD] p-6 rounded-2xl text-center">
                   <span className="material-symbols-outlined text-4xl mb-2">check_circle</span>
                   <h3 className="font-display font-bold text-xl mb-2">Registration Successful!</h3>
                   <p className="text-sm text-on-surface-variant">We have received your application. See you there!</p>
@@ -113,7 +113,7 @@ const EventDetails = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all"
+                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9D4EDD] focus:ring-1 focus:ring-[#9D4EDD] transition-all"
                       placeholder="John Doe"
                     />
                   </div>
@@ -126,7 +126,7 @@ const EventDetails = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all"
+                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9D4EDD] focus:ring-1 focus:ring-[#9D4EDD] transition-all"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -139,14 +139,14 @@ const EventDetails = () => {
                       rows="4"
                       value={formData.motivation}
                       onChange={handleInputChange}
-                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all resize-none"
+                      className="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9D4EDD] focus:ring-1 focus:ring-[#9D4EDD] transition-all resize-none"
                       placeholder="Why do you want to attend this event?"
                     ></textarea>
                   </div>
 
                   <button 
                     type="submit"
-                    className="mt-4 w-full bg-secondary text-white rounded-xl py-4 font-bold uppercase tracking-widest text-xs hover:opacity-90 transition-opacity shadow-sm flex items-center justify-center gap-2"
+                    className="mt-4 w-full bg-[#9D4EDD] text-white rounded-xl py-4 font-bold uppercase tracking-widest text-xs hover:opacity-90 transition-opacity shadow-sm flex items-center justify-center gap-2"
                   >
                     {t('event_submit', 'Submit Registration')}
                     <span className="material-symbols-outlined text-sm rtl:rotate-180">arrow_forward</span>

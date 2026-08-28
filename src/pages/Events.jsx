@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { DUMMY_EVENTS } from '../data/events';
+import PageTitleBlob from '../components/ui/PageTitleBlob';
 
 const Events = () => {
   const { t } = useTranslation();
@@ -11,8 +12,9 @@ const Events = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
-        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center">
-          <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-3 sm:mb-4">{t('events_tag')}</span>
+        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative">
+          <PageTitleBlob />
+          <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-3 sm:mb-4">{t('events_tag')}</span>
           <h1 className="text-black mb-4 sm:mb-6 font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">{t('events_title')}</h1>
           <p className="font-body text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
             {t('events_desc')}
@@ -37,7 +39,7 @@ const Events = () => {
                 >
                   {isEnded && (
                     <div className="absolute inset-0 bg-white/40 backdrop-grayscale flex items-center justify-center z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none">
-                      <span className="bg-secondary text-white px-4 py-2 rounded-full font-bold uppercase tracking-widest text-sm shadow-md">
+                      <span className="bg-[#9D4EDD] text-white px-4 py-2 rounded-full font-bold uppercase tracking-widest text-sm shadow-md">
                         {t('event_ended')}
                       </span>
                     </div>
@@ -47,11 +49,11 @@ const Events = () => {
                     <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="p-6 flex flex-col gap-4 flex-grow relative z-0">
-                    <p className="font-accent font-semibold text-xs text-secondary tracking-wide uppercase">{event.date}</p>
+                    <p className="font-accent font-semibold text-xs text-[#9D4EDD] tracking-wide uppercase">{event.date}</p>
                     <h3 className="font-display font-bold text-xl text-black tracking-tight">{event.title}</h3>
                     <p className="font-body text-sm text-on-surface-variant leading-relaxed">{event.description}</p>
                     <div className="flex items-center gap-2 text-on-surface-variant text-xs font-body mt-auto">
-                      <span className="material-symbols-outlined text-sm text-secondary shrink-0">location_on</span>
+                      <span className="material-symbols-outlined text-sm text-[#9D4EDD] shrink-0">location_on</span>
                       <p>{event.location}</p>
                     </div>
                   </div>

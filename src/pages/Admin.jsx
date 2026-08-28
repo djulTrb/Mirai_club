@@ -125,7 +125,7 @@ const Admin = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-6 md:px-24 pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
-        <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-2">{t('admin_portal', 'Backoffice Portal')}</span>
+        <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-2">{t('admin_portal', 'Backoffice Portal')}</span>
         <h1 className="text-black mb-4 text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight">{t('admin_title', 'Admin Page')}</h1>
         <p className="font-body text-base text-on-surface-variant mb-8 text-center max-w-xl">{t('admin_desc', 'Manage executive members, calendar events, media galleries, and public learning resources.')}</p>
         
@@ -156,7 +156,7 @@ const Admin = () => {
           <div className="flex flex-col gap-4 bg-surface-container p-6 md:p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
             <div className="flex justify-between items-center mb-2">
               <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_members_title", "Manage members")}</h2>
-              <button className="px-6 py-2 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:opacity-80 transition-opacity flex items-center gap-1.5 shadow-sm">
+              <button className="px-6 py-2 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:opacity-80 transition-opacity flex items-center gap-1.5 shadow-sm">
                 <span className="material-symbols-outlined text-sm">add</span>{t("admin_member_add", "Add Member")}
               </button>
             </div>
@@ -165,7 +165,7 @@ const Admin = () => {
                 <div key={num} className="py-4 font-body text-black flex justify-between items-center">
                   <span className="font-medium text-sm sm:text-base">{t("admin_member_name", "Member Name")} {num}</span>
                   <div className="flex gap-4">
-                    <button className="hover:text-secondary transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
+                    <button className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
                       <span className="material-symbols-outlined text-sm">edit</span>{t("admin_member_modify", "Modify")}
                     </button>
                     <button className="hover:text-error transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
@@ -185,30 +185,30 @@ const Admin = () => {
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_name", "Event Name")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder={t("admin_event_name_ph", "Enter event name")} type="text" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_name_ph", "Enter event name")} type="text" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_date", "Date")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" type="date" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_snippet", "Short Snippet")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all resize-none" placeholder={t("admin_event_snippet_ph", "Brief summary for the event card...")} rows="2"></textarea>
+                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_snippet_ph", "Brief summary for the event card...")} rows="2"></textarea>
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_details", "Full Details")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all resize-none" placeholder={t("admin_event_details_ph", "Enter full event information for the details window...")} rows="4"></textarea>
+                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_details_ph", "Enter full event information for the details window...")} rows="4"></textarea>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_location", "Location")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder={t("admin_event_location_ph", "Enter location")} type="text" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_location_ph", "Enter location")} type="text" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Deadline {t("admin_event_date", "Date")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" type="date" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
-                <button className="px-8 py-3 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
+                <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
                   <span className="material-symbols-outlined text-sm">calendar_add_on</span>{t("admin_event_add", "Add Event")}
                 </button>
               </div>
@@ -223,7 +223,7 @@ const Admin = () => {
                     <span className="text-xs text-on-surface-variant">{event.date}</span>
                   </div>
                   <div className="flex gap-4">
-                    <button className="hover:text-secondary transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
+                    <button className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
                       <span className="material-symbols-outlined text-sm">edit</span>Edit
                     </button>
                   </div>
@@ -242,22 +242,22 @@ const Admin = () => {
             <form onSubmit={handleAddProject} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Project Name</label>
-                <input required value={newProject.title} onChange={e => setNewProject({...newProject, title: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder="Enter project name" type="text" />
+                <input required value={newProject.title} onChange={e => setNewProject({...newProject, title: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="Enter project name" type="text" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Category</label>
-                <input required value={newProject.category} onChange={e => setNewProject({...newProject, category: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder="e.g. NLP, VISION" type="text" />
+                <input required value={newProject.category} onChange={e => setNewProject({...newProject, category: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="e.g. NLP, VISION" type="text" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Description</label>
-                <textarea required value={newProject.description} onChange={e => setNewProject({...newProject, description: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all resize-none" placeholder="Brief project summary..." rows="2"></textarea>
+                <textarea required value={newProject.description} onChange={e => setNewProject({...newProject, description: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder="Brief project summary..." rows="2"></textarea>
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Link (Optional)</label>
-                <input value={newProject.link} onChange={e => setNewProject({...newProject, link: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder="https://..." type="url" />
+                <input value={newProject.link} onChange={e => setNewProject({...newProject, link: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="https://..." type="url" />
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
-                <button className="px-8 py-3 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
+                <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
                   <span className="material-symbols-outlined text-sm">add</span>Add Project
                 </button>
               </div>
@@ -290,17 +290,17 @@ const Admin = () => {
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_gallery_group", "Group Title")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder={t("admin_gallery_group_ph", "Enter group title (e.g. Workshop 2024)")} type="text" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_gallery_group_ph", "Enter group title (e.g. Workshop 2024)")} type="text" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_gallery_upload", "Upload Images")}</label>
                 <div className="w-full bg-surface-container-low border border-dashed border-outline-variant/30 rounded-2xl px-6 py-8 font-body text-sm flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors gap-2">
-                  <span className="material-symbols-outlined text-3xl text-secondary">add_photo_alternate</span>
+                  <span className="material-symbols-outlined text-3xl text-[#9D4EDD]">add_photo_alternate</span>
                   <span className="text-on-surface-variant/60 text-xs">{t("admin_gallery_drag", "Click or drag to upload multiple images")}</span>
                 </div>
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
-                <button className="px-8 py-3 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
+                <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
                   <span className="material-symbols-outlined text-sm">gallery_thumbnail</span>{t("admin_gallery_add", "Add to Gallery")}
                 </button>
               </div>
@@ -315,7 +315,7 @@ const Admin = () => {
                     <span className="text-xs text-on-surface-variant">{gallery.images.length} {t("admin_gallery_images", "images")}</span>
                   </div>
                   <div className="flex gap-4">
-                    <button className="hover:text-secondary transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
+                    <button className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
                       <span className="material-symbols-outlined text-sm">edit</span>{t("admin_gallery_edit", "Edit Album")}
                     </button>
                   </div>
@@ -332,25 +332,25 @@ const Admin = () => {
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_title", "Resource Title")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder={t("admin_resource_title_ph", "Enter resource title (e.g. ML Cheat Sheet)")} type="text" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_resource_title_ph", "Enter resource title (e.g. ML Cheat Sheet)")} type="text" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_desc", "Description")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all resize-none" placeholder={t("admin_resource_desc_ph", "Enter resource description...")} rows="3"></textarea>
+                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_resource_desc_ph", "Enter resource description...")} rows="3"></textarea>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_pdf", "Upload PDF")}</label>
                 <div className="w-full bg-surface-container-low border border-dashed border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm flex items-center justify-between cursor-pointer hover:bg-surface-container-high transition-colors">
                   <span className="text-on-surface-variant/60 text-xs">{t("admin_resource_pdf_hint", "Click to upload PDF...")}</span>
-                  <span className="material-symbols-outlined text-sm text-secondary">picture_as_pdf</span>
+                  <span className="material-symbols-outlined text-sm text-[#9D4EDD]">picture_as_pdf</span>
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_link", "Resource Link")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder="https://..." type="url" />
+                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="https://..." type="url" />
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
-                <button className="px-8 py-3 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
+                <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
                   <span className="material-symbols-outlined text-sm">library_add</span>{t("admin_resource_add", "Add to Resources")}
                 </button>
               </div>
@@ -370,17 +370,17 @@ const Admin = () => {
             
             <h2 className="font-display font-bold text-2xl mb-6">{t("admin_modal_edit_event", "Edit Event")}</h2>
             <form className="flex flex-col gap-4">
-              <input defaultValue={selectedEvent.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none" type="text" />
-              <input defaultValue={selectedEvent.date} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none" type="date" />
-              <textarea defaultValue={selectedEvent.snippet} rows="2" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none resize-none"></textarea>
-              <textarea defaultValue={selectedEvent.details} rows="4" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none resize-none"></textarea>
-              <input defaultValue={selectedEvent.location} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none" type="text" />
+              <input defaultValue={selectedEvent.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
+              <input defaultValue={selectedEvent.date} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="date" />
+              <textarea defaultValue={selectedEvent.snippet} rows="2" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
+              <textarea defaultValue={selectedEvent.details} rows="4" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
+              <input defaultValue={selectedEvent.location} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
               
               <div className="flex justify-between mt-6">
                 <button type="button" onClick={() => handleDeleteEvent(selectedEvent.id)} className="px-6 py-3 bg-red-50 text-red-600 font-semibold text-xs uppercase tracking-wider rounded-xl hover:bg-red-100 transition-colors flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">delete</span> {t("admin_member_delete", "Delete")} Event
                 </button>
-                <button type="button" onClick={() => setSelectedEvent(null)} className="px-8 py-3 bg-secondary text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
+                <button type="button" onClick={() => setSelectedEvent(null)} className="px-8 py-3 bg-[#9D4EDD] text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
                   {t("admin_modal_save", "Save Changes")}
                 </button>
               </div>
@@ -398,7 +398,7 @@ const Admin = () => {
             </button>
             
             <h2 className="font-display font-bold text-2xl mb-2">{t("admin_modal_edit_gallery", "Edit Gallery")}</h2>
-            <input defaultValue={selectedGallery.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-secondary outline-none mb-6" type="text" />
+            <input defaultValue={selectedGallery.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none mb-6" type="text" />
             
             <h3 className="font-display font-bold text-lg mb-4">{t("admin_modal_gallery_images", "Images")}</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
@@ -418,7 +418,7 @@ const Admin = () => {
               <button type="button" onClick={() => handleDeleteGallery(selectedGallery.id)} className="px-6 py-3 bg-red-50 text-red-600 font-semibold text-xs uppercase tracking-wider rounded-xl hover:bg-red-100 transition-colors flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">delete_forever</span> {t("admin_member_delete", "Delete")} Entire Album
               </button>
-              <button type="button" onClick={() => setSelectedGallery(null)} className="px-8 py-3 bg-secondary text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
+              <button type="button" onClick={() => setSelectedGallery(null)} className="px-8 py-3 bg-[#9D4EDD] text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
                 Done
               </button>
             </div>

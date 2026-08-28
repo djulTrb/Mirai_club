@@ -140,6 +140,25 @@ html {
   font-size: 90%;
 }
 
+html[lang="ar"] body {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+html[lang="ar"] h1, 
+html[lang="ar"] h2, 
+html[lang="ar"] h3, 
+html[lang="ar"] h4, 
+html[lang="ar"] h5, 
+html[lang="ar"] h6,
+html[lang="ar"] .font-display,
+html[lang="ar"] .font-headline-lg-mobile,
+html[lang="ar"] .font-headline-lg,
+html[lang="ar"] .font-headline-md,
+html[lang="ar"] .font-display-lg,
+html[lang="ar"] .font-display-lg-mobile {
+  font-family: "Tajawal", sans-serif;
+}
+
 
 /* Custom Selection Colors */
 ::selection {

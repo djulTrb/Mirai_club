@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import PageTitleBlob from '../components/ui/PageTitleBlob';
 
 const NotFound = () => {
   const { t } = useTranslation();
@@ -17,10 +18,11 @@ const NotFound = () => {
 
       {/* Foreground Content */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-lg mt-12 md:mt-24">
+        <PageTitleBlob />
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-black tracking-tight mb-4">
           {t('404_title', 'Page not found')}
         </h1>
-        <p className="font-body text-base sm:text-lg text-secondary font-medium mb-12">
+        <p className="font-body text-base sm:text-lg text-[#9D4EDD] font-medium mb-12">
           {t('404_subtitle', "Sorry, the page you're looking for doesn't exist")}
         </p>
 
@@ -35,7 +37,7 @@ const NotFound = () => {
           </button>
           <button 
             onClick={() => navigate('/')}
-            className="px-8 py-3.5 bg-secondary text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity shadow-sm w-full sm:w-auto"
+            className="px-8 py-3.5 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity shadow-sm w-full sm:w-auto"
           >
             {t('404_take_home', 'Take me home')}
           </button>

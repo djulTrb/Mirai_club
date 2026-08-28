@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import PageTitleBlob from '../components/ui/PageTitleBlob';
+
 const DUMMY_IMAGES = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCLlecgydWoEYN3h3-kduNhiESu3DpgwkvOKDaPnEpwLo555wsd1PqgW8egzU0lcTBmPM6JZq-NpYPcrLWDrfaR67_v4BLcsoWSCDLSgYcAJtpa3sa5CujNk4Il-9nxKSJ9HayWSn0HBkdagWRfynzjFKr5OkBNgD_kp5XNAGRrk0r2VpVT9nQcYNHlWzUWn1jhfJ-GfALzzfOlKTh-t2bXckB6Wlght5hh68NlxMU_9t13QeyPv8VYyChjqq3E-72EiLg",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7DXVGhLTvu5SQ9jeBh_5LBUN6oz6p1eYLjOlMHqbg0Yw7t4WKqVNE4hTBPqryOG694CrKZGB5iyOA4-vHMedFwZgITTKcVZv2N-7OuvXZQppHV5AsgWTZXWCYOcnGQ8Fjqzb-Py6PViLSb-gg_1DiKnLJU8NI7TfQEYij5Tu4-hSFSyjgeBKcdV_Ohjs-Gm-0WacZjnRyGO5rs5hYi8Jq9QVnK8BoFcVd7yu3kAOCMP-occR1wW4ElRVWL0kkyj4Cc",
@@ -28,8 +30,9 @@ const Gallery = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col relative z-10 gap-4 items-center">
-        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center">
-          <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-3 sm:mb-4">{t('gallery_tag')}</span>
+        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative">
+          <PageTitleBlob />
+          <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-3 sm:mb-4">{t('gallery_tag')}</span>
           <h1 className="text-black mb-4 sm:mb-6 font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">{t('gallery_title')}</h1>
           <p className="font-body text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
             {t('gallery_desc')}
@@ -38,7 +41,7 @@ const Gallery = () => {
         
         <div className="w-full flex overflow-x-auto gap-3 mb-8 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap snap-x px-2 md:px-0">
           <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">All</button>
-          <button className="px-5 py-2 rounded-full bg-secondary text-white text-xs sm:text-sm font-body font-semibold whitespace-nowrap shadow-sm snap-start">Fundamentals ML Workshop</button>
+          <button className="px-5 py-2 rounded-full bg-[#9D4EDD] text-white text-xs sm:text-sm font-body font-semibold whitespace-nowrap shadow-sm snap-start">Fundamentals ML Workshop</button>
           <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Local AI Hackathon</button>
           <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Deep Learning Conference</button>
           <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Social Meetups</button>
@@ -48,7 +51,7 @@ const Gallery = () => {
           {DUMMY_IMAGES.map((imgSrc, index) => (
             <div 
               key={index} 
-              className="group relative w-full aspect-[4/3] bg-surface-variant rounded-3xl border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-secondary hover:shadow-md transition-all duration-300"
+              className="group relative w-full aspect-[4/3] bg-surface-variant rounded-3xl border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-[#9D4EDD] hover:shadow-md transition-all duration-300"
               onClick={() => setSelectedImage(imgSrc)}
             >
               <img src={imgSrc} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
