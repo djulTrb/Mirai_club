@@ -39,13 +39,25 @@ const Home = () => {
 
   const handleProjectScroll = (e) => {
     if (!e.target || e.target.children.length === 0) return;
-    const scrollLeft = e.target.scrollLeft;
-    const itemWidth = e.target.children.length > 1 
-      ? (e.target.children[1].offsetLeft - e.target.children[0].offsetLeft) 
-      : e.target.children[0].offsetWidth;
-    const idx = Math.round(scrollLeft / itemWidth);
-    if (idx !== activeProjectIdx && idx >= 0 && idx < projects.length) {
-      setActiveProjectIdx(idx);
+    const container = e.target;
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    
+    Array.from(container.children).forEach((child, idx) => {
+      const childRect = child.getBoundingClientRect();
+      const childCenter = childRect.left + childRect.width / 2;
+      const diff = Math.abs(containerCenter - childCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+    
+    if (closestIdx !== activeProjectIdx && closestIdx >= 0 && closestIdx < projects.length) {
+      setActiveProjectIdx(closestIdx);
     }
   };
 
@@ -374,17 +386,25 @@ const Home = () => {
 
                   {/* Left Button */}
                   <button 
-                    onClick={() => scroll('left')}
-                    className="absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
-                    aria-label="Scroll left"
-                  >
+                      onClick={() => scroll('left')}
+                      className={`absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                        i18n.language?.startsWith('ar')
+                          ? (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')
+                          : (activeProjectIdx === 0 ? 'hidden' : '')
+                      }`}
+                      aria-label="Scroll left"
+                    >
                     <span className="material-symbols-outlined">chevron_left</span>
                   </button>
 
                   {/* Right Button */}
                     <button 
                       onClick={() => scroll('right')}
-                      className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
+                      className={`absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                        i18n.language?.startsWith('ar')
+                          ? (activeProjectIdx === 0 ? 'hidden' : '')
+                          : (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')
+                      }`}
                       aria-label="Scroll right"
                     >
                       <span className="material-symbols-outlined">chevron_right</span>
@@ -402,7 +422,7 @@ const Home = () => {
                             container.children[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                           }
                         }}
-                        className={`h-2 rounded-full transition-all duration-300 ${activeProjectIdx === idx ? 'w-6 bg-[#c77dff]' : 'w-2 bg-outline-variant/40 hover:bg-outline-variant'}`}
+                        className={`h-2 rounded-full transition-all duration-300 ${activeProjectIdx === idx ? 'w-6 bg-[#c77dff]' : 'w-2 border-[1.5px] border-outline-variant/50 bg-transparent hover:border-outline-variant'}`}
                         aria-label={`Go to project ${idx + 1}`}
                       />
                     ))}
