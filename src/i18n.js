@@ -45,7 +45,7 @@ const resources = {
       "form_name": "Full Name *", "form_email": "Email *", "form_uni_email": "University Email *", "form_msg": "Message *", "form_send": "Send Message",
       "footer_slogan": "Heritage • Intelligence • Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
       
-      "home_cta_title": "See AI <pill1></pill1> <brDesktop/> From a <brDesktop/> different lens <pill2></pill2>", "home_cta_desc": "",
+      "home_cta_title": "See AI <pill1></pill1> <brDesktop/> From a different <brDesktop/> lens <pill2></pill2>", "home_cta_desc": "",
       "home_join_circle": "Join Mirai Club",
 
       // Recruitment Form
@@ -103,7 +103,7 @@ const resources = {
       "form_name": "Nom Complet *", "form_email": "Email *", "form_uni_email": "Email Universitaire *", "form_msg": "Message *", "form_send": "Envoyer le Message",
       "footer_slogan": "Héritage • Intelligence • Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
-      "home_cta_title": "Voir l'IA <pill1></pill1> <brDesktop/> Sous un <brDesktop/> autre angle <pill2></pill2>", "home_cta_desc": "",
+      "home_cta_title": "Voir l\'IA <pill1></pill1> <brDesktop/> Sous un autre <brDesktop/> angle <pill2></pill2>", "home_cta_desc": "",
       "home_join_circle": "Join Mirai Club",
 
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
