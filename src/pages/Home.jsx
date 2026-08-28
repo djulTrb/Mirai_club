@@ -217,9 +217,9 @@ const Home = () => {
           </div>
           
           <div className="relative">
-            <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[850px]' : 'max-h-[3000px]'}`}>
+            <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[1100px] sm:max-h-[580px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 min-h-[120px]">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 pt-6 pb-10 sm:py-6 gap-6 min-h-[120px]">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 flex-1 text-center sm:text-left">
                     <div className="w-20 h-20 rounded-2xl overflow-hidden bg-surface-variant/50 shrink-0 border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
@@ -253,10 +253,10 @@ const Home = () => {
             </div>
 
             {!showAllMembers && (
-              <div className="absolute bottom-0 left-0 w-full h-[120px] bg-gradient-to-t from-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute bottom-0 left-0 w-full h-[160px] bg-gradient-to-t from-surface to-transparent pointer-events-none z-10"></div>
             )}
             
-            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-10' : 'mt-16'}`}>
+            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? 'mt-4 sm:mt-6' : 'mt-16'}`}>
               <button 
                 onClick={() => {
                   setShowAllMembers(!showAllMembers);
