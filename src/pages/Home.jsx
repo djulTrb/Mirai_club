@@ -312,8 +312,8 @@ const Home = () => {
           <div className="absolute top-[20%] -right-[10%] w-[40%] h-[120%] bg-[#5a189a] rounded-full blur-[100px] opacity-[0.07] z-0"></div>
         </div>
         
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
-          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line">
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-16 md:gap-8 text-center md:text-left rtl:md:text-right">
+          <h2 className={`md:col-span-2 font-display font-bold tracking-tighter leading-[1.1] whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]'}`}>
             <Trans 
               i18nKey="home_cta_title"
               components={{
@@ -325,7 +325,8 @@ const Home = () => {
             />
           </h2>
           
-          <Link to="/recruitment" className="relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c77dff] shadow-xl">
+          <div className="md:col-span-1 flex justify-center md:justify-start rtl:md:justify-end w-full">
+            <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c77dff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
@@ -341,11 +342,12 @@ const Home = () => {
              
              {/* The Static Arrow in the Middle */}
              <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10">
-               <span className="material-symbols-outlined text-5xl md:text-7xl">
-                 arrow_outward
-               </span>
+               <span className="material-symbols-outlined text-5xl md:text-7xl animate-eager group-hover:animate-none">
+                  arrow_outward
+                </span>
              </div>
           </Link>
+          </div>
         </div>
       </section>
     </main>
