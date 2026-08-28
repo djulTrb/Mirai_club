@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
@@ -303,8 +303,15 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
-          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line">
-            {t('home_cta_title')}
+          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line uppercase">
+            <Trans 
+              i18nKey="home_cta_title"
+              components={{
+                pill1: <span className="inline-block align-middle w-24 md:w-36 h-12 md:h-16 lg:h-20 bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
+                pill2: <span className="inline-block align-middle w-8 md:w-12 h-12 md:h-16 lg:h-20 bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
+                br: <br />
+              }}
+            />
           </h2>
           
           <Link to="/recruitment" className="relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c77dff] shadow-xl">
