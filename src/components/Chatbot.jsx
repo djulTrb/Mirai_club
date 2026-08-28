@@ -54,7 +54,7 @@ const Chatbot = () => {
             <input 
               type="text" 
               placeholder={t('ai_placeholder')}
-              className="flex-grow bg-surface-container-low border border-outline-variant/30 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-secondary transition-colors"
+              className="flex-grow bg-surface-container-low border border-outline-variant/30 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-[#9D4EDD] transition-colors"
             />
             <button className="w-10 h-10 rounded-full bg-[#c87fff] text-[#240046] flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0 shadow-sm">
               <span className="material-symbols-outlined text-[18px]">send</span>

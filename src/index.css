@@ -129,7 +129,7 @@ html[dir="rtl"] .animate-marquee {
 }
 
 body {
-  @apply bg-background text-on-background antialiased font-body transition-colors duration-500 selection:bg-primary selection:text-on-primary;
+  @apply bg-background text-on-background antialiased font-body transition-colors duration-500;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -141,7 +141,7 @@ html {
 }
 
 html[lang="ar"] body {
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: "Tajawal", sans-serif;
 }
 
 html[lang="ar"] h1, 
@@ -162,12 +162,12 @@ html[lang="ar"] .font-display-lg-mobile {
 
 /* Custom Selection Colors */
 ::selection {
-  background-color: #240046;
-  color: #c87fff;
+  background-color: #c87fff;
+  color: #240046;
 }
 .dark ::selection {
-  background-color: #c87fff;
-  color: #ffffff;
+  background-color: #240046;
+  color: #c87fff;
 }
 
 

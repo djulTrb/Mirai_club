@@ -5,6 +5,12 @@ import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
+import imgTopLeft from '../assets/hero section part/top_left.png';
+import imgTopRight from '../assets/hero section part/top_right.png';
+import imgBottomLeft from '../assets/hero section part/bottom_left.png';
+import imgBottomRight from '../assets/hero section part/bottom_right.png';
+import imgMiddleTop from '../assets/hero section part/middle_top.png';
+import imgMiddleBottom from '../assets/hero section part/middle_bottom.png';
 import ctaImg1 from '../assets/cta_img_1.png';
 import ctaImg2 from '../assets/cta_img_2.png';
 import heroBg from '../assets/hero_bg.png';
@@ -110,70 +116,77 @@ const Home = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#240046] dark:bg-[#c87fff]">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#E5DFF3] dark:bg-[#240046]">
         
-        
+        {/* Background Illustrations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+          <img src={imgTopLeft} alt="" className="absolute top-0 left-0 w-[11rem] sm:w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgTopRight} alt="" className="absolute top-0 right-0 w-[11rem] sm:w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgBottomLeft} alt="" className="absolute bottom-0 left-0 w-[12rem] sm:w-[18rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgBottomRight} alt="" className="absolute bottom-0 right-0 w-[12rem] sm:w-[18rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgMiddleTop} alt="" className="absolute top-0 left-1/2 -translate-x-1/2 w-[14rem] sm:w-[20rem] md:w-[26rem] lg:w-[34rem] xl:w-[42rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgMiddleBottom} alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[9rem] sm:w-[12rem] md:w-[15rem] lg:w-[22rem] xl:w-[29rem] object-contain opacity-90 dark:opacity-40" />
+        </div>
+
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-16 md:mb-20 mt-12 md:mt-24">
-          <h1 className="font-display font-black text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] tracking-[-0.04em] text-[#c87fff] dark:text-[#3c096c] uppercase leading-[0.85] drop-shadow-sm mb-8">
-            MIRAI<br />CLUB
+        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-8 md:mb-10 mt-6 md:mt-12">
+          <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-white leading-[0.85] drop-shadow-sm mb-4">
+            Mirai club
           </h1>
           
-          <p className="font-body text-base md:text-xl text-[#c87fff] dark:text-[#3c096c] mb-12 max-w-2xl leading-relaxed font-medium backdrop-blur-md bg-black/20 dark:bg-white/20 px-8 py-5 rounded-3xl border border-black/30 dark:border-white/30 shadow-sm">
+          <p className="font-body text-[10px] md:text-sm text-black/70 dark:text-gray-300 mb-6 max-w-md leading-relaxed font-medium">
             {t('home_build')} AI. {t('home_desc')}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
-            <Link to="/recruitment" className="w-full sm:w-auto bg-[#c87fff] dark:bg-[#3c096c] text-[#240046] dark:text-[#c87fff] px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] hover:opacity-90 transition-all hover:scale-105 duration-300 shadow-xl">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <Link to="/recruitment" className={`w-full sm:w-auto bg-[#240046] text-[#c87fff] border-2 border-transparent px-6 py-2 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] md:text-xs hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_join')}
             </Link>
-            <Link to="/events" className="w-full sm:w-auto bg-white/40 dark:bg-black/40 backdrop-blur-md text-black dark:text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-body font-bold text-xs md:text-sm uppercase tracking-[0.25em] border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all hover:scale-105 duration-300 shadow-lg">
+            <Link to="/events" className={`w-full sm:w-auto bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-6 py-2 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] md:text-xs transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
             </Link>
           </div>
         </div>
-
-        
       </section>
 
       {/* Marquee Section */}
       <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c87fff] py-8 shadow-lg">
         <div className="flex w-max font-display font-bold whitespace-nowrap group">
           <div className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-[#3c096c] text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
           </div>
         </div>
       </section>
@@ -182,7 +195,7 @@ const Home = () => {
       <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background relative">
         
         {/* Scattered Stickers (Randomized Placement) */}
-        <div className="absolute inset-0 pointer-events-none z-0 opacity-40 md:opacity-100">
+        <div className="absolute inset-0 pointer-events-none z-20 opacity-40 md:opacity-100">
           <img src={heroSticker1} alt="Sticker 1" className="absolute top-[5%] left-[2%] md:left-[5%] w-24 h-24 md:w-40 md:h-40 object-contain transform -rotate-12" />
           <img src={heroSticker2} alt="Sticker 2" className="absolute top-[40%] right-[3%] md:right-[8%] w-20 h-20 md:w-36 md:h-36 object-contain transform rotate-[15deg]" />
           <img src={heroSticker3} alt="Sticker 3" className="absolute bottom-[10%] left-[8%] md:left-[15%] w-32 h-32 md:w-48 md:h-48 object-contain transform -rotate-6" />
@@ -195,24 +208,24 @@ const Home = () => {
 
         <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto relative z-10">
           <div className="w-full flex flex-col items-center mb-8 relative z-10">
-            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('mission_tag')}</span>
+            <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-4">{t('mission_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('mission_title')}</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-secondary group/card py-12">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
               <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-secondary group/card py-12">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
               <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-secondary group/card py-12">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
               <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-secondary group/card py-12">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
               <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
             </div>
@@ -243,7 +256,7 @@ const Home = () => {
       <section id="team-section" className="px-6 md:px-24 bg-surface py-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="w-full flex flex-col items-center mb-16">
-            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('team_tag')}</span>
+            <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-4">{t('team_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('team_title')}</h2>
           </div>
           
@@ -268,17 +281,17 @@ const Home = () => {
                             <span className="font-body text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">{t('team_skills')}:</span>
                             {member.skills.map((skill, sIdx) => (
                                 <React.Fragment key={sIdx}>
-                                    <span className="font-body text-[10px] font-bold text-secondary uppercase tracking-wide">{skill}</span>
-                                    {sIdx < member.skills.length - 1 && <span className="font-body text-[10px] font-black text-secondary/50">|</span>}
+                                    <span className="font-body text-[10px] font-bold text-[#9D4EDD] uppercase tracking-wide">{skill}</span>
+                                    {sIdx < member.skills.length - 1 && <span className="font-body text-[10px] font-black text-[#9D4EDD]/50">|</span>}
                                 </React.Fragment>
                             ))}
                         </div>
 
                         <div className="flex flex-row gap-6">
-                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-secondary flex items-center gap-1 transition-colors">
+                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-[#9D4EDD] flex items-center gap-1 transition-colors">
                                 <span className="material-symbols-outlined text-sm">arrow_outward</span> LinkedIn
                             </a>
-                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-secondary flex items-center gap-1 transition-colors">
+                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-[#9D4EDD] flex items-center gap-1 transition-colors">
                                 <span className="material-symbols-outlined text-sm">arrow_outward</span> GitHub
                             </a>
                         </div>
@@ -299,8 +312,8 @@ const Home = () => {
                                     <span className="font-body text-[10px] font-medium text-on-surface-variant uppercase tracking-wider">{t('team_skills')}:</span>
                                     {member.skills.map((skill, sIdx) => (
                                         <React.Fragment key={sIdx}>
-                                            <span className="font-body text-[10px] font-bold text-secondary uppercase tracking-wide">{skill}</span>
-                                            {sIdx < member.skills.length - 1 && <span className="font-body text-[10px] font-black text-secondary/50">|</span>}
+                                            <span className="font-body text-[10px] font-bold text-[#9D4EDD] uppercase tracking-wide">{skill}</span>
+                                            {sIdx < member.skills.length - 1 && <span className="font-body text-[10px] font-black text-[#9D4EDD]/50">|</span>}
                                         </React.Fragment>
                                     ))}
                                 </div>
@@ -308,10 +321,10 @@ const Home = () => {
                         </div>
                         
                         <div className="flex flex-col gap-3 shrink-0 items-end pr-4">
-                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-secondary flex items-center gap-1 transition-colors">
+                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-[#9D4EDD] flex items-center gap-1 transition-colors">
                                 <span className="material-symbols-outlined text-sm">arrow_outward</span> LinkedIn
                             </a>
-                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-secondary flex items-center gap-1 transition-colors">
+                            <a href="#" className="font-body font-bold text-xs uppercase tracking-wider text-on-surface hover:text-[#9D4EDD] flex items-center gap-1 transition-colors">
                                 <span className="material-symbols-outlined text-sm">arrow_outward</span> GitHub
                             </a>
                         </div>
@@ -334,7 +347,7 @@ const Home = () => {
                     }, 50);
                   }
                 }}
-                className="group flex flex-col items-center justify-center gap-2 text-on-surface hover:text-secondary transition-colors"
+                className="group flex flex-col items-center justify-center gap-2 text-on-surface hover:text-[#9D4EDD] transition-colors"
               >
                 <span className="font-body font-bold text-sm uppercase tracking-[0.2em] bg-surface px-4">
                   {showAllMembers ? "Collapse Team" : "Meet all the team"}
@@ -367,7 +380,7 @@ const Home = () => {
         </div>
         <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
           <div className="w-full flex flex-col items-center mb-16">
-            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
+            <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-4">{t('proj_tag')}</span>
             <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
           </div>
           
@@ -386,11 +399,11 @@ const Home = () => {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
-                        <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
+                      <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-[#9D4EDD] group/card">
+                        <p className="font-accent font-semibold uppercase tracking-wider text-xs text-[#9D4EDD] mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
-                        <a href={proj.link || '#'} className="mt-auto flex items-center gap-1 text-secondary font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
+                        <a href={proj.link || '#'} className="mt-auto flex items-center gap-1 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
                           {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
                       </div>
@@ -475,7 +488,7 @@ const Home = () => {
               i18nKey="home_cta_title"
               components={{
                 pill1: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg1} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg1} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
@@ -483,7 +496,7 @@ const Home = () => {
                   </span>
                 ),
                 pill2: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg2} alt="" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />

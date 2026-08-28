@@ -31,18 +31,18 @@ const Footer = () => {
         
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center gap-8 mb-10">
-          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to="/events">{t('events')}</Link>
-          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to="/gallery">{t('gallery')}</Link>
-          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to="/resources">{t('resources')}</Link>
-          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to="/contact">{t('contact')}</Link>
-          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to="/recruitment">{t('recruitment')}</Link>
+          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to="/events">{t('events')}</Link>
+          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to="/gallery">{t('gallery')}</Link>
+          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to="/resources">{t('resources')}</Link>
+          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to="/contact">{t('contact')}</Link>
+          <Link className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to="/recruitment">{t('recruitment')}</Link>
         </nav>
         
         {/* Subscription Form */}
         <div className="w-full max-w-md mb-10">
           <form onSubmit={handleSubscribe} className="relative flex items-center">
-            <input value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-full pl-6 pr-12 rtl:pr-6 rtl:pl-12 py-3.5 font-body text-sm focus:ring-2 focus:ring-secondary outline-none transition-all" placeholder={t('footer_email_ph')} type="email" dir="auto" required />
-            <button type="submit" className="absolute right-4 rtl:right-auto rtl:left-4 text-secondary hover:opacity-80 transition-colors flex items-center justify-center" aria-label="Subscribe">
+            <input value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-full pl-6 pr-12 rtl:pr-6 rtl:pl-12 py-3.5 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t('footer_email_ph')} type="email" dir="auto" required />
+            <button type="submit" className="absolute right-4 rtl:right-auto rtl:left-4 text-[#9D4EDD] hover:opacity-80 transition-colors flex items-center justify-center" aria-label="Subscribe">
               <span className="material-symbols-outlined text-2xl rtl:-scale-x-100">send</span>
             </button>
           </form>
@@ -50,16 +50,16 @@ const Footer = () => {
         
         {/* Social Links */}
         <div className="flex gap-4 mb-10">
-          <a aria-label="Instagram" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all group" href="https://instagram.com/miraiclubdz" target="_blank" rel="noopener noreferrer">
+          <a aria-label="Instagram" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-[#9D4EDD] hover:border-[#9D4EDD] transition-all group" href="https://instagram.com/miraiclubdz" target="_blank" rel="noopener noreferrer">
             <svg className="text-on-surface-variant group-hover:text-white transition-colors" fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <a aria-label="Facebook" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all group" href="https://facebook.com/miraiclubdz" target="_blank" rel="noopener noreferrer">
+          <a aria-label="Facebook" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-[#9D4EDD] hover:border-[#9D4EDD] transition-all group" href="https://facebook.com/miraiclubdz" target="_blank" rel="noopener noreferrer">
             <svg className="text-on-surface-variant group-hover:text-white transition-colors" fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a aria-label="LinkedIn" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all group" href="https://linkedin.com/company/mirai-club" target="_blank" rel="noopener noreferrer">
+          <a aria-label="LinkedIn" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-[#9D4EDD] hover:border-[#9D4EDD] transition-all group" href="https://linkedin.com/company/mirai-club" target="_blank" rel="noopener noreferrer">
             <svg className="text-on-surface-variant group-hover:text-white transition-colors" fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
-          <a aria-label="GitHub" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all group" href="#">
+          <a aria-label="GitHub" className="w-11 h-11 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-[#9D4EDD] hover:border-[#9D4EDD] transition-all group" href="#">
             <svg className="text-on-surface-variant group-hover:text-white transition-colors" fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
           </a>
         </div>
@@ -67,10 +67,10 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="flex flex-col items-center gap-3 mb-10 text-center">
           <div className="text-on-surface-variant max-w-xl">
-            <span className="material-symbols-outlined text-secondary text-sm align-middle inline-block mr-1 rtl:ml-1 rtl:mr-0">location_on</span>
+            <span className="material-symbols-outlined text-[#9D4EDD] text-sm align-middle inline-block mr-1 rtl:ml-1 rtl:mr-0">location_on</span>
             <span className="font-body text-xs sm:text-sm font-medium align-middle">{t('address_val')}</span>
           </div>
-          <a className="text-on-surface-variant hover:text-secondary transition-colors font-body font-semibold uppercase tracking-wider text-xs" href="mailto:contact@mirai-club.dz">
+          <a className="text-on-surface-variant hover:text-[#9D4EDD] transition-colors font-body font-semibold uppercase tracking-wider text-xs" href="mailto:contact@mirai-club.dz">
             <span className="material-symbols-outlined text-sm align-middle inline-block mr-1 rtl:ml-1 rtl:mr-0">mail</span>
             <span className="align-middle" dir="ltr">contact@mirai-club.dz</span>
           </a>

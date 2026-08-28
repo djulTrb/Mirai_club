@@ -93,7 +93,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 z-20">
           {navLinks.map((link) => (
-            <Link key={link.path} className="text-xs font-body font-semibold uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors" to={link.path}>{link.name}</Link>
+            <Link key={link.path} className="text-xs font-body font-semibold uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to={link.path}>{link.name}</Link>
           ))}
         </nav>
 
@@ -125,13 +125,13 @@ const Header = () => {
 
             {isLangMenuOpen && (
               <div className="absolute top-full mt-2 right-0 bg-surface-container border border-outline-variant/30 rounded-xl shadow-md py-2 min-w-[140px] flex flex-col z-50">
-                <button onClick={() => changeLanguage('en')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'en' ? 'font-bold text-secondary' : 'text-black'}`}>
+                <button onClick={() => changeLanguage('en')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'en' ? 'font-bold text-[#9D4EDD]' : 'text-black'}`}>
                   <img src={flags.en} alt="EN" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> English
                 </button>
-                <button onClick={() => changeLanguage('fr')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'fr' ? 'font-bold text-secondary' : 'text-black'}`}>
+                <button onClick={() => changeLanguage('fr')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'fr' ? 'font-bold text-[#9D4EDD]' : 'text-black'}`}>
                   <img src={flags.fr} alt="FR" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> Français
                 </button>
-                <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'ar' ? 'font-bold text-secondary' : 'text-black'}`}>
+                <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'ar' ? 'font-bold text-[#9D4EDD]' : 'text-black'}`}>
                   <img src={flags.ar} alt="AR" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> <span className="font-semibold">العربية</span>
                 </button>
               </div>
@@ -161,7 +161,7 @@ const Header = () => {
       <div className={`md:hidden fixed top-0 right-0 h-screen w-[280px] bg-surface border-l border-outline-variant/20 shadow-xl transition-transform duration-300 ease-in-out z-50 flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 flex justify-end">
           <button 
-            className="flex items-center justify-center text-black hover:text-secondary transition-colors"
+            className="flex items-center justify-center text-black hover:text-[#9D4EDD] transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <span className="material-symbols-outlined text-2xl">close</span>
@@ -171,7 +171,7 @@ const Header = () => {
           {navLinks.map((link) => (
             <Link 
               key={link.path} 
-              className="text-base font-body font-bold uppercase tracking-widest text-black hover:text-secondary transition-colors border-b border-outline-variant/10 pb-4 block" 
+              className="text-base font-body font-bold uppercase tracking-widest text-black hover:text-[#9D4EDD] transition-colors border-b border-outline-variant/10 pb-4 block" 
               to={link.path}
               onClick={() => setIsMobileMenuOpen(false)}
             >
