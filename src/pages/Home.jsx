@@ -491,7 +491,8 @@ const Home = () => {
                   </span>
                 ),
                 br: <br />,
-                brDesktop: <br className="hidden md:block" />
+                brDesktop: <br className="hidden md:block" />,
+                nowrap: <span className="inline-block whitespace-nowrap" />
               }}
             />
           </h2>
