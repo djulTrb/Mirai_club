@@ -313,13 +313,14 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left w-full max-w-[1200px] mx-auto gap-16 md:gap-32">
-          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line capitalize">
+          <h2 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-on-surface tracking-tighter leading-[1.1] flex-1 whitespace-pre-line">
             <Trans 
               i18nKey="home_cta_title"
               components={{
                 pill1: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#c77dff] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
                 pill2: <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-10 md:h-16 lg:h-[72px] bg-[#9d4edd] rounded-[3rem] mx-2 md:mx-4 overflow-hidden relative shadow-inner"></span>,
-                br: <br />
+                br: <br />,
+                brDesktop: <br className="hidden md:block" />
               }}
             />
           </h2>
@@ -328,7 +329,7 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text className="font-display font-black text-[10.5px] fill-[#c77dff] dark:fill-white tracking-[0.2em]" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+               <text className="font-accent font-black text-[10px] fill-[#c77dff] dark:fill-white tracking-widest" style={{ fontFamily: 'Sora, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')}
                  </textPath>
