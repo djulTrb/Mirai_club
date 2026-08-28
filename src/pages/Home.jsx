@@ -229,7 +229,7 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-surface via-surface to-transparent pointer-events-none z-10"></div>
             )}
             
-            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-6' : 'mt-12'}`}>
+            <div className={`w-full flex justify-center relative z-20 ${!showAllMembers ? '-mt-16' : 'mt-12'}`}>
               <button 
                 onClick={() => {
                   setShowAllMembers(!showAllMembers);
@@ -313,8 +313,7 @@ const Home = () => {
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
                <text className="font-display font-black text-[9px] fill-[#c77dff] dark:fill-white capitalize tracking-[0.35em]" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%">
-                   {t('home_join_circle')} • {t('home_join_circle')} • 
-                 </textPath>
+                   {t('home_join_circle')} &bull; {t('home_join_circle')} &bull; </textPath>
                </text>
              </svg>
              

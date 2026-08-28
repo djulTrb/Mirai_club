@@ -43,7 +43,7 @@ const resources = {
       "address_val": "Département d'Informatique, Faculté de Génie Électrique et d'Informatique, Université Mouloud Mammeri, Tizi Ouzou, Algérie",
       "contact_msg_title": "Send us a direct message",
       "form_name": "Full Name *", "form_email": "Email *", "form_uni_email": "University Email *", "form_msg": "Message *", "form_send": "Send Message",
-      "footer_slogan": "Heritage · Intelligence · Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
+      "footer_slogan": "Heritage • Intelligence • Future", "footer_email_ph": "Enter your email", "footer_copy": "© 2026 MIRAI Club - All Rights Reserved. Mouloud Mammeri University · Tizi Ouzou · Algeria.",
       
       "home_cta_title": "See AI\nFrom a different lens", "home_cta_desc": "",
       "home_join_circle": "Join Mirai Club",
@@ -101,9 +101,9 @@ const resources = {
       "address_val": "Département d'Informatique, Faculté de Génie Électrique et d'Informatique, Université Mouloud Mammeri, Tizi Ouzou, Algérie",
       "contact_msg_title": "Envoyez-nous un message direct",
       "form_name": "Nom Complet *", "form_email": "Email *", "form_uni_email": "Email Universitaire *", "form_msg": "Message *", "form_send": "Envoyer le Message",
-      "footer_slogan": "Héritage · Intelligence · Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
+      "footer_slogan": "Héritage • Intelligence • Futur", "footer_email_ph": "Entrez votre email", "footer_copy": "© 2026 Club MIRAI - Tous droits réservés. Université Mouloud Mammeri · Tizi Ouzou · Algérie.",
       
-      "home_cta_title": "رؤية الذكاء الاصطناعي\nمن منظور مختلف", "home_cta_desc": "",
+      "home_cta_title": "Voir l'IA\nSous un autre angle", "home_cta_desc": "",
       "home_join_circle": "Rejoindre Mirai",
 
       "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
@@ -155,7 +155,7 @@ const resources = {
       "address_val": "قسم الإعلام الآلي، كلية الهندسة الكهربائية والإعلام الآلي، جامعة مولود معمري، تيزي وزو، الجزائر",
       "contact_msg_title": "أرسل لنا رسالة مباشرة",
       "form_name": "الاسم الكامل *", "form_email": "البريد الإلكتروني *", "form_uni_email": "البريد الجامعي *", "form_msg": "الرسالة *", "form_send": "إرسال الرسالة",
-      "footer_slogan": "تراث · ذكاء · مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
+      "footer_slogan": "تراث • ذكاء • مستقبل", "footer_email_ph": "أدخل بريدك الإلكتروني", "footer_copy": "© 2026 نادي MIRAI - جميع الحقوق محفوظة. جامعة مولود معمري · تيزي وزو · الجزائر.",
       
       "home_cta_title": "رؤية الذكاء الاصطناعي\nمن منظور مختلف", "home_cta_desc": "",
       "home_join_circle": "انضم إلى نادي ميراي",
