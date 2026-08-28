@@ -351,7 +351,8 @@ const Home = () => {
                   <p className="text-on-surface-variant font-body text-lg italic">No projects for the moment.</p>
                 </div>
               ) : (
-                <div className="relative group/carousel">
+                <div className="w-full flex flex-col">
+                  <div className="relative group/carousel">
                   <div 
                     ref={scrollRef}
                     onScroll={handleProjectScroll}
@@ -405,6 +406,7 @@ const Home = () => {
                       />
                     ))}
                   </div>
+                </div>
               )}
             </div>
           </div>
