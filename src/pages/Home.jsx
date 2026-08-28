@@ -386,7 +386,7 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text dir="ltr" className={`font-accent font-black fill-[#c77dff] dark:fill-white ${i18n.language?.startsWith(\'fr\') ? \'text-[8.5px] tracking-wider\' : \'text-[10px] tracking-widest\'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
+               <text dir="ltr" className={`font-accent font-black fill-[#c77dff] dark:fill-white ${i18n.language?.startsWith('fr') ? 'text-[8.5px] tracking-wider' : 'text-[10px] tracking-widest'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')}
                  </textPath>
