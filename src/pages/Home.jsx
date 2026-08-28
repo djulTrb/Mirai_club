@@ -219,8 +219,8 @@ const Home = () => {
           <div className="relative">
             <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[850px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-4 sm:px-6 py-4 sm:py-6 gap-4 sm:gap-6 min-h-[120px]">
-                  <div className="flex flex-row items-center sm:items-start gap-4 sm:gap-6 flex-1 text-left">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 min-h-[120px]">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 flex-1 text-center sm:text-left">
                     <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
                         <img alt={member.name} className="w-full h-full object-cover" src={member.image} />
@@ -229,11 +229,11 @@ const Home = () => {
                       )}
                     </div>
                     <div className="flex flex-col justify-center">
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-2">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-2">
                         <h3 className="text-2xl font-display font-bold leading-tight text-on-surface tracking-tight">{member.name}</h3>
                         <span className="font-accent text-[10px] font-semibold bg-surface-variant/40 px-3 py-1 rounded-full text-on-surface-variant uppercase tracking-wider border border-outline-variant/20">{member.role}</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mt-1 justify-start">
+                      <div className="flex flex-wrap gap-2 mt-1 justify-center sm:justify-start">
                         <span className="font-body text-xs font-medium text-on-surface-variant">{t('team_skills')}:</span>
                         {member.skills.map((skill, sIdx) => (
                           <React.Fragment key={sIdx}>
@@ -244,9 +244,9 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2 shrink-0 w-24 sm:w-40 mt-0">
-                    <a className="py-2 px-2 sm:px-4 sm:py-2.5 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
-                    <a className="py-2 px-2 sm:px-4 sm:py-2.5 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                  <div className="flex flex-row sm:flex-col gap-2 shrink-0 w-full sm:w-40 mt-4 sm:mt-0">
+                    <a className="py-2.5 px-4 bg-black text-white hover:bg-secondary rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">LinkedIn <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
+                    <a className="py-2.5 px-4 border border-outline-variant text-on-surface hover:bg-surface-variant rounded-xl font-body font-semibold text-xs text-center transition-colors uppercase tracking-wider flex items-center justify-center gap-1 flex-1" href="#">GitHub <span className="material-symbols-outlined text-sm">arrow_outward</span></a>
                   </div>
                 </div>
               ))}
@@ -312,7 +312,7 @@ const Home = () => {
                 <div className="relative group/carousel">
                   <div 
                     ref={scrollRef}
-                    className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 w-full pb-8 scrollbar-hide [&::-webkit-scrollbar]:hidden"
+                    className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 w-full px-4 md:px-8 pb-8 scrollbar-hide [&::-webkit-scrollbar]:hidden"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
@@ -386,7 +386,7 @@ const Home = () => {
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-               <text dir="ltr" className={`font-accent font-black fill-[#c77dff] dark:fill-white ${i18n.language?.startsWith('fr') ? 'text-[8.5px] tracking-wider' : 'text-[10px] tracking-widest'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
+               <text dir="ltr" className={`font-accent font-black fill-[#c77dff] dark:fill-white ${i18n.language?.startsWith('fr') ? 'text-[9.5px] tracking-widest' : 'text-[10px] tracking-widest'}`} style={{ direction: 'ltr', fontFamily: 'Sora, sans-serif' }}>
                  <textPath href="#circlePath" startOffset="0%">
                    {t('home_join_circle')}
                  </textPath>
