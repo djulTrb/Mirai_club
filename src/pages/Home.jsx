@@ -148,7 +148,7 @@ const Home = () => {
       </section>
 
       {/* {t('mission_title')} */}
-      <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background relative overflow-hidden">
+      <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background relative">
         
         {/* Scattered Stickers (Randomized Placement) */}
         <div className="absolute inset-0 pointer-events-none z-0 opacity-40 md:opacity-100">
@@ -219,7 +219,7 @@ const Home = () => {
           <div className="relative">
             <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[850px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 h-[150px]">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col md:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 py-6 gap-6 min-h-[150px]">
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1 text-center md:text-left">
                     <div className="w-20 h-20 rounded-full overflow-hidden bg-surface-variant/80 shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
@@ -283,7 +283,7 @@ const Home = () => {
       </section>
 
       {/* Current projects */}
-      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
+      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative">
         
         {/* Decorative Noisy Blob */}
         <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] pointer-events-none z-0">
@@ -316,7 +316,7 @@ const Home = () => {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
                     {projects.map(proj => (
-                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[300px] md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.5rem)] snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
+                      <div key={proj.id} className="min-w-[85vw] sm:min-w-[280px] md:min-w-[calc(33.333%-1rem)] lg:min-w-[calc(25%-1.5rem)] min-h-[350px] snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
                         <p className="font-accent font-semibold uppercase tracking-wider text-xs text-secondary mb-4">{proj.category}</p>
                         <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8">{proj.description}</p>
@@ -330,7 +330,7 @@ const Home = () => {
                   {/* Left Button */}
                   <button 
                     onClick={() => scroll('left')}
-                    className="absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-outline-variant/30 rounded-full flex items-center justify-center text-black shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-surface-variant z-20"
+                    className="absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
                     aria-label="Scroll left"
                   >
                     <span className="material-symbols-outlined">chevron_left</span>
@@ -339,7 +339,7 @@ const Home = () => {
                   {/* Right Button */}
                   <button 
                     onClick={() => scroll('right')}
-                    className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-outline-variant/30 rounded-full flex items-center justify-center text-black shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-surface-variant z-20"
+                    className="absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c77dff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20"
                     aria-label="Scroll right"
                   >
                     <span className="material-symbols-outlined">chevron_right</span>
@@ -351,9 +351,9 @@ const Home = () => {
         </section>
 
       {/* Final CTA Section */}
-      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative overflow-hidden">
+      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative">
         {/* Background ambient lighting */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
           {/* Noise overlay specific to CTA section */}
           <div className="absolute inset-0 mix-blend-overlay opacity-[0.4] z-0">
             <svg className="w-full h-full">
