@@ -219,7 +219,7 @@ const Home = () => {
           <div className="relative">
             <div className={`flex flex-col gap-4 overflow-hidden transition-all duration-700 ease-in-out ${!showAllMembers ? 'max-h-[1100px] sm:max-h-[580px]' : 'max-h-[3000px]'}`}>
               {visibleMembers.map((member, idx) => (
-                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between transition-all hover:-translate-y-1 hover:shadow-md px-6 pt-6 pb-10 sm:py-6 gap-6 min-h-[120px]">
+                <div key={idx} className="bg-surface-container-lowest border border-outline-variant rounded-2xl flex flex-col sm:flex-row items-center justify-between px-6 pt-6 pb-10 sm:py-6 gap-6 min-h-[120px]">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 flex-1 text-center sm:text-left">
                     <div className="w-20 h-20 rounded-2xl overflow-hidden bg-surface-variant/50 shrink-0 border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-display text-xl font-bold">
                       {member.image ? (
@@ -286,7 +286,7 @@ const Home = () => {
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative">
         
         {/* Decorative Noisy Blob */}
-        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] pointer-events-none z-0">
+        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[200px] h-[200px] md:w-[300px] md:h-[300px] pointer-events-none z-0">
           <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-15 blur-[50px] md:blur-[80px] rounded-full"></div>
           <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-30" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
             <svg className="w-full h-full">
