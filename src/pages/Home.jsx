@@ -259,9 +259,9 @@ const Home = () => {
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
         
         {/* Decorative Noisy Blob */}
-        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] pointer-events-none z-0">
-          <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-40 blur-[50px] md:blur-[80px] rounded-full"></div>
-          <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-50" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
+        <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] pointer-events-none z-0">
+          <div className="absolute inset-0 bg-[#c77dff] opacity-40 dark:opacity-15 blur-[50px] md:blur-[80px] rounded-full"></div>
+          <div className="absolute inset-0 mix-blend-overlay opacity-60 dark:opacity-30" style={{ WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)', maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)' }}>
             <svg className="w-full h-full">
               <filter id="projBlobNoise">
                 <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
@@ -354,7 +354,7 @@ const Home = () => {
              </svg>
              
              {/* The Static Arrow in the Middle */}
-             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10 animate-eager group-hover:animate-none">
+             <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center text-[#c77dff] dark:text-white z-10">
                <span className="material-symbols-outlined text-5xl md:text-7xl">
                  arrow_outward
                </span>
