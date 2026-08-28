@@ -6,6 +6,8 @@ import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
 import heroBg from '../assets/hero_bg.png';
+import { LampContainer } from "../components/ui/Lamp";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -250,14 +252,22 @@ const Home = () => {
 
       {/* Current projects */}
       <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative overflow-hidden">
-        {/* Wide lamp source lighting */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[30%] w-[120%] md:w-[100%] h-[500px] bg-[#9d4edd] opacity-[0.15] dark:opacity-[0.15] blur-[100px] md:blur-[150px] rounded-[100%] pointer-events-none z-0"></div>
-        
-        <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
-          <div className="w-full flex flex-col items-center mb-16">
-            <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4">{t('proj_tag')}</span>
-            <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
-          </div>
+        <div className="w-full max-w-[1400px] mx-auto relative z-10 group flex flex-col items-center">
+          <LampContainer className="-mb-32 md:-mb-16 -mt-32 scale-75 md:scale-100">
+            <motion.div
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="w-full flex flex-col items-center z-50 pt-32"
+            >
+              <span className="font-accent font-semibold text-xs text-secondary uppercase tracking-wider mb-4 relative z-50">{t('proj_tag')}</span>
+              <h2 className="text-black text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight relative z-50">{t('proj_title')}</h2>
+            </motion.div>
+          </LampContainer>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md hover:border-secondary group/card">
