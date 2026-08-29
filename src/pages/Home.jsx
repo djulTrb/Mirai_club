@@ -213,16 +213,19 @@ const Home = () => {
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
               </div>
-              {/* Floating: Workshop micro-UI — bottom-right, straddling border */}
+              {/* Floating: Radial Progress Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/20 shadow-[0_8px_20px_rgba(0,0,0,0.25)] rounded-[13px] p-3 w-[155px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
+                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.12)] scale-[0.85] md:scale-100"
               >
-                <div className="flex justify-between items-center mb-1.5">
-                  <span className="font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-[#c87fff]">Workshop</span>
-                  <span className="font-mono text-[11px] font-semibold text-gray-500 tracking-wider">04 / 08</span>
+                <div className="relative w-[54px] h-[54px] mb-2.5 flex items-center justify-center">
+                  <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="15" fill="none" className="stroke-gray-100" strokeWidth="3" />
+                    <circle cx="18" cy="18" r="15" fill="none" className="stroke-[#9D4EDD]" strokeWidth="3" strokeDasharray="94.2" strokeDashoffset="58" strokeLinecap="round" />
+                  </svg>
+                  <span className="font-display font-bold text-[14px] text-black">3/8</span>
                 </div>
-                <span className="font-display text-[14px] font-bold text-white leading-tight tracking-tight">NEURAL NETWORKS</span>
+                <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-gray-400 text-center leading-tight">DEEP LEARNING</span>
               </div>
             </div>
 
@@ -232,16 +235,7 @@ const Home = () => {
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
               </div>
-              {/* Floating 1: Campus → Competition pill — top-right */}
-              <div
-                aria-hidden="true"
-                className="animate-float-2 absolute -top-4 -right-3 md:-right-5 md:-top-4 flex items-center gap-2 bg-[#9D4EDD] shadow-[0_6px_18px_rgba(157,78,221,0.35)] rounded-full px-4 py-2 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_10px_24px_rgba(157,78,221,0.4)] scale-[0.85] md:scale-100"
-              >
-                <span className="font-accent text-[11px] text-white font-semibold uppercase tracking-[0.08em]">Campus</span>
-                <span className="text-white/70 text-[12px] font-semibold leading-none">→</span>
-                <span className="font-accent text-[11px] text-white font-semibold uppercase tracking-[0.08em]">Competition</span>
-              </div>
-              {/* Floating 2: Terminal card — bottom-right (featured card gets two) */}
+              {/* Floating: Terminal card — bottom-right */}
               <div
                 aria-hidden="true"
                 className="animate-float-3 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.35)] scale-[0.85] md:scale-100"
@@ -264,18 +258,19 @@ const Home = () => {
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
               </div>
-              {/* Floating: Open Collab — bottom-right */}
+              {/* Floating: Avatar Stack Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-4 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col items-center bg-[#9D4EDD] shadow-[0_6px_18px_rgba(157,78,221,0.35)] rounded-[13px] px-4 py-2.5 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_10px_24px_rgba(157,78,221,0.4)] scale-[0.85] md:scale-100"
+                className="animate-float-4 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col justify-center bg-[#F8F6FC] border border-[#9D4EDD]/10 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[32px] px-5 py-3.5 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(157,78,221,0.2)] scale-[0.85] md:scale-100"
               >
-                <span className="font-accent text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70 mb-1">Open Collab</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-display text-[11px] font-bold text-white">Idea</span>
-                  <span className="font-mono text-[10px] font-semibold text-white/50">↔</span>
-                  <span className="font-display text-[11px] font-bold text-white">Discuss</span>
-                  <span className="font-mono text-[10px] font-semibold text-white/50">↔</span>
-                  <span className="font-display text-[11px] font-bold text-white">Build</span>
+                <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-gray-500 mb-1.5 ml-1">Active Members</span>
+                <div className="flex items-center">
+                  <div className="flex -space-x-2.5">
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] bg-gradient-to-br from-[#c87fff] to-[#9D4EDD] flex items-center justify-center text-[10px] font-bold text-white z-30">A</div>
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] bg-gradient-to-br from-[#9D4EDD] to-[#5a189a] flex items-center justify-center text-[10px] font-bold text-white z-20">Y</div>
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] bg-gradient-to-br from-[#5a189a] to-[#240046] flex items-center justify-center text-[10px] font-bold text-white z-10">S</div>
+                  </div>
+                  <span className="ml-2.5 font-display font-bold text-[14px] text-[#3c096c]">+11</span>
                 </div>
               </div>
             </div>
@@ -286,17 +281,35 @@ const Home = () => {
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
               </div>
-              {/* Floating: Sprint/Build micro-UI — bottom-right, workshop-label template */}
+              {/* Floating: Pipeline / Stepper Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/20 shadow-[0_8px_20px_rgba(0,0,0,0.25)] rounded-[13px] p-3 w-[155px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
-                style={{ animationDelay: '0.5s' }}
+                className="animate-float-2 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
               >
-                <div className="flex justify-between items-center mb-1.5">
-                  <span className="font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-[#c87fff]">Sprint</span>
-                  <span className="font-mono text-[11px] font-semibold text-gray-500 tracking-wider">03 / 05</span>
+                <div className="relative flex justify-between items-start w-full">
+                  {/* Track background */}
+                  <div className="absolute left-[10px] right-[10px] top-[5px] h-[2px] bg-white/10" />
+                  {/* Track progress */}
+                  <div className="absolute left-[10px] top-[5px] w-[50%] h-[2px] bg-[#c87fff]" />
+
+                  {/* Node 1 */}
+                  <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
+                    <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
+                    <span className="font-accent text-[7.5px] font-bold text-white uppercase tracking-wider mt-0.5">Prototype</span>
+                  </div>
+                  
+                  {/* Node 2 */}
+                  <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
+                    <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
+                    <span className="font-accent text-[7.5px] font-bold text-white uppercase tracking-wider mt-0.5">Test</span>
+                  </div>
+                  
+                  {/* Node 3 */}
+                  <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
+                    <div className="w-[12px] h-[12px] rounded-full border-[2px] border-gray-500 bg-[#2A1B38]" />
+                    <span className="font-accent text-[7.5px] font-bold text-gray-500 uppercase tracking-wider mt-0.5">Deploy</span>
+                  </div>
                 </div>
-                <span className="font-display text-[14px] font-bold text-white leading-tight tracking-tight">PROTOTYPE → SHIP</span>
               </div>
             </div>
             
