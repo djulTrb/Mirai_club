@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero_illustration.png';
-import heroSticker1 from '../assets/hero_sticker_1.png';
-import heroSticker2 from '../assets/hero_sticker_2.png';
-import heroSticker3 from '../assets/hero_sticker_3.png';
 
+import imgTopLeft from '../assets/hero section part/top_left.png';
+import imgTopRight from '../assets/hero section part/top_right.png';
+import imgBottomLeft from '../assets/hero section part/bottom_left.png';
+import imgBottomRight from '../assets/hero section part/bottom_right.png';
+import imgMiddleTop from '../assets/hero section part/middle_top.png';
+import imgMiddleBottom from '../assets/hero section part/middle_bottom.png';
 import ctaImg1 from '../assets/cta_img_1.png';
 import ctaImg2 from '../assets/cta_img_2.png';
 import heroBg from '../assets/hero_bg.png';
@@ -14,6 +17,7 @@ const Home = () => {
   const { t, i18n } = useTranslation();
   const [projects, setProjects] = useState([]);
   const scrollRef = useRef(null);
+
   useEffect(() => {
     const saved = localStorage.getItem('mirai_projects');
     if (saved) {
@@ -110,53 +114,36 @@ const Home = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[90vh] flex flex-col justify-start overflow-hidden bg-[#E5DFF3] px-6 sm:px-12 md:px-20 lg:px-32 xl:px-40 pt-12 sm:pt-16 pb-20">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#E5DFF3] dark:bg-[#240046]">
         
-        {/* Powerful Noisy Blob at Bottom Right */}
-        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] opacity-70 pointer-events-none z-0 mix-blend-multiply animate-[spin_20s_linear_infinite]">
-          {/* Gradient Organic Blob */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#9D4EDD] to-[#c87fff] blur-[60px] lg:blur-[100px] rounded-[40%_60%_70%_30%] animate-[pulse_8s_ease-in-out_infinite]" />
-          {/* SVG Noise Overlay */}
-          <div className="absolute inset-0 opacity-50 mix-blend-color-burn rounded-[40%_60%_70%_30%] overflow-hidden" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+        {/* Background Illustrations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+          <img src={imgTopLeft} alt="" className="absolute top-0 left-0 min-[390px]:-top-1/4 min-[390px]:-left-1/4 sm:-top-1/3 sm:-left-1/3 md:top-0 md:left-0 w-[11rem] min-[390px]:w-[21rem] sm:w-[27rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgTopRight} alt="" className="absolute top-0 right-0 min-[390px]:-top-1/4 min-[390px]:-right-1/4 sm:-top-1/3 sm:-right-1/3 md:top-0 md:right-0 w-[11rem] min-[390px]:w-[21rem] sm:w-[27rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgBottomLeft} alt="" className="absolute bottom-0 left-0 min-[390px]:-bottom-1/4 min-[390px]:-left-1/4 sm:-bottom-1/3 sm:-left-1/3 md:bottom-0 md:left-0 w-[12rem] min-[390px]:w-[24rem] sm:w-[31rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgBottomRight} alt="" className="absolute bottom-0 right-0 min-[390px]:-bottom-1/4 min-[390px]:-right-1/4 sm:-bottom-1/3 sm:-right-1/3 md:bottom-0 md:right-0 w-[12rem] min-[390px]:w-[24rem] sm:w-[31rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgMiddleTop} alt="" className="absolute top-0 min-[390px]:top-8 sm:top-12 md:top-0 left-1/2 -translate-x-1/2 w-[14rem] min-[390px]:w-[27rem] sm:w-[36rem] md:w-[26rem] lg:w-[34rem] xl:w-[42rem] object-contain opacity-90 dark:opacity-40" />
+          <img src={imgMiddleBottom} alt="" className="absolute bottom-0 min-[390px]:bottom-8 sm:bottom-12 md:bottom-0 left-1/2 -translate-x-1/2 w-[9rem] min-[390px]:w-[18rem] sm:w-[24rem] md:w-[15rem] lg:w-[22rem] xl:w-[29rem] object-contain opacity-90 dark:opacity-40" />
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-20 flex flex-col items-start text-left w-full max-w-2xl gap-4 sm:gap-5 md:gap-6">
-          
-          {/* Eyebrow */}
-          <div className="flex flex-col items-start">
-            <span className="font-body text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">
-              {t('home_subtitle')}
-            </span>
-          </div>
-
-          {/* Title */}
-          <h1 className="font-display font-black tracking-[-0.04em] text-[#240046] leading-[0.9] text-5xl sm:text-6xl md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem]">
-            Mirai Club
+        {/* Content */}
+        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-8 md:mb-10 mt-6 md:mt-12">
+          <h1 className="font-display font-black text-4xl min-[390px]:text-[4rem] sm:text-[4.75rem] md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-[#ffffff] leading-[0.85] drop-shadow-sm mb-4">
+            Mirai club
           </h1>
           
-          {/* Subheadline */}
-          <h2 className="font-body text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] leading-tight text-[#240046] font-medium tracking-tight mt-1">
-            {t('home_build')} AI.
-          </h2>
-
-          {/* Description */}
-          <p className="font-body text-[#240046]/70 font-normal leading-relaxed max-w-[280px] sm:max-w-[300px] md:max-w-[340px] text-sm sm:text-[15px] md:text-base mt-1">
-            {t('home_desc')}
+          <p className="font-body text-[11px] leading-[18px] min-[390px]:text-[14px] min-[390px]:leading-[24px] sm:text-[16px] sm:leading-[26px] md:text-[15px] md:leading-[24px] text-gray-600 dark:text-gray-300 mb-6 max-w-md font-medium">
+            {t('home_build')} AI. {t('home_desc')}
           </p>
           
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
-            <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-[#240046] rounded-2xl font-['Sora'] font-bold hover:bg-[#3c096c] transition-all whitespace-nowrap text-center cursor-pointer px-5 sm:px-6 py-2.5 sm:py-3 text-[11px] sm:text-xs min-h-[44px] sm:min-h-[48px] flex items-center justify-center gap-2 ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <Link to="/recruitment" className={`w-full sm:w-auto bg-[#240046] text-[#c87fff] border-2 border-transparent px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_join')}
-              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
             </Link>
-            <Link to="/events" className={`bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046]/10 rounded-2xl font-['Sora'] font-bold transition-all whitespace-nowrap text-center cursor-pointer px-5 sm:px-6 py-2.5 sm:py-3 text-[11px] sm:text-xs min-h-[44px] sm:min-h-[48px] flex items-center justify-center ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+            <Link to="/events" className={`w-full sm:w-auto bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
             </Link>
           </div>
-
         </div>
       </section>
 
@@ -205,17 +192,6 @@ const Home = () => {
       {/* {t('mission_title')} */}
       <section className="w-full py-24 px-6 md:px-24 flex flex-col gap-12 bg-background relative">
         
-        {/* Scattered Stickers (Randomized Placement) */}
-        <div className="absolute inset-0 pointer-events-none z-20 opacity-40 md:opacity-100">
-          <img src={heroSticker1} alt="Sticker 1" className="absolute top-[5%] left-[2%] md:left-[5%] w-24 h-24 md:w-40 md:h-40 object-contain transform -rotate-12" />
-          <img src={heroSticker2} alt="Sticker 2" className="absolute top-[40%] right-[3%] md:right-[8%] w-20 h-20 md:w-36 md:h-36 object-contain transform rotate-[15deg]" />
-          <img src={heroSticker3} alt="Sticker 3" className="absolute bottom-[10%] left-[8%] md:left-[15%] w-32 h-32 md:w-48 md:h-48 object-contain transform -rotate-6" />
-          
-          {/* Placeholders for the 3 future images */}
-          <div className="hidden md:block absolute top-[15%] right-[25%] w-24 h-24 bg-outline-variant/20 rounded-xl transform rotate-[20deg]"></div>
-          <div className="hidden md:block absolute top-[60%] left-[5%] w-32 h-32 bg-outline-variant/20 rounded-full transform -rotate-[10deg]"></div>
-          <div className="hidden md:block absolute bottom-[5%] right-[10%] w-28 h-20 bg-outline-variant/20 rounded-xl transform rotate-[5deg]"></div>
-        </div>
 
         <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto relative z-10">
           <div className="w-full flex flex-col items-center mb-8 relative z-10">
@@ -224,22 +200,76 @@ const Home = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
-              <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
+            
+            {/* Educate Card */}
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+              <div className="relative z-10 md:pr-12">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
+                <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
+              </div>
+              {/* Floating Widget: Learning Interface */}
+              <div className="absolute -bottom-4 -right-2 md:-right-6 md:-bottom-6 flex flex-col border-2 border-[#c87fff] bg-[#240046] shadow-xl shadow-[#9D4EDD]/20 rounded-lg p-3 w-[150px] z-20 group-hover/card:-translate-y-2 group-hover/card:translate-x-2 group-hover/card:rotate-2 transition-transform duration-300">
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="font-accent text-[8px] font-black uppercase tracking-wider text-[#c87fff]">Workshop</span>
+                  <span className="font-mono text-[9px] font-bold text-[#c87fff]">04 / 08</span>
+                </div>
+                <span className="font-display text-[11px] font-black text-white leading-tight">NEURAL NETWORKS</span>
+              </div>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
-              <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
+
+            {/* Inspire Card */}
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+              <div className="relative z-10 md:pr-16">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
+                <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
+              </div>
+              {/* Floating Widget: Trajectory */}
+              <div className="absolute -top-4 -right-2 md:-right-6 md:-top-6 flex items-center gap-2 border-2 border-[#9D4EDD] bg-[#c87fff] shadow-xl shadow-[#9D4EDD]/20 rounded-full px-4 py-2 z-20 group-hover/card:-translate-y-2 group-hover/card:-translate-x-2 group-hover/card:-rotate-3 transition-transform duration-300">
+                <span className="font-accent text-[9px] text-[#240046] font-black uppercase tracking-widest">Campus</span>
+                <span className="text-[#240046] text-[12px] font-black leading-none">→</span>
+                <span className="font-accent text-[9px] text-[#240046] font-black uppercase tracking-widest">Competition</span>
+              </div>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
-              <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
+
+            {/* Connect Card */}
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+              <div className="relative z-10 md:pr-16">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
+                <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
+              </div>
+              {/* Floating Widget: Collab */}
+              <div className="absolute -bottom-4 -right-2 md:-right-6 md:-bottom-6 flex flex-col items-center border-2 border-[#240046] bg-[#9D4EDD] shadow-xl shadow-[#240046]/20 rounded-lg px-4 py-2.5 z-20 group-hover/card:-translate-y-2 group-hover/card:-translate-x-2 group-hover/card:-rotate-2 transition-transform duration-300">
+                <span className="font-accent text-[8px] font-black uppercase tracking-[0.15em] text-[#240046] mb-1.5">Open Collab</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-display text-[10px] font-black text-white">Idea</span>
+                  <span className="font-mono text-[9px] font-bold text-[#240046]">↔</span>
+                  <span className="font-display text-[10px] font-black text-white">Discuss</span>
+                  <span className="font-mono text-[9px] font-bold text-[#240046]">↔</span>
+                  <span className="font-display text-[10px] font-black text-white">Build</span>
+                </div>
+              </div>
             </div>
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
-              <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
+
+            {/* Experiment Card */}
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+              <div className="relative z-10 md:pr-24">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
+                <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
+              </div>
+              {/* Floating Widget: Terminal */}
+              <div className="absolute -top-4 -right-2 md:-right-6 md:-top-6 flex flex-col border-2 border-[#c87fff] bg-[#121414] shadow-xl shadow-[#121414]/30 rounded-lg p-3 w-[140px] z-20 group-hover/card:-translate-y-2 group-hover/card:translate-x-2 group-hover/card:rotate-2 transition-transform duration-300">
+                <div className="flex gap-1.5 mb-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] shadow-sm" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] shadow-sm" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f] shadow-sm" />
+                </div>
+                <span className="font-mono text-[10px] text-white font-bold leading-relaxed mb-0.5">$ run project</span>
+                <span className="font-mono text-[9px] text-[#c87fff] font-bold leading-relaxed">&gt; model loaded</span>
+                <span className="font-mono text-[9px] text-[#c87fff] font-bold leading-relaxed">&gt; testing...</span>
+                <span className="font-mono text-[9px] text-[#9D4EDD] font-black leading-relaxed">&gt; ready ✓</span>
+              </div>
             </div>
+            
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
