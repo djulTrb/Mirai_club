@@ -208,7 +208,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Educate Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card pt-12 pb-[110px] sm:pb-28 relative overflow-visible">
               <div className="relative z-10 md:pr-12">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
@@ -216,7 +216,7 @@ const Home = () => {
               {/* Floating: Radial Progress Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.12)] scale-[0.85] md:scale-100"
+                className="animate-float-1 absolute bottom-1 right-1 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20 transition-transform duration-300 group-hover/card:-translate-y-2 group-hover/card:rotate-[3deg] group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.12)] scale-[0.85] md:scale-100"
               >
                 <div className="relative w-[54px] h-[54px] mb-2.5 flex items-center justify-center">
                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
@@ -230,7 +230,7 @@ const Home = () => {
             </div>
 
             {/* Inspire Card — featured (violet border) */}
-            <div className="bg-white border border-[#9D4EDD]/40 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
+            <div className="bg-white border border-[#9D4EDD]/40 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card pt-12 pb-[110px] sm:pb-28 relative overflow-visible">
               <div className="relative z-10 md:pr-16">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
@@ -238,7 +238,7 @@ const Home = () => {
               {/* Floating: Terminal card — bottom-right */}
               <div
                 aria-hidden="true"
-                className="animate-float-3 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.35)] scale-[0.85] md:scale-100"
+                className="animate-float-3 absolute bottom-1 right-1 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20 transition-transform duration-300 group-hover/card:-translate-y-2 group-hover/card:rotate-[3deg] group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.35)] scale-[0.85] md:scale-100"
               >
                 <div className="flex gap-1.5 mb-2">
                   <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
@@ -253,7 +253,7 @@ const Home = () => {
             </div>
 
             {/* Connect Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card pt-12 pb-[110px] sm:pb-28 relative overflow-visible">
               <div className="relative z-10 md:pr-16">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
@@ -261,7 +261,7 @@ const Home = () => {
               {/* Floating: Avatar Stack Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-4 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col justify-center bg-[#F8F6FC] border border-[#9D4EDD]/10 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[32px] px-5 py-3.5 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(157,78,221,0.2)] scale-[0.85] md:scale-100"
+                className="animate-float-4 absolute bottom-1 right-1 flex flex-col justify-center bg-[#F8F6FC] border border-[#9D4EDD]/10 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[32px] px-5 py-3.5 z-20 transition-transform duration-300 group-hover/card:-translate-y-2 group-hover/card:rotate-[3deg] group-hover/card:shadow-[0_12px_28px_rgba(157,78,221,0.2)] scale-[0.85] md:scale-100"
               >
                 <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-gray-500 mb-1.5 ml-1">Active Members</span>
                 <div className="flex items-center">
@@ -276,7 +276,7 @@ const Home = () => {
             </div>
 
             {/* Experiment Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card pt-12 pb-[110px] sm:pb-28 relative overflow-visible">
               <div className="relative z-10 md:pr-12">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
@@ -284,7 +284,7 @@ const Home = () => {
               {/* Floating: Pipeline / Stepper Widget */}
               <div
                 aria-hidden="true"
-                className="animate-float-2 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
+                className="animate-float-2 absolute bottom-1 right-1 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20 transition-transform duration-300 group-hover/card:-translate-y-2 group-hover/card:rotate-[3deg] group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
               >
                 <div className="relative flex justify-between items-start w-full">
                   {/* Track background */}
