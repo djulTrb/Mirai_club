@@ -119,14 +119,15 @@ const Home = () => {
         {/* Background Illustrations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
           <picture>
-            <source media="(min-width: 1280px)" srcSet={heroDesktop} />
-            <source media="(min-width: 768px)" srcSet={heroLaptop} />
-            <source media="(min-width: 640px)" srcSet={heroTablet} />
-            <source media="(min-width: 480px)" srcSet={heroPhablet} />
+            <source media="(min-aspect-ratio: 3/2)" srcSet={heroDesktop} />
+            <source media="(min-aspect-ratio: 6/5)" srcSet={heroLaptop} />
+            <source media="(min-aspect-ratio: 4/5)" srcSet={heroTablet} />
+            <source media="(min-aspect-ratio: 1/2)" srcSet={heroPhablet} />
             <img 
               src={heroMobile} 
               alt="Mirai Club Hero Background" 
-              className="w-full h-full object-cover object-center opacity-90 dark:opacity-40" 
+              className="w-full h-full object-cover opacity-90 dark:opacity-40" 
+              style={{ objectPosition: 'center 30%' }}
             />
           </picture>
         </div>
