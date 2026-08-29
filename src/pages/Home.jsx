@@ -5,12 +5,7 @@ import heroImage from '../assets/hero_illustration.png';
 import heroSticker1 from '../assets/hero_sticker_1.png';
 import heroSticker2 from '../assets/hero_sticker_2.png';
 import heroSticker3 from '../assets/hero_sticker_3.png';
-import imgTopLeft from '../assets/hero section part/top_left.png';
-import imgTopRight from '../assets/hero section part/top_right.png';
-import imgBottomLeft from '../assets/hero section part/bottom_left.png';
-import imgBottomRight from '../assets/hero section part/bottom_right.png';
-import imgMiddleTop from '../assets/hero section part/middle_top.png';
-import imgMiddleBottom from '../assets/hero section part/middle_bottom.png';
+
 import ctaImg1 from '../assets/cta_img_1.png';
 import ctaImg2 from '../assets/cta_img_2.png';
 import heroBg from '../assets/hero_bg.png';
@@ -19,7 +14,6 @@ const Home = () => {
   const { t, i18n } = useTranslation();
   const [projects, setProjects] = useState([]);
   const scrollRef = useRef(null);
-
   useEffect(() => {
     const saved = localStorage.getItem('mirai_projects');
     if (saved) {
@@ -116,36 +110,53 @@ const Home = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#E5DFF3] dark:bg-[#240046]">
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[90vh] flex flex-col justify-start overflow-hidden bg-[#E5DFF3] px-6 sm:px-12 md:px-20 lg:px-32 xl:px-40 pt-12 sm:pt-16 pb-20">
         
-        {/* Background Illustrations */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          <img src={imgTopLeft} alt="" className="absolute top-0 left-0 w-[11rem] sm:w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgTopRight} alt="" className="absolute top-0 right-0 w-[11rem] sm:w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgBottomLeft} alt="" className="absolute bottom-0 left-0 w-[12rem] sm:w-[18rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgBottomRight} alt="" className="absolute bottom-0 right-0 w-[12rem] sm:w-[18rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgMiddleTop} alt="" className="absolute top-0 left-1/2 -translate-x-1/2 w-[14rem] sm:w-[20rem] md:w-[26rem] lg:w-[34rem] xl:w-[42rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgMiddleBottom} alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[9rem] sm:w-[12rem] md:w-[15rem] lg:w-[22rem] xl:w-[29rem] object-contain opacity-90 dark:opacity-40" />
+        {/* Powerful Noisy Blob at Bottom Right */}
+        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] opacity-70 pointer-events-none z-0 mix-blend-multiply animate-[spin_20s_linear_infinite]">
+          {/* Gradient Organic Blob */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#9D4EDD] to-[#c87fff] blur-[60px] lg:blur-[100px] rounded-[40%_60%_70%_30%] animate-[pulse_8s_ease-in-out_infinite]" />
+          {/* SVG Noise Overlay */}
+          <div className="absolute inset-0 opacity-50 mix-blend-color-burn rounded-[40%_60%_70%_30%] overflow-hidden" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 mb-8 md:mb-10 mt-6 md:mt-12">
-          <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-white leading-[0.85] drop-shadow-sm mb-4">
-            Mirai club
+        {/* Content Container */}
+        <div className="relative z-20 flex flex-col items-start text-left w-full max-w-2xl gap-4 sm:gap-5 md:gap-6">
+          
+          {/* Eyebrow */}
+          <div className="flex flex-col items-start">
+            <span className="font-body text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">
+              {t('home_subtitle')}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1 className="font-display font-black tracking-[-0.04em] text-[#240046] leading-[0.9] text-5xl sm:text-6xl md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem]">
+            Mirai Club
           </h1>
           
-          <p className="font-body text-[10px] md:text-sm text-black/70 dark:text-gray-300 mb-6 max-w-md leading-relaxed font-medium">
-            {t('home_build')} AI. {t('home_desc')}
+          {/* Subheadline */}
+          <h2 className="font-body text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] leading-tight text-[#240046] font-medium tracking-tight mt-1">
+            {t('home_build')} AI.
+          </h2>
+
+          {/* Description */}
+          <p className="font-body text-[#240046]/70 font-normal leading-relaxed max-w-[280px] sm:max-w-[300px] md:max-w-[340px] text-sm sm:text-[15px] md:text-base mt-1">
+            {t('home_desc')}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <Link to="/recruitment" className={`w-full sm:w-auto bg-[#240046] text-[#c87fff] border-2 border-transparent px-6 py-2 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] md:text-xs hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
+            <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-[#240046] rounded-2xl font-['Sora'] font-bold hover:bg-[#3c096c] transition-all whitespace-nowrap text-center cursor-pointer px-5 sm:px-6 py-2.5 sm:py-3 text-[11px] sm:text-xs min-h-[44px] sm:min-h-[48px] flex items-center justify-center gap-2 ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_join')}
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
             </Link>
-            <Link to="/events" className={`w-full sm:w-auto bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-6 py-2 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] md:text-xs transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+            <Link to="/events" className={`bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046]/10 rounded-2xl font-['Sora'] font-bold transition-all whitespace-nowrap text-center cursor-pointer px-5 sm:px-6 py-2.5 sm:py-3 text-[11px] sm:text-xs min-h-[44px] sm:min-h-[48px] flex items-center justify-center ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
             </Link>
           </div>
+
         </div>
       </section>
 
