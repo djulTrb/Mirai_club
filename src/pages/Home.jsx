@@ -3,12 +3,12 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero_illustration.png';
 
-import imgTopLeft from '../assets/hero section part/top_left.png';
-import imgTopRight from '../assets/hero section part/top_right.png';
-import imgBottomLeft from '../assets/hero section part/bottom_left.png';
-import imgBottomRight from '../assets/hero section part/bottom_right.png';
-import imgMiddleTop from '../assets/hero section part/middle_top.png';
-import imgMiddleBottom from '../assets/hero section part/middle_bottom.png';
+import heroDesktop from '../assets/hero_screens/hero_bg_desktop_16x9.png';
+import heroLaptop from '../assets/hero_screens/hero_bg_laptop_4x3.png';
+import heroTablet from '../assets/hero_screens/hero_bg_tablet_1x1.png';
+import heroPhablet from '../assets/hero_screens/hero_bg_phablet_3x4.png';
+import heroMobile from '../assets/hero_screens/hero_bg_mobile_9x16.png';
+
 import ctaImg1 from '../assets/cta_img_1.png';
 import ctaImg2 from '../assets/cta_img_2.png';
 import heroBg from '../assets/hero_bg.png';
@@ -118,12 +118,17 @@ const Home = () => {
         
         {/* Background Illustrations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          <img src={imgTopLeft} alt="" className="absolute top-0 left-0 min-[390px]:-top-1/4 min-[390px]:-left-1/4 sm:-top-1/3 sm:-left-1/3 md:top-0 md:left-0 w-[11rem] min-[390px]:w-[21rem] sm:w-[27rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgTopRight} alt="" className="absolute top-0 right-0 min-[390px]:-top-1/4 min-[390px]:-right-1/4 sm:-top-1/3 sm:-right-1/3 md:top-0 md:right-0 w-[11rem] min-[390px]:w-[21rem] sm:w-[27rem] md:w-[20rem] lg:w-[24rem] xl:w-[31rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgBottomLeft} alt="" className="absolute bottom-0 left-0 min-[390px]:-bottom-1/4 min-[390px]:-left-1/4 sm:-bottom-1/3 sm:-left-1/3 md:bottom-0 md:left-0 w-[12rem] min-[390px]:w-[24rem] sm:w-[31rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgBottomRight} alt="" className="absolute bottom-0 right-0 min-[390px]:-bottom-1/4 min-[390px]:-right-1/4 sm:-bottom-1/3 sm:-right-1/3 md:bottom-0 md:right-0 w-[12rem] min-[390px]:w-[24rem] sm:w-[31rem] md:w-[22rem] lg:w-[29rem] xl:w-[35rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgMiddleTop} alt="" className="absolute top-0 min-[390px]:top-8 sm:top-12 md:top-0 left-1/2 -translate-x-1/2 w-[14rem] min-[390px]:w-[27rem] sm:w-[36rem] md:w-[26rem] lg:w-[34rem] xl:w-[42rem] object-contain opacity-90 dark:opacity-40" />
-          <img src={imgMiddleBottom} alt="" className="absolute bottom-0 min-[390px]:bottom-8 sm:bottom-12 md:bottom-0 left-1/2 -translate-x-1/2 w-[9rem] min-[390px]:w-[18rem] sm:w-[24rem] md:w-[15rem] lg:w-[22rem] xl:w-[29rem] object-contain opacity-90 dark:opacity-40" />
+          <picture>
+            <source media="(min-width: 1280px)" srcSet={heroDesktop} />
+            <source media="(min-width: 768px)" srcSet={heroLaptop} />
+            <source media="(min-width: 640px)" srcSet={heroTablet} />
+            <source media="(min-width: 480px)" srcSet={heroPhablet} />
+            <img 
+              src={heroMobile} 
+              alt="Mirai Club Hero Background" 
+              className="w-full h-full object-cover object-center opacity-90 dark:opacity-40" 
+            />
+          </picture>
         </div>
 
         {/* Content */}
