@@ -207,71 +207,95 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Educate Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
               <div className="relative z-10 md:pr-12">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ed_desc')}</p>
               </div>
-              {/* Floating Widget: Learning Interface */}
-              <div className="absolute -bottom-4 -right-2 md:-right-6 md:-bottom-6 flex flex-col border-2 border-[#c87fff] bg-[#240046] shadow-xl shadow-[#9D4EDD]/20 rounded-lg p-3 w-[150px] z-20 group-hover/card:-translate-y-2 group-hover/card:translate-x-2 group-hover/card:rotate-2 transition-transform duration-300">
+              {/* Floating: Workshop micro-UI — bottom-right, straddling border */}
+              <div
+                aria-hidden="true"
+                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/20 shadow-[0_8px_20px_rgba(0,0,0,0.25)] rounded-[13px] p-3 w-[155px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
+              >
                 <div className="flex justify-between items-center mb-1.5">
-                  <span className="font-accent text-[8px] font-black uppercase tracking-wider text-[#c87fff]">Workshop</span>
-                  <span className="font-mono text-[9px] font-bold text-[#c87fff]">04 / 08</span>
+                  <span className="font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-[#c87fff]">Workshop</span>
+                  <span className="font-mono text-[11px] font-semibold text-gray-500 tracking-wider">04 / 08</span>
                 </div>
-                <span className="font-display text-[11px] font-black text-white leading-tight">NEURAL NETWORKS</span>
+                <span className="font-display text-[14px] font-bold text-white leading-tight tracking-tight">NEURAL NETWORKS</span>
               </div>
             </div>
 
-            {/* Inspire Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+            {/* Inspire Card — featured (violet border) */}
+            <div className="bg-white border border-[#9D4EDD]/40 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
               <div className="relative z-10 md:pr-16">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_in_desc')}</p>
               </div>
-              {/* Floating Widget: Trajectory */}
-              <div className="absolute -top-4 -right-2 md:-right-6 md:-top-6 flex items-center gap-2 border-2 border-[#9D4EDD] bg-[#c87fff] shadow-xl shadow-[#9D4EDD]/20 rounded-full px-4 py-2 z-20 group-hover/card:-translate-y-2 group-hover/card:-translate-x-2 group-hover/card:-rotate-3 transition-transform duration-300">
-                <span className="font-accent text-[9px] text-[#240046] font-black uppercase tracking-widest">Campus</span>
-                <span className="text-[#240046] text-[12px] font-black leading-none">→</span>
-                <span className="font-accent text-[9px] text-[#240046] font-black uppercase tracking-widest">Competition</span>
+              {/* Floating 1: Campus → Competition pill — top-right */}
+              <div
+                aria-hidden="true"
+                className="animate-float-2 absolute -top-4 -right-3 md:-right-5 md:-top-4 flex items-center gap-2 bg-[#9D4EDD] shadow-[0_6px_18px_rgba(157,78,221,0.35)] rounded-full px-4 py-2 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_10px_24px_rgba(157,78,221,0.4)] scale-[0.85] md:scale-100"
+              >
+                <span className="font-accent text-[11px] text-white font-semibold uppercase tracking-[0.08em]">Campus</span>
+                <span className="text-white/70 text-[12px] font-semibold leading-none">→</span>
+                <span className="font-accent text-[11px] text-white font-semibold uppercase tracking-[0.08em]">Competition</span>
+              </div>
+              {/* Floating 2: Terminal card — bottom-right (featured card gets two) */}
+              <div
+                aria-hidden="true"
+                className="animate-float-3 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.35)] scale-[0.85] md:scale-100"
+              >
+                <div className="flex gap-1.5 mb-2">
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#ffbd2e]" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#27c93f]" />
+                </div>
+                <span className="font-mono text-[10px] text-white/90 font-semibold leading-relaxed mb-0.5">$ submit entry</span>
+                <span className="font-mono text-[9px] text-gray-500 font-semibold leading-relaxed">&gt; compiling...</span>
+                <span className="font-mono text-[9px] text-[#c87fff]/80 font-semibold leading-relaxed">&gt; uploading</span>
+                <span className="font-mono text-[9px] text-[#27c93f] font-semibold leading-relaxed">&gt; submitted ✓</span>
               </div>
             </div>
 
             {/* Connect Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
               <div className="relative z-10 md:pr-16">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_co_desc')}</p>
               </div>
-              {/* Floating Widget: Collab */}
-              <div className="absolute -bottom-4 -right-2 md:-right-6 md:-bottom-6 flex flex-col items-center border-2 border-[#240046] bg-[#9D4EDD] shadow-xl shadow-[#240046]/20 rounded-lg px-4 py-2.5 z-20 group-hover/card:-translate-y-2 group-hover/card:-translate-x-2 group-hover/card:-rotate-2 transition-transform duration-300">
-                <span className="font-accent text-[8px] font-black uppercase tracking-[0.15em] text-[#240046] mb-1.5">Open Collab</span>
+              {/* Floating: Open Collab — bottom-right */}
+              <div
+                aria-hidden="true"
+                className="animate-float-4 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col items-center bg-[#9D4EDD] shadow-[0_6px_18px_rgba(157,78,221,0.35)] rounded-[13px] px-4 py-2.5 z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_10px_24px_rgba(157,78,221,0.4)] scale-[0.85] md:scale-100"
+              >
+                <span className="font-accent text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70 mb-1">Open Collab</span>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-display text-[10px] font-black text-white">Idea</span>
-                  <span className="font-mono text-[9px] font-bold text-[#240046]">↔</span>
-                  <span className="font-display text-[10px] font-black text-white">Discuss</span>
-                  <span className="font-mono text-[9px] font-bold text-[#240046]">↔</span>
-                  <span className="font-display text-[10px] font-black text-white">Build</span>
+                  <span className="font-display text-[11px] font-bold text-white">Idea</span>
+                  <span className="font-mono text-[10px] font-semibold text-white/50">↔</span>
+                  <span className="font-display text-[11px] font-bold text-white">Discuss</span>
+                  <span className="font-mono text-[10px] font-semibold text-white/50">↔</span>
+                  <span className="font-display text-[11px] font-bold text-white">Build</span>
                 </div>
               </div>
             </div>
 
             {/* Experiment Card */}
-            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative">
-              <div className="relative z-10 md:pr-24">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md hover:border-[#9D4EDD] group/card py-12 relative overflow-visible">
+              <div className="relative z-10 md:pr-12">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body">{t('mission_ex_desc')}</p>
               </div>
-              {/* Floating Widget: Terminal */}
-              <div className="absolute -top-4 -right-2 md:-right-6 md:-top-6 flex flex-col border-2 border-[#c87fff] bg-[#121414] shadow-xl shadow-[#121414]/30 rounded-lg p-3 w-[140px] z-20 group-hover/card:-translate-y-2 group-hover/card:translate-x-2 group-hover/card:rotate-2 transition-transform duration-300">
-                <div className="flex gap-1.5 mb-2.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] shadow-sm" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] shadow-sm" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f] shadow-sm" />
+              {/* Floating: Sprint/Build micro-UI — bottom-right, workshop-label template */}
+              <div
+                aria-hidden="true"
+                className="animate-float-1 absolute -bottom-5 -right-3 md:-right-5 md:-bottom-5 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/20 shadow-[0_8px_20px_rgba(0,0,0,0.25)] rounded-[13px] p-3 w-[155px] z-20 transition-transform duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-[0_12px_28px_rgba(0,0,0,0.3)] scale-[0.85] md:scale-100"
+                style={{ animationDelay: '0.5s' }}
+              >
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-[#c87fff]">Sprint</span>
+                  <span className="font-mono text-[11px] font-semibold text-gray-500 tracking-wider">03 / 05</span>
                 </div>
-                <span className="font-mono text-[10px] text-white font-bold leading-relaxed mb-0.5">$ run project</span>
-                <span className="font-mono text-[9px] text-[#c87fff] font-bold leading-relaxed">&gt; model loaded</span>
-                <span className="font-mono text-[9px] text-[#c87fff] font-bold leading-relaxed">&gt; testing...</span>
-                <span className="font-mono text-[9px] text-[#9D4EDD] font-black leading-relaxed">&gt; ready ✓</span>
+                <span className="font-display text-[14px] font-bold text-white leading-tight tracking-tight">PROTOTYPE → SHIP</span>
               </div>
             </div>
             
