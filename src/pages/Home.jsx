@@ -139,7 +139,7 @@ const Home = () => {
           </h1>
           
           <p className="font-body text-[11px] leading-[18px] min-[390px]:text-[14px] min-[390px]:leading-[24px] sm:text-[16px] sm:leading-[26px] md:text-[15px] md:leading-[24px] text-gray-600 dark:text-gray-300 mb-6 max-w-md font-medium">
-            {t('home_build')} AI. {t('home_desc')}
+            <Trans i18nKey="home_hero_desc" components={{ br: <br /> }} />
           </p>
           
           <div className="flex flex-row items-center justify-center gap-3 w-auto">
