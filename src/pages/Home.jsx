@@ -141,11 +141,11 @@ const Home = () => {
             {t('home_build')} AI. {t('home_desc')}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <Link to="/recruitment" className={`w-full sm:w-auto bg-[#240046] text-[#c87fff] border-2 border-transparent px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+          <div className="flex flex-row items-center justify-center gap-3 w-auto">
+            <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-transparent px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_join')}
             </Link>
-            <Link to="/events" className={`w-full sm:w-auto bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+            <Link to="/events" className={`bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-6 py-2 min-[390px]:px-8 min-[390px]:py-3 sm:px-10 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[11px] min-[390px]:text-[13px] sm:text-[14px] md:text-xs transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
             </Link>
           </div>
