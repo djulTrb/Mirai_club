@@ -209,7 +209,7 @@ const Home = () => {
             
             {/* Educate Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-32 pb-32 md:pb-6">
+              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ed_desc') }}></p>
               </div>
@@ -223,7 +223,7 @@ const Home = () => {
                     <circle cx="18" cy="18" r="15" fill="none" className="stroke-[#9D4EDD]/15" strokeWidth="3" />
                     <circle cx="18" cy="18" r="15" fill="none" className="stroke-[#9D4EDD]" strokeWidth="3" strokeDasharray="94.2" strokeDashoffset="58" strokeLinecap="round" />
                   </svg>
-                  <span className="font-display font-bold text-[14px] text-black">3/8</span>
+                  <span className="font-display font-bold text-[14px] !text-[#3c096c]">3/8</span>
                 </div>
                 <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-[#6A5A82] text-center leading-tight">DEEP LEARNING</span>
               </div>
@@ -231,7 +231,7 @@ const Home = () => {
 
             {/* Inspire Card — featured (violet border) */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-32 pb-32 md:pb-6">
+              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_in_desc') }}></p>
               </div>
@@ -241,9 +241,9 @@ const Home = () => {
                 className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="flex gap-1.5 mb-2">
-                  <div className="w-[7px] h-[7px] rounded-full bg-white/30" />
-                  <div className="w-[7px] h-[7px] rounded-full bg-white/60" />
-                  <div className="w-[7px] h-[7px] rounded-full bg-white" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#ffbd2e]" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-[#27c93f]" />
                 </div>
                 <span className="font-mono text-[10px] text-[#ffffff] font-semibold leading-relaxed mb-0.5">$ submit entry</span>
                 <span className="font-mono text-[9px] text-gray-500 font-semibold leading-relaxed">&gt; compiling...</span>
@@ -254,7 +254,7 @@ const Home = () => {
 
             {/* Connect Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-32 pb-32 md:pb-6">
+              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_co_desc') }}></p>
               </div>
@@ -277,7 +277,7 @@ const Home = () => {
 
             {/* Experiment Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-32 pb-32 md:pb-6">
+              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ex_desc') }}></p>
               </div>

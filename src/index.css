@@ -140,24 +140,9 @@ html {
   font-size: 90%;
 }
 
-html[lang="ar"] body {
-  font-family: "Tajawal", sans-serif;
-}
 
-html[lang="ar"] h1, 
-html[lang="ar"] h2, 
-html[lang="ar"] h3, 
-html[lang="ar"] h4, 
-html[lang="ar"] h5, 
-html[lang="ar"] h6,
-html[lang="ar"] .font-display,
-html[lang="ar"] .font-headline-lg-mobile,
-html[lang="ar"] .font-headline-lg,
-html[lang="ar"] .font-headline-md,
-html[lang="ar"] .font-display-lg,
-html[lang="ar"] .font-display-lg-mobile {
-  font-family: "Tajawal", sans-serif;
-}
+
+
 
 
 /* Custom Selection Colors */
@@ -239,4 +224,23 @@ html[lang="ar"] h5 span,
 html[lang="ar"] h6 span,
 html[lang="ar"] .font-display span {
   font-weight: inherit !important;
+}
+html[lang="ar"] body,
+html[lang="ar"] p,
+html[lang="ar"] div,
+html[lang="ar"] span,
+html[lang="ar"] a,
+html[lang="ar"] button,
+html[lang="ar"] h1, 
+html[lang="ar"] h2, 
+html[lang="ar"] h3, 
+html[lang="ar"] h4, 
+html[lang="ar"] h5, 
+html[lang="ar"] h6,
+html[lang="ar"] .font-display,
+html[lang="ar"] .font-body,
+html[lang="ar"] .font-accent,
+html[lang="ar"] .font-mono,
+html[lang="ar"] * {
+  font-family: "Tajawal", sans-serif !important;
 }
