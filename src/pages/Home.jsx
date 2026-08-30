@@ -209,14 +209,14 @@ const Home = () => {
             
             {/* Educate Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 md:pr-12">
+              <div className="relative z-10 pe-6 md:pe-28 pb-10 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ed_desc') }}></p>
               </div>
               {/* Floating: Radial Progress Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] origin-bottom-right scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="relative w-[54px] h-[54px] mb-2.5 flex items-center justify-center">
                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
@@ -230,22 +230,22 @@ const Home = () => {
             </div>
 
             {/* Inspire Card — featured (violet border) */}
-            <div className="bg-white border border-[#9D4EDD]/40 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 md:pr-16">
+            <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
+              <div className="relative z-10 pe-6 md:pe-28 pb-10 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_in_desc') }}></p>
               </div>
               {/* Floating: Terminal card — bottom-right */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] origin-bottom-right scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="flex gap-1.5 mb-2">
                   <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
                   <div className="w-[7px] h-[7px] rounded-full bg-[#ffbd2e]" />
                   <div className="w-[7px] h-[7px] rounded-full bg-[#27c93f]" />
                 </div>
-                <span className="font-mono text-[10px] text-white/90 font-semibold leading-relaxed mb-0.5">$ submit entry</span>
+                <span className="font-mono text-[10px] text-white dark:text-white font-semibold leading-relaxed mb-0.5">$ submit entry</span>
                 <span className="font-mono text-[9px] text-gray-500 font-semibold leading-relaxed">&gt; compiling...</span>
                 <span className="font-mono text-[9px] text-[#c87fff]/80 font-semibold leading-relaxed">&gt; uploading</span>
                 <span className="font-mono text-[9px] text-[#27c93f] font-semibold leading-relaxed">&gt; submitted ✓</span>
@@ -254,14 +254,14 @@ const Home = () => {
 
             {/* Connect Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 md:pr-16">
+              <div className="relative z-10 pe-6 md:pe-28 pb-10 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_co_desc') }}></p>
               </div>
               {/* Floating: Avatar Stack Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 flex flex-col justify-center bg-[#F8F6FC] border border-[#9D4EDD]/10 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[32px] px-5 py-3.5 z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] origin-bottom-right scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#F8F6FC] border border-[#9D4EDD]/10 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[32px] px-5 py-3.5 z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-gray-500 mb-1.5 ml-1">Active Members</span>
                 <div className="flex items-center">
@@ -277,14 +277,14 @@ const Home = () => {
 
             {/* Experiment Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 md:pr-12">
+              <div className="relative z-10 pe-6 md:pe-28 pb-10 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ex_desc') }}></p>
               </div>
               {/* Floating: Pipeline / Stepper Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] origin-bottom-right scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="relative flex justify-between items-start w-full">
                   {/* Track background */}
@@ -295,13 +295,13 @@ const Home = () => {
                   {/* Node 1 */}
                   <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
                     <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
-                    <span className="font-accent text-[7.5px] font-bold text-white uppercase tracking-wider mt-0.5">Prototype</span>
+                    <span className="font-accent text-[7.5px] font-bold text-white dark:text-white uppercase tracking-wider mt-0.5">Prototype</span>
                   </div>
                   
                   {/* Node 2 */}
                   <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
                     <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
-                    <span className="font-accent text-[7.5px] font-bold text-white uppercase tracking-wider mt-0.5">Test</span>
+                    <span className="font-accent text-[7.5px] font-bold text-white dark:text-white uppercase tracking-wider mt-0.5">Test</span>
                   </div>
                   
                   {/* Node 3 */}
@@ -315,26 +315,8 @@ const Home = () => {
             
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
-              <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">14</span>
-              <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_members')}</span>
-            </div>
-            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
-              <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">3</span>
-              <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_events')}</span>
-            </div>
-            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
-              <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">3</span>
-              <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_projects')}</span>
-            </div>
-            <div className="bg-surface-container rounded-[2rem] border border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02]">
-              <span className="text-4xl sm:text-5xl font-accent font-bold text-black mb-1">5</span>
-              <span className="font-accent font-semibold text-[11px] uppercase tracking-wider text-on-surface-variant">{t('stats_resources')}</span>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Meet the members */}
       <section id="team-section" className="px-6 md:px-24 bg-surface py-24">
