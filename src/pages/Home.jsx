@@ -154,7 +154,7 @@ const Home = () => {
       </section>
 
       {/* Marquee Section */}
-      <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c87fff] py-8 shadow-lg">
+      <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c87fff] py-3 shadow-lg">
         <div className="flex w-max font-display font-bold whitespace-nowrap group">
           <div className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
             <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-[#ffffff] text-6xl flex items-center translate-y-2">*</span>
