@@ -216,16 +216,16 @@ const Home = () => {
               {/* Floating: Radial Progress Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col items-center justify-center bg-white border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col items-center justify-center bg-[#F4F0FA] border border-[#9D4EDD]/15 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="relative w-[54px] h-[54px] mb-2.5 flex items-center justify-center">
                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
-                    <circle cx="18" cy="18" r="15" fill="none" className="stroke-gray-100" strokeWidth="3" />
+                    <circle cx="18" cy="18" r="15" fill="none" className="stroke-[#9D4EDD]/15" strokeWidth="3" />
                     <circle cx="18" cy="18" r="15" fill="none" className="stroke-[#9D4EDD]" strokeWidth="3" strokeDasharray="94.2" strokeDashoffset="58" strokeLinecap="round" />
                   </svg>
                   <span className="font-display font-bold text-[14px] text-black">3/8</span>
                 </div>
-                <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-gray-400 text-center leading-tight">DEEP LEARNING</span>
+                <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-[#6A5A82] text-center leading-tight">DEEP LEARNING</span>
               </div>
             </div>
 
@@ -241,14 +241,14 @@ const Home = () => {
                 className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="flex gap-1.5 mb-2">
-                  <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
-                  <div className="w-[7px] h-[7px] rounded-full bg-[#ffbd2e]" />
-                  <div className="w-[7px] h-[7px] rounded-full bg-[#27c93f]" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-white/30" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-white/60" />
+                  <div className="w-[7px] h-[7px] rounded-full bg-white" />
                 </div>
                 <span className="font-mono text-[10px] text-[#ffffff] font-semibold leading-relaxed mb-0.5">$ submit entry</span>
                 <span className="font-mono text-[9px] text-gray-500 font-semibold leading-relaxed">&gt; compiling...</span>
                 <span className="font-mono text-[9px] text-[#c87fff]/80 font-semibold leading-relaxed">&gt; uploading</span>
-                <span className="font-mono text-[9px] text-[#27c93f] font-semibold leading-relaxed">&gt; submitted ✓</span>
+                <span className="font-mono text-[9px] text-[#ffffff] font-semibold leading-relaxed">&gt; submitted ✓</span>
               </div>
             </div>
 
@@ -263,12 +263,12 @@ const Home = () => {
                 aria-hidden="true"
                 className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#F8F6FC] dark:bg-[#1a1a2e] border border-[#9D4EDD]/10 dark:border-[#9D4EDD]/20 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-2xl px-5 py-3.5 z-20 transition-all duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
-                <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5 ml-1 transition-colors duration-300">Active Members</span>
+                <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-[#6A5A82] dark:text-[#c87fff]/70 mb-1.5 ml-1 transition-colors duration-300">Active Members</span>
                 <div className="flex items-center">
                   <div className="flex -space-x-2.5">
-                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-gradient-to-br from-[#c87fff] to-[#9D4EDD] flex items-center justify-center text-[10px] font-bold text-white z-30 transition-colors duration-300">A</div>
-                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-gradient-to-br from-[#9D4EDD] to-[#5a189a] flex items-center justify-center text-[10px] font-bold text-white z-20 transition-colors duration-300">Y</div>
-                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-gradient-to-br from-[#5a189a] to-[#240046] flex items-center justify-center text-[10px] font-bold text-white z-10 transition-colors duration-300">S</div>
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#c87fff] flex items-center justify-center text-[10px] font-bold text-white z-30 transition-colors duration-300">A</div>
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#9D4EDD] flex items-center justify-center text-[10px] font-bold text-white z-20 transition-colors duration-300">Y</div>
+                    <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#5a189a] flex items-center justify-center text-[10px] font-bold text-white z-10 transition-colors duration-300">S</div>
                   </div>
                   <span className="ml-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] transition-colors duration-300">+11</span>
                 </div>
@@ -306,8 +306,8 @@ const Home = () => {
                   
                   {/* Node 3 */}
                   <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
-                    <div className="w-[12px] h-[12px] rounded-full border-[2px] border-gray-500 bg-[#2A1B38]" />
-                    <span className="font-accent text-[7.5px] font-bold text-gray-500 uppercase tracking-wider mt-0.5">Deploy</span>
+                    <div className="w-[12px] h-[12px] rounded-full border-[2px] border-[#c87fff]/40 bg-[#2A1B38]" />
+                    <span className="font-accent text-[7.5px] font-bold text-[#c87fff]/60 uppercase tracking-wider mt-0.5">Deploy</span>
                   </div>
                 </div>
               </div>
