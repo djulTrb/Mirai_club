@@ -146,7 +146,7 @@ const Home = () => {
             <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-transparent px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               <span dangerouslySetInnerHTML={{ __html: t('home_join') }} />
             </Link>
-            <Link to="/events" className={`bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
+            <Link to="/events" className={`bg-white/10 dark:bg-black/10 backdrop-blur-md border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
             </Link>
           </div>
@@ -209,14 +209,14 @@ const Home = () => {
             
             {/* Educate Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ed_desc') }}></p>
               </div>
               {/* Floating: Radial Progress Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col items-center justify-center bg-[#F4F0FA] border border-[#9D4EDD]/15 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col items-center justify-center bg-[#F4F0FA] border border-[#9D4EDD]/15 shadow-[0_12px_32px_rgba(157,78,221,0.4)] rounded-[20px] p-4 w-[120px] h-[120px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="relative w-[54px] h-[54px] mb-2.5 flex items-center justify-center">
                   <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
@@ -231,14 +231,14 @@ const Home = () => {
 
             {/* Inspire Card — featured (violet border) */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_in_desc') }}></p>
               </div>
               {/* Floating: Terminal card — bottom-right */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_8px_20px_rgba(0,0,0,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col bg-[#1a1a2e] border border-[#9D4EDD]/15 shadow-[0_12px_32px_rgba(157,78,221,0.3)] rounded-[12px] p-3 w-[148px] z-20  transition-transform duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="flex gap-1.5 mb-2">
                   <div className="w-[7px] h-[7px] rounded-full bg-[#ff5f56]" />
@@ -254,14 +254,14 @@ const Home = () => {
 
             {/* Connect Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_co_desc') }}></p>
               </div>
               {/* Floating: Avatar Stack Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#F8F6FC] dark:bg-[#1a1a2e] border border-[#9D4EDD]/10 dark:border-[#9D4EDD]/20 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-2xl px-5 py-3.5 z-20 transition-all duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#F8F6FC] dark:bg-[#1a1a2e] border border-[#9D4EDD]/10 dark:border-[#9D4EDD]/20 shadow-[0_12px_32px_rgba(157,78,221,0.4)] rounded-2xl px-5 py-3.5 z-20 transition-all duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-[#6A5A82] dark:text-[#c87fff]/70 mb-1.5 ms-1 transition-colors duration-300">Active Members</span>
                 <div className="flex items-center">
@@ -277,14 +277,14 @@ const Home = () => {
 
             {/* Experiment Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-[160px] sm:pe-[180px] md:pe-[220px] pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ex_desc') }}></p>
               </div>
               {/* Floating: Pipeline / Stepper Widget */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_8px_24px_rgba(0,0,0,0.25)] rounded-[14px] px-4 py-3.5 w-[200px] z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] rtl:group-hover/card:-rotate-[4deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
+                className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#2A1B38] border border-[#c87fff]/10 shadow-[0_12px_32px_rgba(157,78,221,0.3)] rounded-[14px] px-4 py-3.5 w-[200px] z-20  transition-transform duration-300 group-hover/card:rotate-[4deg] rtl:group-hover/card:-rotate-[4deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
                 <div className="relative flex justify-between items-start w-full">
                   {/* Track background */}
