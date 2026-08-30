@@ -105,15 +105,15 @@ const Contact = () => {
                   </div>
                 )}
                 <div className="flex flex-col gap-2">
-                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_name')}</label>
+                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_name').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                   <input required value={name} onChange={e => setName(e.target.value)} type="text" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_email')}</label>
+                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_email').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                   <input required value={email} onChange={e => setEmail(e.target.value)} type="email" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_msg')}</label>
+                  <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_msg').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                   <textarea required value={message} onChange={e => setMessage(e.target.value)} rows="5" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none transition-all disabled:opacity-50" disabled={status === 'loading'}></textarea>
                 </div>
                 <button type="submit" disabled={status === 'loading'} className="bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider py-4 rounded-xl hover:opacity-90 transition-opacity mt-4 shadow-sm w-full flex justify-center items-center gap-2 disabled:opacity-70">

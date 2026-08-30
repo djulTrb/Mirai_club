@@ -148,7 +148,7 @@ const resources = {
       "gallery_tag": "ذكريات", "gallery_title": "المعرض", "gallery_desc": "لحظات، ورش عمل، هاكاثون، ولقطات من أنشطة مجتمعنا.",
       "resources_tag": "قاعدة المعرفة", "resources_title": "الموارد والدعم", "resources_desc": "ملفات PDF، مواد دراسية، دروس، عروض تقديمية وروابط أدوات مفيدة يشاركها النادي.",
       "contact_tag": "ابقى على تواصل", "contact_title": "اتصل بنا", "contact_desc": "هل لديك سؤال أو فكرة شراكة؟ تواصل مع مجلسنا التنفيذي.",
-      "recruitment_tag": "انضم إلى نادي الذكاء الاصطناعي", "recruitment_title": "انضم إلى MIRAI", "recruitment_desc": "املأ النموذج أدناه لتصبح مساهمًا نشطًا، مطورًا، أو متحمسًا في مجتمعنا.",
+      "recruitment_tag": "انضم إلى نادي الذكاء الاصطناعي", "recruitment_title": "انضم إلى MIRAI", "recruitment_desc": "املأ الاستمارة أدناه لتصبح مساهمًا نشطًا أو مطورًا أو عضوًا شغوفًا في مجتمعنا.",
       
       "filter_all": "الكل", "filter_upcoming": "قادم", "filter_past": "سابق",
       "filter_workshops": "ورش عمل", "filter_hackathons": "هاكاثون", "filter_social": "اجتماعي",
