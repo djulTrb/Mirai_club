@@ -209,7 +209,7 @@ const Home = () => {
             
             {/* Educate Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-16 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ed_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ed_desc') }}></p>
               </div>
@@ -231,7 +231,7 @@ const Home = () => {
 
             {/* Inspire Card — featured (violet border) */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-16 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_in_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_in_desc') }}></p>
               </div>
@@ -254,7 +254,7 @@ const Home = () => {
 
             {/* Connect Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-16 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_co_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_co_desc') }}></p>
               </div>
@@ -277,7 +277,7 @@ const Home = () => {
 
             {/* Experiment Card */}
             <div className="bg-white border border-outline-variant/30 rounded-2xl shadow-sm p-8 flex flex-col justify-center transition-all hover:shadow-md group/card py-12 relative overflow-hidden">
-              <div className="relative z-10 pe-6 md:pe-[220px] pb-32 md:pb-0">
+              <div className="relative z-10 pe-6 md:pe-[220px] pb-16 md:pb-0">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-black mb-3 tracking-tight">{t('mission_ex_title')}</h3>
                 <p className="text-base text-on-surface-variant leading-relaxed font-body" dangerouslySetInnerHTML={{ __html: t('mission_ex_desc') }}></p>
               </div>
