@@ -30,25 +30,21 @@ const Admin = () => {
   const { t } = useTranslation();
   const [isRecruitmentOpen, setIsRecruitmentOpen] = useState(false);
   const [events, setEvents] = useState(DUMMY_EVENTS);
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [, setSelectedProject] = useState(null);
   const [newProject, setNewProject] = useState({ title: '', category: '', description: '', link: '' });
-
-  useEffect(() => {
-    const saved = localStorage.getItem('mirai_projects');
-    if (saved) {
-      setProjects(JSON.parse(saved));
-    } else {
-      const defaultProjects = [
-        { id: 1, title: 'Sentiment Analyzer DZ', category: 'NLP', description: 'Analyse de sentiments sur le dialecte algérien. Modèle BERT fine-tuné.', link: '#' },
-        { id: 2, title: 'Détection Objets Temps Réel', category: 'VISION', description: 'Système de détection basé sur YOLOv8 pour applications locales.', link: '#' },
-        { id: 3, title: 'Prédiction Agricole Locale', category: 'ML', description: "Modèle de prédiction de rendements pour l'agriculture en Kabylie.", link: '#' },
-        { id: 4, title: 'Smart Campus Assistant', category: 'AI', description: 'Chatbot intelligent multilingue pour guider les étudiants sur le campus universitaire.', link: '#' }
-      ];
-      setProjects(defaultProjects);
-      localStorage.setItem('mirai_projects', JSON.stringify(defaultProjects));
-    }
-  }, []);
+  const [projects, setProjects] = useState(() => {
+    try {
+      const saved = localStorage.getItem('mirai_projects');
+      if (saved) return JSON.parse(saved);
+    } catch(e) {}
+    const defaultProjects = [
+      { id: 1, title: 'Sentiment Analyzer DZ', category: 'NLP', description: 'Analyse de sentiments sur le dialecte algA©rien. ModA¨le BERT fine-tunA©.', link: '#' },
+      { id: 2, title: 'DA©tection Objets Temps RA©el', category: 'VISION', description: 'SystA¨me de dA©tection basA© sur YOLOv8 pour applications locales.', link: '#' },
+      { id: 3, title: 'PrA©diction Agricole Locale', category: 'ML', description: "ModA¨le de prA©diction de rendements pour l'agriculture en Kabylie.", link: '#' },
+      { id: 4, title: 'Smart Campus Assistant', category: 'AI', description: 'Chatbot intelligent multilingue pour guider les A©tudiants sur le campus universitaire.', link: '#' }
+    ];
+    return defaultProjects;
+  });
 
   const saveProjects = (newProjects) => {
     setProjects(newProjects);

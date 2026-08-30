@@ -4,15 +4,10 @@ import PageTitleBlob from '../components/ui/PageTitleBlob';
 
 const Recruitment = () => {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState('idle');
+  const [isOpen, setIsOpen] = useState(() => localStorage.getItem('mirai_recruitment_status') === 'open');
 
   useEffect(() => {
-    // Check local storage for status
-    const status = localStorage.getItem('mirai_recruitment_status');
-    if (status === 'open') {
-      setIsOpen(true);
-    }
     
     // Cross-tab sync via polling
     const interval = setInterval(() => {

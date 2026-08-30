@@ -132,8 +132,8 @@ const Header = () => {
                   <img src={flags.fr} alt="FR" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> Français
                 </button>
                 <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-sm text-left hover:bg-surface-variant transition-colors flex items-center gap-2 ${currentLang === 'ar' ? 'font-bold text-[#9D4EDD]' : 'text-black'}`}>
-                  <img src={flags.ar} alt="AR" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> <span className="font-semibold">العربية</span>
-                </button>
+                  <img src={flags.ar} alt="AR" className="w-4 h-4 rounded-full object-cover shadow-sm border border-outline-variant/20" /> <span className="font-semibold" style={{ fontFamily: '"Tajawal", sans-serif' }}>العربية</span>
+                  </button>
               </div>
             )}
           </div>
