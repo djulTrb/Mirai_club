@@ -263,14 +263,14 @@ const Home = () => {
                 aria-hidden="true"
                 className="absolute -bottom-2 -end-2 md:-bottom-3 md:-end-3 flex flex-col justify-center bg-[#F8F6FC] dark:bg-[#1a1a2e] border border-[#9D4EDD]/10 dark:border-[#9D4EDD]/20 shadow-[0_8px_24px_rgba(157,78,221,0.15)] rounded-2xl px-5 py-3.5 z-20 transition-all duration-300 group-hover/card:rotate-[8deg] rtl:group-hover/card:-rotate-[8deg] origin-bottom-right rtl:origin-bottom-left scale-100 md:scale-110"
               >
-                <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-[#6A5A82] dark:text-[#c87fff]/70 mb-1.5 ml-1 transition-colors duration-300">Active Members</span>
+                <span className="font-accent text-[8.5px] font-bold uppercase tracking-wider text-[#6A5A82] dark:text-[#c87fff]/70 mb-1.5 ms-1 transition-colors duration-300">Active Members</span>
                 <div className="flex items-center">
-                  <div className="flex -space-x-2.5">
+                  <div className="flex -space-x-2.5 rtl:space-x-reverse">
                     <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#c87fff] flex items-center justify-center text-[10px] font-bold text-white z-30 transition-colors duration-300">A</div>
                     <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#9D4EDD] flex items-center justify-center text-[10px] font-bold text-white z-20 transition-colors duration-300">Y</div>
                     <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#5a189a] flex items-center justify-center text-[10px] font-bold text-white z-10 transition-colors duration-300">S</div>
                   </div>
-                  <span className="ml-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] transition-colors duration-300">+11</span>
+                  <span dir="ltr" className="ms-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] transition-colors duration-300">+11</span>
                 </div>
               </div>
             </div>
