@@ -133,7 +133,7 @@ const Home = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center w-full px-6 pb-20 md:pb-32">
+        <div className="relative z-20 flex flex-col items-center justify-center text-center w-full px-6 pb-24 lg:pb-0 h-full">
           <h1 className="font-display font-black text-4xl min-[390px]:text-[4rem] sm:text-[4.75rem] md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-[#ffffff] leading-[0.85] drop-shadow-sm mb-4">
             Mirai club
           </h1>
@@ -157,40 +157,40 @@ const Home = () => {
       <section className="w-full overflow-hidden relative border-y border-[#5a189a] bg-[#240046] dark:bg-[#c87fff] py-8 shadow-lg">
         <div className="flex w-max font-display font-bold whitespace-nowrap group">
           <div className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
           <div aria-hidden="true" className="flex items-center px-4 text-3xl sm:text-4xl gap-[3.3rem] font-display font-bold tracking-tight animate-marquee" style={{ animationDuration: '30s' }}>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
-            <span className="uppercase text-[#ffffff] dark:text-[#3c096c]">Mirai</span><span className="text-[#c87fff] dark:text-white text-5xl translate-y-1">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_heritage')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_intelligence')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">{t('marquee_future')}</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
+            <span className="uppercase text-[#ffffff] dark:text-[#3c096c] flex items-center leading-none">Mirai</span><span className="text-[#c87fff] dark:text-white text-6xl flex items-center translate-y-2">*</span>
           </div>
         </div>
       </section>

@@ -244,3 +244,7 @@ html[lang="ar"] .font-mono,
 html[lang="ar"] * {
   font-family: "Tajawal", sans-serif !important;
 }
+
+html[lang="ar"] .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+}
