@@ -270,7 +270,7 @@ const Home = () => {
                     <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#9D4EDD] flex items-center justify-center text-[10px] font-bold text-white z-20 transition-colors duration-300">Y</div>
                     <div className="w-7 h-7 rounded-full border-2 border-[#F8F6FC] dark:border-[#1a1a2e] bg-[#5a189a] flex items-center justify-center text-[10px] font-bold text-white z-10 transition-colors duration-300">S</div>
                   </div>
-                  <span dir="ltr" className="ms-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] transition-colors duration-300">+11</span>
+                  <span className="ms-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] transition-colors duration-300">+11</span>
                 </div>
               </div>
             </div>
