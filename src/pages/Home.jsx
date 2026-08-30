@@ -126,7 +126,7 @@ const Home = () => {
             <img 
               src={heroMobile} 
               alt="Mirai Club Hero Background" 
-              className="w-full h-full object-cover opacity-100" 
+              className="w-full h-full object-cover opacity-100 drop-shadow-[0_35px_35px_rgba(36,0,70,0.35)] dark:drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] transition-all duration-300" 
               style={{ objectPosition: 'center 30%' }}
             />
           </picture>
