@@ -217,7 +217,7 @@ html[lang="ar"] span,
 html[lang="ar"] a,
 html[lang="ar"] button,
 html[lang="ar"] .font-body {
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   letter-spacing: 0 !important;
 }
 
@@ -228,5 +228,15 @@ html[lang="ar"] h4,
 html[lang="ar"] h5,
 html[lang="ar"] h6,
 html[lang="ar"] .font-display {
-  font-weight: 700 !important;
+  font-weight: 800 !important;
+}
+
+html[lang="ar"] h1 span,
+html[lang="ar"] h2 span,
+html[lang="ar"] h3 span,
+html[lang="ar"] h4 span,
+html[lang="ar"] h5 span,
+html[lang="ar"] h6 span,
+html[lang="ar"] .font-display span {
+  font-weight: inherit !important;
 }

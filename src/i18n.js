@@ -128,7 +128,7 @@ const resources = {
       "home_subtitle": "نادي الذكاء الاصطناعي • جامعة مولود معمري • تيزي وزو",
       "home_build": "ابني المستقبل مع",
       "home_desc": "انضم إلى مجتمع الذكاء الاصطناعي الطلابي في تيزي وزو. ورش عمل عملية، مشاريع حقيقية، هاكاثون ومحادثات ملهمة مع خبراء الصناعة.",
-      "home_join": "انضم إلى MIRAI",
+      "home_join": "انضم إلى <span style=\"font-family: 'Sora', sans-serif\">Mirai</span>",
       "home_explore": "اكتشف الأنشطة",
       "marquee_heritage": "تراث", "marquee_intelligence": "ذكاء", "marquee_future": "مستقبل",
       "mission_tag": "القيم الأساسية", "mission_title": "المهمة والأهداف",

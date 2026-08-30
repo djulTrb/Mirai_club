@@ -144,7 +144,7 @@ const Home = () => {
           
           <div className="flex flex-row items-center justify-center gap-2 min-[390px]:gap-3 w-auto">
             <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-transparent px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
-              {t('home_join')}
+              <span dangerouslySetInnerHTML={{ __html: t('home_join') }} />
             </Link>
             <Link to="/events" className={`bg-transparent border-2 border-[#240046] text-[#240046] hover:bg-[#240046] hover:text-[#c87fff] dark:border-[#c87fff] dark:text-[#c87fff] dark:hover:bg-[#c87fff] dark:hover:text-[#240046] px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap transition-colors shadow-lg ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               {t('home_explore')}
@@ -245,7 +245,7 @@ const Home = () => {
                   <div className="w-[7px] h-[7px] rounded-full bg-[#ffbd2e]" />
                   <div className="w-[7px] h-[7px] rounded-full bg-[#27c93f]" />
                 </div>
-                <span className="font-mono text-[10px] !text-white font-semibold leading-relaxed mb-0.5">$ submit entry</span>
+                <span className="font-mono text-[10px] text-[#ffffff] font-semibold leading-relaxed mb-0.5">$ submit entry</span>
                 <span className="font-mono text-[9px] text-gray-500 font-semibold leading-relaxed">&gt; compiling...</span>
                 <span className="font-mono text-[9px] text-[#c87fff]/80 font-semibold leading-relaxed">&gt; uploading</span>
                 <span className="font-mono text-[9px] text-[#27c93f] font-semibold leading-relaxed">&gt; submitted ✓</span>
@@ -295,13 +295,13 @@ const Home = () => {
                   {/* Node 1 */}
                   <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
                     <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
-                    <span className="font-accent text-[7.5px] font-bold !text-white uppercase tracking-wider mt-0.5">Prototype</span>
+                    <span className="font-accent text-[7.5px] font-bold text-[#ffffff] uppercase tracking-wider mt-0.5">Prototype</span>
                   </div>
                   
                   {/* Node 2 */}
                   <div className="relative flex flex-col items-center gap-1.5 z-10 w-[33%]">
                     <div className="w-[12px] h-[12px] rounded-full bg-[#c87fff] border-2 border-[#2A1B38] shadow-[0_0_8px_rgba(200,127,255,0.5)]" />
-                    <span className="font-accent text-[7.5px] font-bold !text-white uppercase tracking-wider mt-0.5">Test</span>
+                    <span className="font-accent text-[7.5px] font-bold text-[#ffffff] uppercase tracking-wider mt-0.5">Test</span>
                   </div>
                   
                   {/* Node 3 */}
