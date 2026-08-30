@@ -68,22 +68,22 @@ const Recruitment = () => {
                 </div>
               )}
               <div className="flex flex-col gap-2">
-                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_name')}</label>
+                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_name').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                 <input type="text" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} required />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_uni_email')}</label>
+                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_uni_email').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                 <input type="email" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} required />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_major')}</label>
+                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_major').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                 <input type="text" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} required />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_year')}</label>
+                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_year').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                 <select dir="ltr" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} required>
                   <option>L1</option>
                   <option>L2</option>
@@ -94,7 +94,7 @@ const Recruitment = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_why')}</label>
+                <label className="font-body font-semibold uppercase tracking-wider text-xs text-black">{t('form_why').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
                 <textarea rows="4" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none disabled:opacity-50" disabled={status === 'loading'} required></textarea>
               </div>
 

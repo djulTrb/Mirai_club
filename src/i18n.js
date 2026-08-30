@@ -23,7 +23,8 @@ const resources = {
       "stats_members": "Active Members", "stats_events": "Events", "stats_projects": "Projects", "stats_resources": "Shared Resources",
       "team_tag": "Our Team", "team_title": "Meet the members",
       "team_pres": "President", "team_vp": "Vice-President", "team_sec": "Secretary General",
-      "team_skills": "SKILLS", "team_mgt": "Management", "team_str": "Strategy", "team_ops": "Operations", "team_log": "Logistics", "team_out": "Outreach", "team_sup": "Support",
+        "team_collapse": "Réduire l'équipe", "team_meet_all": "Voir toute l'équipe",
+      "team_skills": "SKILLS", "team_collapse": "Collapse Team", "team_meet_all": "Meet all the team", "team_mgt": "Management", "team_str": "Strategy", "team_ops": "Operations", "team_log": "Logistics", "team_out": "Outreach", "team_sup": "Support",
       "proj_tag": "Initiatives", "proj_title": "Current projects", "proj_explore": "Explore Project",
       
       // Page Headers
@@ -85,7 +86,7 @@ const resources = {
       "stats_members": "Membres Actifs", "stats_events": "Événements", "stats_projects": "Projets", "stats_resources": "Ressources Partagées",
       "team_tag": "Notre Équipe", "team_title": "Rencontrez les membres",
       "team_pres": "Président", "team_vp": "Vice-Présidente", "team_sec": "Secrétaire Général",
-      "team_skills": "COMPÉTENCES", "team_mgt": "Gestion", "team_str": "Stratégie", "team_ops": "Opérations", "team_log": "Logistique", "team_out": "Sensibilisation", "team_sup": "Support",
+      "team_skills": "COMPÉTENCES", "team_collapse": "Réduire l'équipe", "team_meet_all": "Voir toute l'équipe", "team_mgt": "Gestion", "team_str": "Stratégie", "team_ops": "Opérations", "team_log": "Logistique", "team_out": "Sensibilisation", "team_sup": "Support",
       "proj_tag": "Initiatives", "proj_title": "Projets actuels", "proj_explore": "Explorer le Projet",
       
       "events_tag": "Agenda", "events_title": "Tous nos événements", "events_desc": "Ateliers, hackathons, conférences - explorez toutes les rencontres à venir et passées du club MIRAI.",
@@ -140,7 +141,7 @@ const resources = {
       "stats_members": "أعضاء نشطون", "stats_events": "فعاليات", "stats_projects": "مشاريع", "stats_resources": "موارد مشتركة",
       "team_tag": "فريقنا", "team_title": "تعرف على الأعضاء",
       "team_pres": "الرئيس", "team_vp": "نائب الرئيس", "team_sec": "الأمين العام",
-      "team_skills": "المهارات", "team_mgt": "إدارة", "team_str": "استراتيجية", "team_ops": "عمليات", "team_log": "لوجستيات", "team_out": "توعية", "team_sup": "دعم",
+      "team_skills": "المهارات", "team_collapse": "طي الفريق", "team_meet_all": "تعرف على كل الفريق", "team_mgt": "إدارة", "team_str": "استراتيجية", "team_ops": "عمليات", "team_log": "لوجستيات", "team_out": "توعية", "team_sup": "دعم",
       "proj_tag": "مبادرات", "proj_title": "المشاريع الحالية", "proj_explore": "استكشف المشروع",
       
       "events_tag": "جدول الأعمال", "events_title": "جميع فعالياتنا", "events_desc": "ورش عمل، هاكاثون، مؤتمرات - اكتشف جميع لقاءات نادي MIRAI القادمة والسابقة.",
