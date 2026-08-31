@@ -148,8 +148,8 @@ const Home = () => {
         </div>
         <div className="w-full max-w-[1400px] mx-auto relative z-10 group">
           <div className="w-full flex flex-col items-center mb-16">
-            <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-4">{t('proj_tag')}</span>
-            <h2 className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
+            <span ref={projectsHeaderTagRef} className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-4">{t('proj_tag')}</span>
+            <h2 ref={projectsHeaderTitleRef} className="text-black mb-2 text-center font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight">{t('proj_title')}</h2>
           </div>
           
           <div className="w-full relative z-10">
