@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+import Skeleton from '../components/ui/Skeleton';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +16,12 @@ const DUMMY_IMAGES = [
 ];
 
 const Gallery = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
@@ -31,6 +39,10 @@ const Gallery = () => {
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
+      <Helmet>
+        <title>Gallery | Mirai Club</title>
+      </Helmet>
+
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col relative z-10 gap-4 items-center">
         <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />

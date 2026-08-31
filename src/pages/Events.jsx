@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import Skeleton from '../components/ui/Skeleton';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { DUMMY_EVENTS } from '../data/events';
@@ -6,6 +8,12 @@ import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Events = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   const containerRef = usePageEntrance();
   
   const navigate = useNavigate();
@@ -13,6 +21,10 @@ const Events = () => {
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 font-body">
+      <Helmet>
+        <title>Events | Mirai Club</title>
+      </Helmet>
+
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
         <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />
@@ -23,7 +35,27 @@ const Events = () => {
           </p>
         </div>
         
-        {events.length === 0 ? (
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={`skeleton-${i}`} className="flex flex-col h-full bg-white rounded-3xl border border-outline-variant/30 overflow-hidden shadow-sm">
+                <Skeleton className="w-full h-48 sm:h-56 rounded-none" />
+                <div className="p-6 md:p-8 flex-grow flex flex-col">
+                  <div className="flex gap-2 mb-4">
+                    <Skeleton className="w-16 h-6 rounded-full" />
+                    <Skeleton className="w-16 h-6 rounded-full" />
+                  </div>
+                  <Skeleton className="w-3/4 h-8 mb-3" />
+                  <Skeleton className="w-full h-16 mb-6" />
+                  <div className="mt-auto flex justify-between items-center">
+                    <Skeleton className="w-32 h-4" />
+                    <Skeleton className="w-10 h-10 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : events.length === 0 ? (
           <div className="w-full py-24 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-3xl border border-outline-variant/30">
             <span className="material-symbols-outlined text-4xl text-on-surface-variant/50">event_busy</span>
             <p className="font-body font-semibold text-sm text-on-surface-variant uppercase tracking-widest">No events found.</p>

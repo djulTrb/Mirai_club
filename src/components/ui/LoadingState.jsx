@@ -15,11 +15,19 @@ const PATTERNS = {
 const VERBS = ["crunching", "summoning", "cooking", "preparing", "compiling"];
 
 function useCyclingVerb() {
-  const [index, setIndex] = useState(0);
+  // Start with a random verb
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * VERBS.length));
   
   useEffect(() => {
     const t = setInterval(() => {
-      setIndex((prev) => (prev + 1) % VERBS.length);
+      setIndex((prev) => {
+        let nextIndex;
+        // Make sure we pick a DIFFERENT random verb each time
+        do {
+          nextIndex = Math.floor(Math.random() * VERBS.length);
+        } while (nextIndex === prev && VERBS.length > 1);
+        return nextIndex;
+      });
     }, 4000);
     return () => clearInterval(t);
   }, []);
@@ -32,7 +40,7 @@ const LoadingState = ({ variant = "Dots", progress = 0 }) => {
   const { delays, dur, round } = PATTERNS[variant] || PATTERNS.Drive;
 
   return (
-    <div className="flex w-fit items-center gap-5">
+    <div dir="ltr" className="flex w-fit items-center gap-5">
       {/* Violet Waves Animation */}
       <span aria-hidden className="grid grid-cols-[repeat(3,8px)] gap-[3px]">
         {delays.map((d, i) => (

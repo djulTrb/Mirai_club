@@ -6,16 +6,19 @@ import SmoothScroller from './components/SmoothScroller';
 import heroDesktop from './assets/hero_screens/hero_bg_desktop_16x9.webp';
 import heroMobile from './assets/hero_screens/hero_bg_mobile_9x16.webp';
 
-import Home from './pages/Home';
-import Events from './pages/Events';
-import Gallery from './pages/Gallery';
-import Resources from './pages/Resources';
-import Contact from './pages/Contact';
-import Recruitment from './pages/Recruitment';
-import Admin from './pages/Admin';
-import AdminAuth from './pages/AdminAuth';
-import EventDetails from './pages/EventDetails';
-import NotFound from './pages/NotFound';
+import { Suspense, lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+
+const Home = lazy(() => import('./pages/Home'));
+const Events = lazy(() => import('./pages/Events'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Resources = lazy(() => import('./pages/Resources'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Recruitment = lazy(() => import('./pages/Recruitment'));
+const Admin = lazy(() => import('./pages/Admin'));
+const AdminAuth = lazy(() => import('./pages/AdminAuth'));
+const EventDetails = lazy(() => import('./pages/EventDetails'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 import { ThemeProvider } from './contexts/ThemeContext';
 
 const ScrollToTop = () => {
@@ -102,25 +105,33 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Router>
-          <SmoothScroller />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="events" element={<Events />} />
-            <Route path="events/:id" element={<EventDetails />} />
-            <Route path="gallery" element={<Gallery />} />
-            <Route path="resources" element={<Resources />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="recruitment" element={<Recruitment />} />
-            <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
-            <Route path="admin-auth" element={<AdminAuth />} />
-          </Route>
-          {/* 404 Catch-all Outside Layout */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <HelmetProvider>
+        <Router>
+            <SmoothScroller />
+          <ScrollToTop />
+          <Suspense fallback={
+            <div className="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center">
+              <div className="w-8 h-8 border-4 border-[#c87fff] border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="events" element={<Events />} />
+                <Route path="events/:id" element={<EventDetails />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="resources" element={<Resources />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="recruitment" element={<Recruitment />} />
+                <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
+                <Route path="admin-auth" element={<AdminAuth />} />
+              </Route>
+              {/* 404 Catch-all Outside Layout */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </Router>
+      </HelmetProvider>
     </ThemeProvider>
   );
 }

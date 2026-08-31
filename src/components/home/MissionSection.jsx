@@ -42,187 +42,138 @@ const MissionSection = () => {
   const trackLineRef = useRef(null);
   const dotRef = useRef(null);
 
-  useEffect(() => {
-    let mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1px)", () => {
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      const cards = [
-        card1Ref.current,
-        card2Ref.current,
-        card3Ref.current,
-        card4Ref.current,
-      ];
-      const widgets = [
-        widget1Ref.current,
-        widget2Ref.current,
-        widget3Ref.current,
-        widget4Ref.current,
-      ];
-
-      // Initial setups
-      gsap.set([headerTagRef.current, headerTitleRef.current, ...cards], {
+    useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    
+    let ctx = gsap.context(() => {
+      // 1. Header Timeline
+      gsap.set([headerTagRef.current, headerTitleRef.current], {
         opacity: 0,
         y: prefersReducedMotion ? 0 : 24,
       });
+
       if (!prefersReducedMotion) {
         gsap.set(headerTagRef.current, { y: 10 });
         gsap.set(headerTitleRef.current, { y: 20 });
       }
 
-      const tl = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
+          trigger: headerTagRef.current,
+          start: "top 85%",
           toggleActions: "play none none none",
         },
-      });
+      })
+      .to(headerTagRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+      .to(headerTitleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.1");
 
-      // Header animations
-      tl.to(headerTagRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      }).to(
-        headerTitleRef.current,
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "<0.1",
-      );
 
-      // Card grid animations
-      tl.to(
-        cards,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.12,
-          ease: "power2.out",
+      // 2. Helper to setup individual card timelines
+      const setupCard = (cardRef, widgetRef, setupWidgetFn, animateWidgetFn) => {
+         gsap.set(cardRef.current, { opacity: 0, y: prefersReducedMotion ? 0 : 24 });
+         
+         if (!prefersReducedMotion) {
+            gsap.set(widgetRef.current, { scale: 0, opacity: 0, rotation: 10 });
+         }
+         
+         if (setupWidgetFn) setupWidgetFn();
+
+         const tl = gsap.timeline({
+           scrollTrigger: {
+             trigger: cardRef.current,
+             start: "top 90%", // Trigger precisely when the individual card enters the bottom 10%
+             toggleActions: "play none none none",
+           }
+         });
+
+         tl.to(cardRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+         
+         if (!prefersReducedMotion) {
+             tl.to(widgetRef.current, {
+               scale: 1,
+               opacity: 1,
+               rotation: 0,
+               duration: 0.6,
+               ease: "back.out(1.5)"
+             }, "<0.2");
+             
+             if (animateWidgetFn) {
+                animateWidgetFn(tl);
+             }
+         }
+      };
+
+      // CARD 1: Build
+      setupCard(card1Ref, widget1Ref, 
+        () => {
+           gsap.set(ringRef.current, { strokeDasharray: "283", strokeDashoffset: "283" });
         },
-        "<0.1",
+        (tl) => {
+           tl.to(ringRef.current, { strokeDashoffset: "70", duration: 1.2, ease: "power2.out" }, "-=0.2");
+           tl.to(count1Ref.current, {
+              innerText: 38,
+              duration: 1.2,
+              snap: { innerText: 1 },
+              ease: "power2.out"
+           }, "<");
+        }
       );
 
-      if (!prefersReducedMotion) {
-        // Widget 1: Educate
-        const w1Start = "<" + (0.12 * 0 + 0.2); // ~0.2s after first card starts
-        gsap.set(ringRef.current, { strokeDashoffset: 94.2 });
-        tl.to(
-          ringRef.current,
-          { strokeDashoffset: 58, duration: 0.8, ease: "power2.inOut" },
-          w1Start,
-        );
+      // CARD 2: Hack
+      setupCard(card2Ref, widget2Ref,
+        () => {
+           gsap.set([termLine1.current, termLine2.current, termLine3.current, termLine4.current], { opacity: 0, y: 5 });
+        },
+        (tl) => {
+           tl.to([termLine1.current, termLine2.current, termLine3.current, termLine4.current], {
+             opacity: 1,
+             y: 0,
+             duration: 0.3,
+             stagger: 0.15,
+             ease: "power2.out"
+           }, "-=0.2");
+        }
+      );
 
-        let counter1 = { val: 0 };
-        tl.to(
-          counter1,
-          {
-            val: 3,
-            duration: 0.8,
-            ease: "power2.inOut",
-            onUpdate: function () {
-              if (count1Ref.current)
-                count1Ref.current.innerText = `${Math.round(counter1.val)}/8`;
-            },
-          },
-          w1Start,
-        );
+      // CARD 3: Connect
+      setupCard(card3Ref, widget3Ref,
+        () => {
+           gsap.set([avatar1.current, avatar2.current, avatar3.current], { scale: 0, opacity: 0 });
+        },
+        (tl) => {
+           tl.to([avatar1.current, avatar2.current, avatar3.current], {
+              scale: 1,
+              opacity: 1,
+              duration: 0.4,
+              stagger: 0.1,
+              ease: "back.out(2)"
+           }, "-=0.2");
+           tl.to(count3Ref.current, {
+              innerText: 12,
+              duration: 1,
+              snap: { innerText: 1 },
+              ease: "power2.out"
+           }, "<0.2");
+        }
+      );
 
-        // Widget 2: Inspire
-        const w2Start = "<" + (0.12 * 1 + 0.2); // ~0.2s after second card starts
-        const termLines = [
-          termLine1.current,
-          termLine2.current,
-          termLine3.current,
-          termLine4.current,
-        ];
-        gsap.set(termLines, { opacity: 0, x: -6 });
+      // CARD 4: Experiment
+      setupCard(card4Ref, widget4Ref,
+        () => {
+           gsap.set(trackLineRef.current, { scaleX: 0 });
+           gsap.set(dotRef.current, { x: 0 });
+        },
+        (tl) => {
+           tl.to(trackLineRef.current, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, "-=0.2");
+           tl.to(dotRef.current, { x: 56, duration: 1.2, ease: "power2.inOut" }, "<");
+        }
+      );
 
-        termLines.forEach((line, i) => {
-          if (i === 3) {
-            tl.to(
-              line,
-              { opacity: 1, x: 0, duration: 0.15, ease: "power2.out" },
-              w2Start + `+=${i * 0.15}`,
-            );
-            tl.to(
-              line,
-              {
-                scale: 1.08,
-                duration: 0.1,
-                ease: "power2.out",
-                yoyo: true,
-                repeat: 1,
-              },
-              "<",
-            );
-          } else {
-            tl.to(
-              line,
-              { opacity: 1, x: 0, duration: 0.15, ease: "power2.out" },
-              w2Start + `+=${i * 0.15}`,
-            );
-          }
-        });
+    }, sectionRef);
 
-        // Widget 3: Connect
-        const w3Start = "<" + (0.12 * 2 + 0.2); // ~0.2s after third card starts
-        const avatars = [avatar1.current, avatar2.current, avatar3.current];
-        gsap.set(avatars, { scale: 0, opacity: 0 });
-        tl.to(
-          avatars,
-          {
-            scale: 1,
-            opacity: 1,
-            stagger: 0.08,
-            duration: 0.4,
-            ease: "back.out(1.7)",
-          },
-          w3Start,
-        );
-
-        let counter3 = { val: 0 };
-        tl.to(
-          counter3,
-          {
-            val: 11,
-            duration: 0.5,
-            ease: "power2.out",
-            onUpdate: function () {
-              if (count3Ref.current)
-                count3Ref.current.innerText = `+${Math.round(counter3.val)}`;
-            },
-          },
-          w3Start + "+=0.3",
-        );
-
-        // Widget 4: Experiment
-        const w4Start = "<" + (0.12 * 3 + 0.2); // ~0.2s after fourth card starts
-        gsap.set(trackLineRef.current, {
-          scaleX: 0,
-          transformOrigin: "left center",
-        });
-        gsap.set(dotRef.current, { x: 0 }); // starts at Prototype
-
-        tl.to(
-          trackLineRef.current,
-          { scaleX: 1, duration: 0.5, ease: "power2.out" },
-          w4Start,
-        );
-        // The dot moves to the second node (Test), distance is roughly 50% of the total width
-        // The container is 200px, 3 nodes spaced evenly. Let's say ~66px. We'll use 66px.
-        tl.to(
-          dotRef.current,
-          { x: 56, duration: 0.6, ease: "power2.inOut" },
-          w4Start + "+=0.5",
-        );
-      }
-    });
-
-    return () => mm.revert();
+    return () => ctx.revert();
   }, []);
 
   return (

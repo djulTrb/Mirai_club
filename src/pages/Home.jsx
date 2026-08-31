@@ -1,5 +1,8 @@
 import ctaImg1 from '../assets/cta_img_1.webp';
 import ctaImg2 from '../assets/cta_img_2.webp';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -12,6 +15,9 @@ const Home = () => {
   const { t, i18n } = useTranslation();
 
   const scrollRef = useRef(null);
+  const projectsSectionRef = useRef(null);
+  const projectsHeaderTagRef = useRef(null);
+  const projectsHeaderTitleRef = useRef(null);
   const [projects] = useState(() => {
     try {
       const saved = localStorage.getItem('mirai_projects');
@@ -81,8 +87,34 @@ const Home = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ctx = gsap.context(() => {
+      gsap.set([projectsHeaderTagRef.current, projectsHeaderTitleRef.current], { opacity: 0, y: prefersReducedMotion ? 0 : 20 });
+      if (!prefersReducedMotion) {
+        gsap.set(projectsHeaderTagRef.current, { y: 10 });
+      }
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: projectsSectionRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
+      
+      tl.to(projectsHeaderTagRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+        .to(projectsHeaderTitleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.1");
+    }, projectsSectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <main className="w-full min-h-screen bg-surface flex flex-col pt-20">
+      <Helmet>
+        <title>Home | Mirai Club</title>
+      </Helmet>
+
       
       {/* Hero Section */}
       <HeroSection />
@@ -98,7 +130,7 @@ const Home = () => {
 
 
       {/* Current projects */}
-      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative">
+      <section ref={projectsSectionRef} className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center relative">
         
         {/* Decorative Noisy Blob */}
         <div className="absolute top-[5%] md:top-[10%] left-[50%] -translate-x-1/2 w-[200px] h-[200px] md:w-[300px] md:h-[300px] pointer-events-none z-0">
@@ -147,7 +179,7 @@ const Home = () => {
                   {/* Left Button */}
                   <button 
                       onClick={() => scroll('left')}
-                      className={`absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                      className={`absolute top-1/2 -left-4 md:-left-6 lg:-left-12 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
                         i18n.language?.startsWith('ar')
                           ? (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')
                           : (activeProjectIdx === 0 ? 'hidden' : '')
@@ -160,7 +192,7 @@ const Home = () => {
                   {/* Right Button */}
                     <button 
                       onClick={() => scroll('right')}
-                      className={`absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
+                      className={`absolute top-1/2 -right-4 md:-right-6 lg:-right-12 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 bg-transparent flex items-center justify-center text-[#c87fff] dark:text-[#e0aaff] opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:opacity-70 z-20 ${
                         i18n.language?.startsWith('ar')
                           ? (activeProjectIdx === 0 ? 'hidden' : '')
                           : (activeProjectIdx >= projects.length - 1 ? 'hidden' : '')

@@ -1,14 +1,26 @@
-import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import Skeleton from '../components/ui/Skeleton';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Resources = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 bg-background font-body">
+      <Helmet>
+        <title>Resources | Mirai Club</title>
+      </Helmet>
+
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
         <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />
