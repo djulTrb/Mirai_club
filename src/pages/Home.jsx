@@ -3,6 +3,8 @@ import ctaImg2 from '../assets/cta_img_2.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+import { Helmet } from 'react-helmet-async';
+import Skeleton from '../components/ui/Skeleton';
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
