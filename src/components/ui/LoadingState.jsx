@@ -66,9 +66,18 @@ const LoadingState = ({ variant = "Dots", progress = 0 }) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute font-accent font-bold text-xl sm:text-2xl text-[#9D4EDD] tracking-wide"
+            className="absolute font-accent font-bold text-xl sm:text-2xl text-[#9D4EDD] tracking-wide flex"
           >
-            {verb}
+            {verb.split('').map((char, i) => (
+              <span
+                key={i}
+                style={{
+                  animation: `pixel-on ${dur}ms ease-in-out ${i * 70}ms infinite`
+                }}
+              >
+                {char}
+              </span>
+            ))}
           </motion.span>
         </AnimatePresence>
       </div>

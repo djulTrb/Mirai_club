@@ -1,17 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import Skeleton from '../components/ui/Skeleton';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Resources = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const t = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(t);
-  }, []);
-
+  
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
 

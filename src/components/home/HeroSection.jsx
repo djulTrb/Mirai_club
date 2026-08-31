@@ -88,7 +88,7 @@ const HeroSection = () => {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: true
+          scrub: 1.5
         }
       });
     }
@@ -108,7 +108,7 @@ const HeroSection = () => {
       <section ref={sectionRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-16 bg-[#E5DFF3] dark:bg-[#240046]">
         
         {/* Background Illustrations */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10 will-change-transform">
           <picture>
             <source media="(min-aspect-ratio: 3/2)" srcSet={heroDesktop} />
             <source media="(min-aspect-ratio: 6/5)" srcSet={heroLaptop} />
@@ -126,15 +126,15 @@ const HeroSection = () => {
 
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center justify-center text-center w-full px-6 pb-24 lg:pb-0 h-full">
-          <h1 ref={headingRef} className="font-display font-black text-4xl min-[390px]:text-[4rem] sm:text-[4.75rem] md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-[#ffffff] leading-[0.85] drop-shadow-sm mb-4">
+          <h1 ref={headingRef} className="opacity-0 font-display font-black text-4xl min-[390px]:text-[4rem] sm:text-[4.75rem] md:text-6xl lg:text-[7rem] tracking-[-0.04em] text-black dark:text-[#ffffff] leading-[0.85] drop-shadow-sm mb-4">
             Mirai club
           </h1>
           
-          <p ref={subheadingRef} className="font-body text-[11px] leading-[18px] min-[390px]:text-[14px] min-[390px]:leading-[24px] sm:text-[16px] sm:leading-[26px] md:text-[15px] md:leading-[24px] text-gray-600 dark:text-gray-300 mb-6 max-w-md font-medium">
+          <p ref={subheadingRef} className="opacity-0 font-body text-[11px] leading-[18px] min-[390px]:text-[14px] min-[390px]:leading-[24px] sm:text-[16px] sm:leading-[26px] md:text-[15px] md:leading-[24px] text-gray-600 dark:text-gray-300 mb-6 max-w-md font-medium">
             <Trans i18nKey="home_hero_desc" components={{ br: <br /> }} />
           </p>
           
-          <div ref={ctaRef} className="flex flex-row items-center justify-center gap-2 min-[390px]:gap-3 w-auto">
+          <div ref={ctaRef} className="opacity-0 flex flex-row items-center justify-center gap-2 min-[390px]:gap-3 w-auto">
             <Link to="/recruitment" className={`bg-[#240046] text-[#c87fff] border-2 border-transparent px-3 py-2 min-[375px]:px-4 min-[390px]:px-6 min-[390px]:py-2.5 sm:px-8 sm:py-3.5 md:px-7 md:py-2.5 rounded-full font-['Sora'] font-bold text-[9px] min-[375px]:text-[10px] min-[390px]:text-[11.5px] sm:text-[13px] md:text-xs whitespace-nowrap hover:opacity-90 dark:bg-[#c87fff] dark:text-[#240046] dark:border-transparent transition-opacity shadow-xl ${i18n.language?.startsWith('fr') ? 'tracking-normal' : 'tracking-wider'}`}>
               <span dangerouslySetInnerHTML={{ __html: t('home_join') }} />
             </Link>

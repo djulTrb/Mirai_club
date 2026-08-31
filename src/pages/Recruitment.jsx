@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import Skeleton from '../components/ui/Skeleton';
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -7,12 +6,7 @@ import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Recruitment = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const t = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(t);
-  }, []);
-
+  
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -57,16 +51,7 @@ const Recruitment = () => {
         
         {isOpen ? (
           <div className="w-full max-w-2xl bg-white border border-outline-variant/30 rounded-2xl p-6 sm:p-8 md:p-12 flex flex-col items-center shadow-sm">
-            {isLoading ? (
-              <div className="w-full flex flex-col gap-6">
-                <Skeleton className="w-full h-20" />
-                <Skeleton className="w-full h-20" />
-                <Skeleton className="w-full h-20" />
-                <Skeleton className="w-full h-20" />
-                <Skeleton className="w-full h-32" />
-                <Skeleton className="w-full h-14" />
-              </div>
-            ) : ( <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-6">
               {status === 'success' && (
                 <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm font-medium flex items-center gap-2">
                   <span className="material-symbols-outlined">check_circle</span>
@@ -125,7 +110,7 @@ const Recruitment = () => {
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 ) : t('form_submit')}
               </button>
-            </form> )}
+            </form>
           </div>
         ) : (
           <div className="w-full max-w-2xl bg-white border border-outline-variant/30 rounded-2xl p-8 md:p-16 flex flex-col items-center shadow-sm">
