@@ -82,7 +82,12 @@ const Admin = () => {
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
+    const handleLogout = () => {
+    localStorage.removeItem('adminAuth');
+    window.location.href = '/';
+  };
+
+  return () => {
       document.body.style.overflow = '';
     };
   }, [selectedEvent, selectedGallery]);
@@ -116,6 +121,11 @@ const Admin = () => {
         images: selectedGallery.images.filter(img => img.id !== imageId)
       });
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminAuth');
+    window.location.href = '/';
   };
 
   return (

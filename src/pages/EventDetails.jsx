@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+
 import { DUMMY_EVENTS } from '../data/events';
 
 const EventDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  
   
   const event = DUMMY_EVENTS.find(e => e.id === parseInt(id));
   const [formData, setFormData] = useState({
@@ -50,17 +50,17 @@ const EventDetails = () => {
           className="flex items-center gap-2 text-on-surface-variant hover:text-[#9D4EDD] mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
         >
           <span className="material-symbols-outlined text-lg rtl:rotate-180">arrow_back</span>
-          {t('go_back', 'Go Back')}
+          Go Back
         </button>
 
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Left Column: Event Details */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             <div className="w-full aspect-video rounded-3xl overflow-hidden relative shadow-sm border border-outline-variant/30">
-              <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
+              <img src={event.image} alt={event.title} loading="lazy" className="w-full h-full object-cover" />
               {isEnded && (
                 <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-[#9D4EDD] text-white px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest text-xs shadow-md">
-                  {t('event_ended')}
+                  Ended
                 </div>
               )}
             </div>
@@ -75,7 +75,7 @@ const EventDetails = () => {
               </div>
 
               <div className="prose prose-sm sm:prose-base max-w-none font-body text-on-surface-variant leading-relaxed">
-                <h3 className="font-semibold text-black text-xl mb-4 font-display">{t('event_details', 'About this event')}</h3>
+                <h3 className="font-semibold text-black text-xl mb-4 font-display">About this event</h3>
                 <p>{event.details}</p>
               </div>
             </div>
@@ -85,16 +85,16 @@ const EventDetails = () => {
           <div className="w-full lg:w-1/2">
             <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl shadow-sm p-8 sm:p-10 sticky top-32">
               <h2 className="text-2xl font-display font-bold text-black mb-2 tracking-tight">
-                {t('event_register_title', 'Register for Event')}
+                Register for Event
               </h2>
               <p className="text-on-surface-variant text-sm mb-8">
-                {t('event_register_desc', 'Fill out the form below to secure your spot.')}
+                Fill out the form below to secure your spot.
               </p>
 
               {isClosed ? (
                 <div className="bg-error-container/20 border border-error/30 text-error p-6 rounded-2xl text-center">
                   <span className="material-symbols-outlined text-3xl mb-2">event_busy</span>
-                  <p className="font-bold">{t('event_closed', 'Registration is closed')}</p>
+                  <p className="font-bold">Registration is closed</p>
                   <p className="text-sm mt-1">The deadline for this event has passed.</p>
                 </div>
               ) : submitted ? (
@@ -148,7 +148,7 @@ const EventDetails = () => {
                     type="submit"
                     className="mt-4 w-full bg-[#9D4EDD] text-white rounded-xl py-4 font-bold uppercase tracking-widest text-xs hover:opacity-90 transition-opacity shadow-sm flex items-center justify-center gap-2"
                   >
-                    {t('event_submit', 'Submit Registration')}
+                    Submit Registration
                     <span className="material-symbols-outlined text-sm rtl:rotate-180">arrow_forward</span>
                   </button>
                 </form>

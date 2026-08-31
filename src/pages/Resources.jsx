@@ -1,14 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
+import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Resources = () => {
+  const containerRef = usePageEntrance();
   const { t } = useTranslation();
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
-        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative">
+        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />
           <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-3 sm:mb-4">{t('resources_tag')}</span>
           <h1 className="text-black mb-4 sm:mb-6 font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">{t('resources_title')}</h1>
@@ -38,7 +40,7 @@ const Resources = () => {
               <h3 className="font-display font-bold text-xl text-black tracking-tight mb-2">Introduction to Machine Learning</h3>
               <p className="font-body text-sm text-on-surface-variant leading-relaxed">Comprehensive guide to ML fundamentals, math intuition, and core algorithms.</p>
             </div>
-            <a href="#" className="mt-auto flex items-center gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
+            <a href="#" className="mt-auto flex items-center justify-center sm:justify-start gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
               <span className="material-symbols-outlined text-sm">download</span> Download
             </a>
           </div>
@@ -54,7 +56,7 @@ const Resources = () => {
               <h3 className="font-display font-bold text-xl text-black tracking-tight mb-2">Cheat sheet scikit-learn</h3>
               <p className="font-body text-sm text-on-surface-variant leading-relaxed">Quick reference guide and code snippets for common scikit-learn functions.</p>
             </div>
-            <a href="#" className="mt-auto flex items-center gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
+            <a href="#" className="mt-auto flex items-center justify-center sm:justify-start gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
               <span className="material-symbols-outlined text-sm">download</span> Download
             </a>
           </div>
@@ -70,7 +72,7 @@ const Resources = () => {
               <h3 className="font-display font-bold text-xl text-black tracking-tight mb-2">Fine-tuning a BERT model</h3>
               <p className="font-body text-sm text-on-surface-variant leading-relaxed">Step-by-step practical guide to NLP transformers and fine-tuning techniques.</p>
             </div>
-            <a href="#" className="mt-auto flex items-center gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
+            <a href="#" className="mt-auto flex items-center justify-center sm:justify-start gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
               <span className="material-symbols-outlined text-sm">visibility</span> View
             </a>
           </div>
@@ -86,7 +88,7 @@ const Resources = () => {
               <h3 className="font-display font-bold text-xl text-black tracking-tight mb-2">Slides - Deep Learning Conference</h3>
               <p className="font-body text-sm text-on-surface-variant leading-relaxed">Full slide deck used during the annual deep learning club meetup.</p>
             </div>
-            <a href="#" className="mt-auto flex items-center gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
+            <a href="#" className="mt-auto flex items-center justify-center sm:justify-start gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
               <span className="material-symbols-outlined text-sm">download</span> Download
             </a>
           </div>
@@ -102,7 +104,7 @@ const Resources = () => {
               <h3 className="font-display font-bold text-xl text-black tracking-tight mb-2">Official PyTorch Documentation</h3>
               <p className="font-body text-sm text-on-surface-variant leading-relaxed">The primary documentation and API reference for PyTorch neural network developers.</p>
             </div>
-            <a href="#" className="mt-auto flex items-center gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
+            <a href="#" className="mt-auto flex items-center justify-center sm:justify-start gap-2 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider hover:opacity-70">
               <span className="material-symbols-outlined text-sm">open_in_new</span> Visit
             </a>
           </div>

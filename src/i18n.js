@@ -51,7 +51,7 @@ const resources = {
       "home_join_circle": "Join Mirai Club *",
 
       // Recruitment Form
-      "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI Club? *", "form_submit": "Submit Application",
+      "form_major": "Major / Field of Study *", "form_year": "Academic Year *", "form_why": "Why do you want to join MIRAI Club? *", "form_warning_title": "Take this seriously!", "form_warning_desc": "Once your application is submitted, you will not have another chance to apply again. Please ensure all information is accurate and your motivation is clear before proceeding.", "form_submit": "Submit Application",
       "app_closed_tag": "Applications Closed", "app_closed_title": "Applications are currently closed", "app_closed_desc": "MIRAI Club is not currently accepting new members. Follow our announcement channels to be notified when the next recruitment cohort opens.",
       
       // Chatbot
@@ -109,7 +109,7 @@ const resources = {
       "home_cta_title": "Voir <nowrap>l'IA <pill1/></nowrap> <brDesktop/> Sous un autre <brDesktop/> <nowrap>angle <pill2/></nowrap>", "home_cta_desc": "",
       "home_join_circle": "Rejoindre MIRAI *"     ,
 
-      "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_submit": "Soumettre la Candidature",
+      "form_major": "Spécialité / Domaine d'étude *", "form_year": "Année Universitaire *", "form_why": "Pourquoi voulez-vous rejoindre le CLUB MIRAI ? *", "form_warning_title": "Prenez ceci au sérieux !", "form_warning_desc": "Une fois votre candidature soumise, vous n'aurez pas d'autre chance de postuler à nouveau. Veuillez vous assurer que toutes les informations sont exactes et que votre motivation est claire avant de continuer.", "form_submit": "Soumettre la Candidature",
       "app_closed_tag": "Candidatures Fermées", "app_closed_title": "Les candidatures sont actuellement fermées", "app_closed_desc": "Le Club MIRAI n'accepte pas de nouveaux membres pour le moment. Suivez-nous pour être notifié de la prochaine session.",
       
       "ai_title": "Assistant MIRAI", "ai_hello": "Bonjour ! Je suis l'assistant IA du Club MIRAI. Comment puis-je vous aider aujourd'hui ?", "ai_placeholder": "Posez une question...",
@@ -141,7 +141,7 @@ const resources = {
       "stats_members": "أعضاء نشطون", "stats_events": "فعاليات", "stats_projects": "مشاريع", "stats_resources": "موارد مشتركة",
       "team_tag": "فريقنا", "team_title": "تعرف على الأعضاء",
       "team_pres": "الرئيس", "team_vp": "نائب الرئيس", "team_sec": "الأمين العام",
-      "team_skills": "المهارات", "team_collapse": "طي الفريق", "team_meet_all": "تعرف على كل الفريق", "team_mgt": "إدارة", "team_str": "استراتيجية", "team_ops": "عمليات", "team_log": "لوجستيات", "team_out": "توعية", "team_sup": "دعم",
+      "team_skills": "المهارات", "team_collapse": "طي قائمة الفريق", "team_meet_all": "تعرف على كل الفريق", "team_mgt": "إدارة", "team_str": "استراتيجية", "team_ops": "عمليات", "team_log": "لوجستيات", "team_out": "توعية", "team_sup": "دعم",
       "proj_tag": "مبادرات", "proj_title": "المشاريع الحالية", "proj_explore": "استكشف المشروع",
       
       "events_tag": "جدول الأعمال", "events_title": "جميع فعالياتنا", "events_desc": "ورش عمل، هاكاثون، مؤتمرات - اكتشف جميع لقاءات نادي MIRAI القادمة والسابقة.",
@@ -164,7 +164,7 @@ const resources = {
       "home_cta_title": "رؤية جديدة <pill2/> <brDesktop/> للذكاء <nowrap>الاصطناعي <pill1/></nowrap>", "home_cta_desc": "",
       "home_join_circle": "Join Mirai Club *",
 
-      "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_submit": "تقديم الطلب",
+      "form_major": "التخصص / مجال الدراسة *", "form_year": "السنة الدراسية *", "form_why": "لماذا تريد الانضمام إلى نادي MIRAI؟ *", "form_warning_title": "خذ هذا الأمر بجدية!", "form_warning_desc": "بمجرد تقديم طلبك، لن يكون لديك فرصة أخرى للتقديم مرة أخرى. يرجى التأكد من دقة جميع المعلومات ووضوح دافعك قبل المتابعة.", "form_submit": "تقديم الطلب",
       "app_closed_tag": "التسجيل مغلق", "app_closed_title": "التطبيقات مغلقة حاليا", "app_closed_desc": "نادي MIRAI لا يقبل أعضاء جدد حاليا. تابع قنواتنا ليتم إعلامك عند فتح الدورة القادمة.",
       
       "ai_title": "مساعد MIRAI", "ai_hello": "مرحبًا! أنا المساعد الذكي لنادي MIRAI. كيف يمكنني مساعدتك اليوم؟", "ai_placeholder": "اطرح سؤالاً...",

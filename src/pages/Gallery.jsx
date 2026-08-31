@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import PageTitleBlob from '../components/ui/PageTitleBlob';
+import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const DUMMY_IMAGES = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCLlecgydWoEYN3h3-kduNhiESu3DpgwkvOKDaPnEpwLo555wsd1PqgW8egzU0lcTBmPM6JZq-NpYPcrLWDrfaR67_v4BLcsoWSCDLSgYcAJtpa3sa5CujNk4Il-9nxKSJ9HayWSn0HBkdagWRfynzjFKr5OkBNgD_kp5XNAGRrk0r2VpVT9nQcYNHlWzUWn1jhfJ-GfALzzfOlKTh-t2bXckB6Wlght5hh68NlxMU_9t13QeyPv8VYyChjqq3E-72EiLg",
@@ -13,6 +14,7 @@ const DUMMY_IMAGES = [
 ];
 
 const Gallery = () => {
+  const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -30,7 +32,7 @@ const Gallery = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 flex flex-col relative z-10 gap-4 items-center">
-        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative">
+        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />
           <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-3 sm:mb-4">{t('gallery_tag')}</span>
           <h1 className="text-black mb-4 sm:mb-6 font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">{t('gallery_title')}</h1>
@@ -54,7 +56,7 @@ const Gallery = () => {
               className="group relative w-full aspect-[4/3] bg-surface-variant rounded-3xl border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-[#9D4EDD] hover:shadow-md transition-all duration-300"
               onClick={() => setSelectedImage(imgSrc)}
             >
-              <img src={imgSrc} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={imgSrc} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
           ))}
         </div>

@@ -1,34 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
+import { usePageEntrance } from '../hooks/usePageEntrance';
 
 const Contact = () => {
+  const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const location = useLocation();
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('idle');
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
+    const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     if (location.state?.prefillEmail) {
-      setEmail(location.state.prefillEmail);
+      setValue('email', location.state.prefillEmail);
     }
   }, [location]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name || !email || !message) return;
+  const onSubmit = (data) => {
     setStatus('loading');
-    
-    // Simulate network request
     setTimeout(() => {
       if (Math.random() > 0.1) {
         setStatus('success');
-        setEmail('');
-        setName('');
-        setMessage('');
+        reset();
         setTimeout(() => setStatus('idle'), 4000);
       } else {
         setStatus('error');
@@ -40,7 +35,7 @@ const Contact = () => {
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-24 pt-24 md:pt-32 pb-16 relative z-10">
-        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative">
+        <div className="w-full flex flex-col items-center mb-12 sm:mb-16 px-2 text-center relative" ref={containerRef}>
           <PageTitleBlob />
           <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-3 sm:mb-4">{t('contact_tag')}</span>
           <h1 className="text-black mb-4 sm:mb-6 font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">{t('contact_title')}</h1>
@@ -91,7 +86,7 @@ const Contact = () => {
             {/* Right Column: Contact Form */}
             <div className="bg-white border border-outline-variant/30 p-6 md:p-12 rounded-2xl shadow-sm">
               <h2 className="font-display font-bold text-2xl text-black tracking-tight mb-8">{t('contact_msg_title')}</h2>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
                 {status === 'success' && (
                   <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm font-medium flex items-center gap-2">
                     <span className="material-symbols-outlined">check_circle</span>
@@ -106,15 +101,15 @@ const Contact = () => {
                 )}
                 <div className="flex flex-col gap-2">
                   <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_name').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
-                  <input required value={name} onChange={e => setName(e.target.value)} type="text" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
+                  <input {...register("name", { required: true })} type="text" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_email').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
-                  <input required value={email} onChange={e => setEmail(e.target.value)} type="email" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
+                  <input {...register("email", { required: true })} type="email" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all disabled:opacity-50" disabled={status === 'loading'} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="font-body font-semibold text-xs text-on-surface-variant uppercase tracking-wider">{t('form_msg').replace('*', '')}<span className="text-red-500 text-base ml-1">*</span></label>
-                  <textarea required value={message} onChange={e => setMessage(e.target.value)} rows="5" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none transition-all disabled:opacity-50" disabled={status === 'loading'}></textarea>
+                  <textarea {...register("message", { required: true })} rows="5" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none transition-all disabled:opacity-50" disabled={status === 'loading'}></textarea>
                 </div>
                 <button type="submit" disabled={status === 'loading'} className="bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider py-4 rounded-xl hover:opacity-90 transition-opacity mt-4 shadow-sm w-full flex justify-center items-center gap-2 disabled:opacity-70">
                   {status === 'loading' ? (
