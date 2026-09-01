@@ -92,11 +92,12 @@ const MissionSection = () => {
          
          if (!prefersReducedMotion) {
              tl.to(widgetRef.current, {
-               scale: 1,
+               scale: window.innerWidth >= 768 ? 1.1 : 1,
                opacity: 1,
                rotation: 0,
                duration: 0.6,
-               ease: "back.out(1.5)"
+               ease: "back.out(1.5)",
+               clearProps: "transform"
              }, "<0.2");
              
              if (animateWidgetFn) {
@@ -354,12 +355,7 @@ const MissionSection = () => {
                     S
                   </div>
                 </div>
-                <span
-                  ref={count3Ref}
-                  className="ms-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff]"
-                >
-                  +0
-                </span>
+                <span className="ms-2.5 font-display font-bold text-[14px] text-[#3c096c] dark:text-[#c87fff] flex">+<span ref={count3Ref}>0</span></span>
               </div>
             </div>
           </div>
