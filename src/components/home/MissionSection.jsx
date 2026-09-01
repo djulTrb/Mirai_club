@@ -252,7 +252,7 @@ const MissionSection = () => {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="font-display font-bold text-[14px] text-[#3c096c] dark:text-[#F8F6FC] flex"><span ref={count1Ref}>0</span>/8</span>
+                <span dir="ltr" className="font-display font-bold text-[14px] text-[#3c096c] dark:text-[#F8F6FC] flex"><span ref={count1Ref}>0</span>/8</span>
               </div>
               <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-[#6A5A82] text-center leading-tight">
                 DEEP LEARNING
