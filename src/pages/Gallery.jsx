@@ -68,28 +68,32 @@ const Gallery = () => {
           </p>
         </div>
         
-        <div className="w-full flex overflow-x-auto gap-3 mb-8 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap snap-x px-2 md:px-0">
-          <button 
-            onClick={() => setSelectedAlbumId(null)}
-            className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === null ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
-          >
-            All
-          </button>
-          {albums.map(album => (
+        {albums.length > 0 && (
+          <div className="w-full flex overflow-x-auto gap-3 mb-8 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap snap-x px-2 md:px-0">
             <button 
-              key={album.id}
-              onClick={() => setSelectedAlbumId(album.id)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === album.id ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
+              onClick={() => setSelectedAlbumId(null)}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === null ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
             >
-              {album.title}
+              All
             </button>
-          ))}
-        </div>
+            {albums.map(album => (
+              <button 
+                key={album.id}
+                onClick={() => setSelectedAlbumId(album.id)}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === album.id ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
+              >
+                {album.title}
+              </button>
+            ))}
+          </div>
+        )}
         
         {displayImages.length === 0 ? (
           <div className="w-full py-24 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-3xl border border-outline-variant/30">
             <span className="material-symbols-outlined text-4xl text-on-surface-variant/50">photo_library</span>
-            <p className="font-body font-semibold text-sm text-on-surface-variant uppercase tracking-widest text-center px-4">No images available in this album yet.</p>
+            <p className="font-display font-semibold text-sm text-on-surface-variant capitalize tracking-widest text-center px-4">
+              {t('empty_gallery')}
+            </p>
           </div>
         ) : (
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">

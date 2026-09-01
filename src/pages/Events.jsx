@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useNavigate } from 'react-router-dom';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
@@ -7,6 +8,7 @@ import { usePageEntrance } from '../hooks/usePageEntrance';
 import api from '../lib/api';
 
 const Events = () => {
+  const { t } = useTranslation();
   
   const containerRef = usePageEntrance();
   
@@ -44,7 +46,9 @@ const Events = () => {
         {events.length === 0 ? (
           <div className="w-full py-24 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-3xl border border-outline-variant/30">
             <span className="material-symbols-outlined text-4xl text-on-surface-variant/50">event_busy</span>
-            <p className="font-body font-semibold text-sm text-on-surface-variant uppercase tracking-widest text-center px-4">No events scheduled yet. Check back soon!</p>
+            <p className="font-display font-semibold text-sm text-on-surface-variant capitalize tracking-widest text-center px-4">
+              {t('empty_events')}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">

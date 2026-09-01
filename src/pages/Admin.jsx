@@ -227,6 +227,11 @@ const Admin = () => {
             <span className="material-symbols-outlined text-sm">logout</span> Logout
           </button>
         </div>
+        <div className="absolute top-8 right-8 z-20">
+          <button onClick={handleLogout} className="px-6 py-2 bg-red-50 text-red-600 font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:bg-red-100 transition-colors flex items-center gap-1.5 shadow-sm">
+            <span className="material-symbols-outlined text-sm">logout</span> Logout
+          </button>
+        </div>
         <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-2">{t('admin_portal', 'Backoffice Portal')}</span>
         <h1 className="text-black mb-4 text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight">{t('admin_title', 'Admin Page')}</h1>
         <p className="font-body text-base text-on-surface-variant mb-8 text-center max-w-xl">{t('admin_desc', 'Manage executive members, calendar events, media galleries, and public learning resources.')}</p>

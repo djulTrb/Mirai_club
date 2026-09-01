@@ -65,22 +65,26 @@ const Resources = () => {
           </p>
         </div>
         
-        <div className="w-full flex overflow-x-auto gap-2 mb-12 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap px-2 md:px-0 snap-x">
-          {categories.map((cat, idx) => (
-            <button 
-              key={idx}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors snap-start whitespace-nowrap ${selectedCategory === cat ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant text-on-surface hover:bg-[#9D4EDD] hover:text-white'}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        {resources.length > 0 && (
+          <div className="w-full flex overflow-x-auto gap-2 mb-12 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap px-2 md:px-0 snap-x">
+            {categories.map((cat, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors snap-start whitespace-nowrap ${selectedCategory === cat ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant text-on-surface hover:bg-[#9D4EDD] hover:text-white'}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
         
         {displayedResources.length === 0 ? (
           <div className="w-full py-24 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-3xl border border-outline-variant/30">
             <span className="material-symbols-outlined text-4xl text-on-surface-variant/50">folder_open</span>
-            <p className="font-body font-semibold text-sm text-on-surface-variant uppercase tracking-widest text-center px-4">No resources available yet. Check back soon!</p>
+            <p className="font-display font-semibold text-sm text-on-surface-variant capitalize tracking-widest text-center px-4">
+              {t('empty_resources')}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
