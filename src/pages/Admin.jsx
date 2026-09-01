@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import api from '../lib/api';
 
 const DUMMY_EVENTS = [
   { id: 1, title: 'AI Workshop', date: '2024-03-15', snippet: 'Intro to GenAI', details: 'Full details here', location: 'Lab 1', deadline: '2024-03-10' },
