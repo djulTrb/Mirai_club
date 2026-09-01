@@ -162,9 +162,11 @@ const Home = () => {
     const g2 = h2.querySelectorAll('.cta-group-2');
 
     const secondHalfText = [...Array.from(g1), ...Array.from(g2)];
+    const allText = [...Array.from(g0), ...secondHalfText];
+    const allImgs = [...Array.from(img0), ...Array.from(img1)];
 
-    gsap.set([g0, g1, g2], { opacity: 0, y: 20 });
-    gsap.set([img0, img1], { scale: 0, opacity: 0 });
+    if (allText.length) gsap.set(allText, { opacity: 0, y: 20 });
+    if (allImgs.length) gsap.set(allImgs, { scale: 0, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -174,13 +176,13 @@ const Home = () => {
     });
 
     if (g0.length) {
-      tl.to(g0, {
+      tl.to(Array.from(g0), {
         opacity: 1, y: 0, duration: 0.6, stagger: 0.04, ease: "power2.out"
       });
     }
 
     if (img0.length) {
-      tl.to(img0, {
+      tl.to(Array.from(img0), {
         scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
       }, "-=0.2");
     }
@@ -188,11 +190,11 @@ const Home = () => {
     if (secondHalfText.length) {
       tl.to(secondHalfText, {
         opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: "power2.out"
-      }, "+=0.3");
+      }, "-=0.2"); // overlap slightly so it flows continuously without delay
     }
 
     if (img1.length) {
-      tl.to(img1, {
+      tl.to(Array.from(img1), {
         scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
       }, "-=0.2");
     }

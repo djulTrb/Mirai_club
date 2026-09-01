@@ -12,7 +12,17 @@ const PATTERNS = {
   Dots: { delays: chevron, dur: 650, round: true }
 };
 
-const VERBS = ["crunching", "summoning", "cooking", "preparing", "compiling"];
+const VERBS = [
+  "Cooking...", "Scheming...", "Plotting...", "Crunching...", "Computing...",
+  "Calculating...", "Crafting...", "Forging...", "Synthesizing...", "Compiling...",
+  "Rendering...", "Processing...", "Generating...", "Analyzing...", "Decoding...",
+  "Inferring...", "Reasoning...", "Thinking...", "Pondering...", "Brainstorming...",
+  "Exploring...", "Searching...", "Investigating...", "Scanning...", "Querying...",
+  "Assembling...", "Constructing...", "Building...", "Mixing...", "Stirring...",
+  "Whipping...", "Baking...", "Roasting...", "Grilling...", "Simmering...",
+  "Marinating...", "Brewing...", "Experimenting...", "Juggling...", "Tinkering...",
+  "Vibing..."
+];
 
 function useCyclingVerb() {
   // Start with a random verb
