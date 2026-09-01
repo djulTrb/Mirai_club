@@ -85,11 +85,14 @@ const Admin = () => {
   useEffect(() => {
     if (selectedEvent || selectedGallery || selectedMember) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [selectedEvent, selectedGallery, selectedMember]);
 
@@ -547,14 +550,23 @@ const Admin = () => {
                   <input type="text" required value={selectedMember.poste} onChange={e => setSelectedMember({...selectedMember, poste: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Developer" />
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Description (Optional)</label>
-                  <textarea value={selectedMember.description} onChange={e => setSelectedMember({...selectedMember, description: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors resize-none h-24" placeholder="Short bio..." />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skills (Optional)</label>
-                  <input type="text" value={selectedMember.skills} onChange={e => setSelectedMember({...selectedMember, skills: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. React, Python, UI/UX" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 1 (Optional)</label>
+                    <input type="text" value={(selectedMember.skills || '').split(',')[0]?.trim() || ''} onChange={e => {
+                      const val = e.target.value.trim();
+                      const s2 = (selectedMember.skills || '').split(',')[1]?.trim() || '';
+                      setSelectedMember({...selectedMember, skills: [val, s2].filter(Boolean).join(', ')});
+                    }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. React" />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 2 (Optional)</label>
+                    <input type="text" value={(selectedMember.skills || '').split(',')[1]?.trim() || ''} onChange={e => {
+                      const val = e.target.value.trim();
+                      const s1 = (selectedMember.skills || '').split(',')[0]?.trim() || '';
+                      setSelectedMember({...selectedMember, skills: [s1, val].filter(Boolean).join(', ')});
+                    }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Figma" />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
