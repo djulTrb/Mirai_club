@@ -29,7 +29,7 @@ const Chatbot = () => {
       {isOpen && (
         <div className="fixed bottom-24 left-6 z-50 w-[calc(100vw-3rem)] sm:w-[380px] h-[500px] max-h-[calc(100vh-8rem)] bg-white border border-outline-variant/30 rounded-2xl shadow-xl flex flex-col overflow-hidden font-body animate-in slide-in-from-bottom-5">
           {/* Header */}
-          <div className="p-4 bg-[#c87fff] flex justify-between items-center rounded-t-2xl">
+          <div className="px-4 py-2 bg-[#c87fff] flex justify-between items-center rounded-t-2xl">
             <div className="flex items-center gap-3">
               <span className="material-symbols-outlined text-[#240046]">auto_awesome</span>
               <div>
