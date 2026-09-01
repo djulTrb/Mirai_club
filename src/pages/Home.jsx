@@ -141,7 +141,7 @@ const Home = () => {
                 // It's a word
                 const span = document.createElement('span');
                 span.textContent = token;
-                span.className = `cta-char inline-block opacity-0 translate-y-4`;
+                span.className = `cta-char inline-block`;
                 frag.appendChild(span);
              }
           }
@@ -193,8 +193,12 @@ const Home = () => {
        groupedSequence.push(currentCharGroup);
     }
 
-    // Since we baked opacity-0 and translate-y-4 into the HTML classNames natively, 
-    // we NO LONGER NEED gsap.set()! This prevents ANY flashes before ScrollTrigger runs.
+    // Apply starting states programmatically so GSAP perfectly registers them
+    const allChars = h2.querySelectorAll('.cta-char');
+    const allPills = h2.querySelectorAll('.cta-pill');
+    
+    if (allChars.length) gsap.set(allChars, { opacity: 0, y: 20 });
+    if (allPills.length) gsap.set(allPills, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -204,18 +208,15 @@ const Home = () => {
     });
 
     // Animate exactly as they appear in the DOM! No hardcoded indexes.
-    // This perfectly adapts to Arabic/English translations.
     groupedSequence.forEach((group, index) => {
        if (Array.isArray(group)) {
            // Text group (now words instead of letters)
            const dur = index === 0 ? 0.6 : 0.4; // First half text is slightly slower
-           // We increase the stagger slightly since we are animating whole words now instead of letters
            const stag = index === 0 ? 0.08 : 0.04;
-           tl.fromTo(group, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
+           tl.to(group, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
        } else {
            // Pill
-           // Wrap group in an array to be absolutely safe with GSAP, and use fromTo to guarantee initial state
-           tl.fromTo([group], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, ">");
+           tl.to(group, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, ">");
        }
     });
 
@@ -369,7 +370,7 @@ const Home = () => {
               i18nKey="home_cta_title"
               components={{
                 pill1: (
-                  <span className="cta-pill inline-block align-middle opacity-0 translate-y-4 -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
@@ -377,7 +378,7 @@ const Home = () => {
                   </span>
                 ),
                 pill2: (
-                  <span className="cta-pill inline-block align-middle opacity-0 translate-y-4 -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
