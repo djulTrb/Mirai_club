@@ -1,10 +1,12 @@
 import React, { useEffect, useState, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import SmoothScroller from './components/SmoothScroller';
 import RouteLoader from './components/ui/RouteLoader';
+import LoadingState from './components/ui/LoadingState';
 
 import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Events = React.lazy(() => import('./pages/Events'));
@@ -16,7 +18,6 @@ const Admin = React.lazy(() => import('./pages/Admin'));
 const AdminAuth = React.lazy(() => import('./pages/AdminAuth'));
 const EventDetails = React.lazy(() => import('./pages/EventDetails'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
-import { ThemeProvider } from './contexts/ThemeContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,9 +41,6 @@ const ScrollToTop = () => {
   return null;
 };
 
-
-import { Navigate } from 'react-router-dom';
-
 const ProtectedAdminRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('adminAuth') === 'true';
   if (!isAuthenticated) {
@@ -50,6 +48,12 @@ const ProtectedAdminRoute = ({ children }) => {
   }
   return children;
 };
+
+const SuspenseFallback = () => (
+  <div className="min-h-screen w-full flex items-center justify-center bg-background">
+    <LoadingState variant="Dots" showPercentage={false} />
+  </div>
+);
 
 function App() {
   return (
@@ -60,7 +64,7 @@ function App() {
             {/* <RouteLoader /> */}
           <ScrollToTop />
           
-            <Suspense fallback={<div className="min-h-screen w-full flex items-center justify-center bg-background"><div className="w-12 h-12 rounded-full border-4 border-[#c87fff] border-t-transparent animate-spin"></div></div>}>
+            <Suspense fallback={<SuspenseFallback />}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
