@@ -72,9 +72,11 @@ const MissionSection = () => {
 
       // 2. Helper to setup individual card timelines
       const setupCard = (cardRef, widgetRef, setupWidgetFn, animateWidgetFn) => {
+         const isMobile = window.innerWidth < 768;
          gsap.set(cardRef.current, { opacity: 0, y: prefersReducedMotion ? 0 : 24 });
          
-         if (!prefersReducedMotion) {
+         // On mobile, skip the entrance setup for the floating widget so it is just visible
+         if (!prefersReducedMotion && !isMobile) {
             gsap.set(widgetRef.current, { scale: 0, opacity: 0, rotation: 10 });
          }
          
@@ -88,18 +90,23 @@ const MissionSection = () => {
            }
          });
 
+         // Always fade in the main card box
          tl.to(cardRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
          
          if (!prefersReducedMotion) {
-             tl.to(widgetRef.current, {
-               scale: window.innerWidth >= 768 ? 1.1 : 1,
-               opacity: 1,
-               rotation: 0,
-               duration: 0.6,
-               ease: "back.out(1.5)",
-               clearProps: "transform"
-             }, "<0.2");
+             // On mobile, completely skip the entrance bounce animation for the widget
+             if (!isMobile) {
+                 tl.to(widgetRef.current, {
+                   scale: 1.1,
+                   opacity: 1,
+                   rotation: 0,
+                   duration: 0.6,
+                   ease: "back.out(1.5)",
+                   clearProps: "transform"
+                 }, "<0.2");
+             }
              
+             // Still trigger the numbers/rings counting up on both
              if (animateWidgetFn) {
                 animateWidgetFn(tl);
              }
