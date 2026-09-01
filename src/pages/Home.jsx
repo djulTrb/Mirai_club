@@ -16,6 +16,9 @@ const Home = () => {
   const { t, i18n } = useTranslation();
 
   const scrollRef = useRef(null);
+  const ctaSectionRef = useRef(null);
+  const ctaTitleRef = useRef(null);
+  const ctaButtonRef = useRef(null);
   const projectsSectionRef = useRef(null);
   const projectsHeaderTagRef = useRef(null);
   const projectsHeaderTitleRef = useRef(null);
@@ -82,7 +85,81 @@ const Home = () => {
     };
     updateVisibleCards();
     window.addEventListener('resize', debouncedUpdate);
+  
+  useEffect(() => {
+    const section = ctaSectionRef.current;
+    const h2 = ctaTitleRef.current;
+    const btn = ctaButtonRef.current;
+    
+    if (!section || !h2 || !btn) return;
+
+    // We split the text recursively to preserve HTML tags like <br/>
+    const splitNodes = (node) => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent;
+          if (!text.trim()) return;
+          
+          const frag = document.createDocumentFragment();
+          for (const char of text) {
+             if (char === ' ') {
+                frag.appendChild(document.createTextNode(' '));
+             } else {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'cta-char inline-block opacity-0 translate-y-4';
+                frag.appendChild(span);
+             }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
+          splitNodes(child);
+        }
+      });
+    };
+
+    if (!h2.dataset.splitDone) {
+      splitNodes(h2);
+      h2.dataset.splitDone = "true";
+    }
+
+    const chars = h2.querySelectorAll('.cta-char');
+    const pills = h2.querySelectorAll('.cta-pill');
+
+    gsap.set(chars, { opacity: 0, y: 20 });
+    gsap.set(pills, { scale: 0, opacity: 0 });
+    gsap.set(btn, { scale: 0.8, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+      }
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.02,
+      ease: "power2.out"
+    });
+
+    tl.to([pills, btn], {
+      scale: 1,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "back.out(1.5)",
+      clearProps: "transform"
+    }, "+=0.1");
+
     return () => {
+      tl.kill();
+    };
+  }, [i18n.language]);
+
+  return () => {
       window.removeEventListener('resize', debouncedUpdate);
       clearTimeout(timeoutId);
     };
@@ -107,8 +184,156 @@ const Home = () => {
       tl.to(projectsHeaderTagRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
         .to(projectsHeaderTitleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.1");
     }, projectsSectionRef);
-    return () => ctx.revert();
+  
+  useEffect(() => {
+    const section = ctaSectionRef.current;
+    const h2 = ctaTitleRef.current;
+    const btn = ctaButtonRef.current;
+    
+    if (!section || !h2 || !btn) return;
+
+    // We split the text recursively to preserve HTML tags like <br/>
+    const splitNodes = (node) => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent;
+          if (!text.trim()) return;
+          
+          const frag = document.createDocumentFragment();
+          for (const char of text) {
+             if (char === ' ') {
+                frag.appendChild(document.createTextNode(' '));
+             } else {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'cta-char inline-block opacity-0 translate-y-4';
+                frag.appendChild(span);
+             }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
+          splitNodes(child);
+        }
+      });
+    };
+
+    if (!h2.dataset.splitDone) {
+      splitNodes(h2);
+      h2.dataset.splitDone = "true";
+    }
+
+    const chars = h2.querySelectorAll('.cta-char');
+    const pills = h2.querySelectorAll('.cta-pill');
+
+    gsap.set(chars, { opacity: 0, y: 20 });
+    gsap.set(pills, { scale: 0, opacity: 0 });
+    gsap.set(btn, { scale: 0.8, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+      }
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.02,
+      ease: "power2.out"
+    });
+
+    tl.to([pills, btn], {
+      scale: 1,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "back.out(1.5)",
+      clearProps: "transform"
+    }, "+=0.1");
+
+    return () => {
+      tl.kill();
+    };
+  }, [i18n.language]);
+
+  return () => ctx.revert();
   }, []);
+
+
+  useEffect(() => {
+    const section = ctaSectionRef.current;
+    const h2 = ctaTitleRef.current;
+    const btn = ctaButtonRef.current;
+    
+    if (!section || !h2 || !btn) return;
+
+    // We split the text recursively to preserve HTML tags like <br/>
+    const splitNodes = (node) => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent;
+          if (!text.trim()) return;
+          
+          const frag = document.createDocumentFragment();
+          for (const char of text) {
+             if (char === ' ') {
+                frag.appendChild(document.createTextNode(' '));
+             } else {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'cta-char inline-block opacity-0 translate-y-4';
+                frag.appendChild(span);
+             }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
+          splitNodes(child);
+        }
+      });
+    };
+
+    if (!h2.dataset.splitDone) {
+      splitNodes(h2);
+      h2.dataset.splitDone = "true";
+    }
+
+    const chars = h2.querySelectorAll('.cta-char');
+    const pills = h2.querySelectorAll('.cta-pill');
+
+    gsap.set(chars, { opacity: 0, y: 20 });
+    gsap.set(pills, { scale: 0, opacity: 0 });
+    gsap.set(btn, { scale: 0.8, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+      }
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.02,
+      ease: "power2.out"
+    });
+
+    tl.to([pills, btn], {
+      scale: 1,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "back.out(1.5)",
+      clearProps: "transform"
+    }, "+=0.1");
+
+    return () => {
+      tl.kill();
+    };
+  }, [i18n.language]);
 
   return (
     <main className="w-full min-h-screen bg-surface flex flex-col pt-20">
@@ -208,7 +433,81 @@ const Home = () => {
                   <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
                     {Array.from({ length: Math.ceil(projects.length / visibleCards) }).map((_, pageIdx) => {
                       const isActive = Math.floor(activeProjectIdx / visibleCards) === pageIdx;
-                      return (
+                    
+  useEffect(() => {
+    const section = ctaSectionRef.current;
+    const h2 = ctaTitleRef.current;
+    const btn = ctaButtonRef.current;
+    
+    if (!section || !h2 || !btn) return;
+
+    // We split the text recursively to preserve HTML tags like <br/>
+    const splitNodes = (node) => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent;
+          if (!text.trim()) return;
+          
+          const frag = document.createDocumentFragment();
+          for (const char of text) {
+             if (char === ' ') {
+                frag.appendChild(document.createTextNode(' '));
+             } else {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'cta-char inline-block opacity-0 translate-y-4';
+                frag.appendChild(span);
+             }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
+          splitNodes(child);
+        }
+      });
+    };
+
+    if (!h2.dataset.splitDone) {
+      splitNodes(h2);
+      h2.dataset.splitDone = "true";
+    }
+
+    const chars = h2.querySelectorAll('.cta-char');
+    const pills = h2.querySelectorAll('.cta-pill');
+
+    gsap.set(chars, { opacity: 0, y: 20 });
+    gsap.set(pills, { scale: 0, opacity: 0 });
+    gsap.set(btn, { scale: 0.8, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+      }
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.02,
+      ease: "power2.out"
+    });
+
+    tl.to([pills, btn], {
+      scale: 1,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "back.out(1.5)",
+      clearProps: "transform"
+    }, "+=0.1");
+
+    return () => {
+      tl.kill();
+    };
+  }, [i18n.language]);
+
+  return (
                         <button 
                           key={pageIdx}
                           onClick={() => {
@@ -232,7 +531,7 @@ const Home = () => {
 
 
       {/* Final CTA Section */}
-      <section className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative">
+      <section ref={ctaSectionRef} className="w-full py-24 px-6 md:px-24 bg-surface flex flex-col items-center justify-center relative overflow-hidden">
         {/* Background ambient lighting */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Noise overlay specific to CTA section */}
@@ -250,7 +549,7 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-16 md:gap-8 text-center md:text-left rtl:md:text-right">
-          <h2 className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
+          <h2 ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
             <Trans 
               i18nKey="home_cta_title"
               components={{
@@ -278,7 +577,7 @@ const Home = () => {
           </h2>
           
           <div className="md:col-span-1 flex justify-center md:justify-start rtl:md:justify-end w-full">
-            <Link to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
+            <Link ref={ctaButtonRef} to="/recruitment" className="group relative opacity-0 scale-75 flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
