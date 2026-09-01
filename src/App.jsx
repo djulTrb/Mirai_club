@@ -65,25 +65,25 @@ function App() {
               <RouteLoader />
             <ScrollToTop />
             
+              <PageTransition>
               <Suspense fallback={<SuspenseFallback />}>
-                <PageTransition>
-                  <Routes>
-                    <Route path="/" element={<Layout />}>
-                      <Route index element={<Home />} />
-                      <Route path="events" element={<Events />} />
-                      <Route path="events/:id" element={<EventDetails />} />
-                      <Route path="gallery" element={<Gallery />} />
-                      <Route path="resources" element={<Resources />} />
-                      <Route path="contact" element={<Contact />} />
-                      <Route path="recruitment" element={<Recruitment />} />
-                      <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
-                      <Route path="admin-auth" element={<AdminAuth />} />
-                    </Route>
-                    {/* 404 Catch-all Outside Layout */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </PageTransition>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="events" element={<Events />} />
+                    <Route path="events/:id" element={<EventDetails />} />
+                    <Route path="gallery" element={<Gallery />} />
+                    <Route path="resources" element={<Resources />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="recruitment" element={<Recruitment />} />
+                    <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
+                    <Route path="admin-auth" element={<AdminAuth />} />
+                  </Route>
+                  {/* 404 Catch-all Outside Layout */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
               </Suspense>
+            </PageTransition>
             
           </Router>
         </LoaderProvider>
