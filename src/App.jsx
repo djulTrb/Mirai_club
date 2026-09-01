@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import SmoothScroller from './components/SmoothScroller';
 import RouteLoader from './components/ui/RouteLoader';
 import LoadingState from './components/ui/LoadingState';
+import PageTransition from './components/ui/PageTransition';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -65,21 +66,23 @@ function App() {
           <ScrollToTop />
           
             <Suspense fallback={<SuspenseFallback />}>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="events" element={<Events />} />
-                <Route path="events/:id" element={<EventDetails />} />
-                <Route path="gallery" element={<Gallery />} />
-                <Route path="resources" element={<Resources />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="recruitment" element={<Recruitment />} />
-                <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
-                <Route path="admin-auth" element={<AdminAuth />} />
-              </Route>
-              {/* 404 Catch-all Outside Layout */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+              <PageTransition>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="events" element={<Events />} />
+                    <Route path="events/:id" element={<EventDetails />} />
+                    <Route path="gallery" element={<Gallery />} />
+                    <Route path="resources" element={<Resources />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="recruitment" element={<Recruitment />} />
+                    <Route path="admin" element={<ProtectedAdminRoute><Admin /></ProtectedAdminRoute>} />
+                    <Route path="admin-auth" element={<AdminAuth />} />
+                  </Route>
+                  {/* 404 Catch-all Outside Layout */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </PageTransition>
             </Suspense>
           
         </Router>
