@@ -3,19 +3,17 @@ import { useLocation } from 'react-router-dom';
 import LoadingState from './LoadingState';
 import heroDesktop from '../../assets/hero_screens/hero_bg_desktop_16x9.webp';
 import heroMobile from '../../assets/hero_screens/hero_bg_mobile_9x16.webp';
-import { useLoader } from '../../contexts/LoaderContext';
 
 const RouteLoader = () => {
   const location = useLocation();
-  const { hasVisited, markVisited, isReady } = useLoader();
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(location.pathname === '/');
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Show loader ONLY if the route is "/" and they haven't visited before in this session
-    if (location.pathname !== '/' || hasVisited || !isReady) {
+    // Show loader ONLY if the route is "/"
+    if (location.pathname !== '/') {
       setShowLoader(false);
       isInitialMount.current = false;
       return;
@@ -32,7 +30,6 @@ const RouteLoader = () => {
     let xhrFinished = false;
 
     // This interval forces the percentage to smoothly count up over ~500-600ms
-    // so you actually get to see the animation, even if the image is cached instantly.
     const artificialTimer = setInterval(() => {
       currentProg += Math.floor(Math.random() * 8) + 4; // increment by 4-11
       
@@ -43,7 +40,6 @@ const RouteLoader = () => {
           clearInterval(artificialTimer);
           setTimeout(() => {
             setIsLoaded(true);
-            markVisited();
           }, 400); // slight pause at 100%
         } else {
           currentProg = 99; // hold at 99% if XHR is actually taking a long time
@@ -52,7 +48,7 @@ const RouteLoader = () => {
       } else {
         setProgress(currentProg);
       }
-    }, 40); // 40ms * ~15 ticks = 600ms
+    }, 40);
 
     const xhr = new XMLHttpRequest();
     xhr.open('GET', targetSrc, true);
@@ -80,7 +76,7 @@ const RouteLoader = () => {
       clearInterval(artificialTimer);
       xhr.abort();
     };
-  }, [location.pathname, hasVisited, isReady, markVisited]);
+  }, [location.pathname]);
 
   if (!showLoader || isLoaded) return null;
 
