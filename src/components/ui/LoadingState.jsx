@@ -94,7 +94,7 @@ const LoadingState = ({ variant = "Dots", progress = 0 }) => {
 
       {/* Percentage (Restored to its previous front location) */}
       <span className="font-display font-black text-5xl sm:text-6xl text-on-surface tabular-nums tracking-tighter">
-        {progress}%
+        {progress}<span className="text-[0.6em] ml-0.5 text-on-surface/80">%</span>
       </span>
     </div>
   );
