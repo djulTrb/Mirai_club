@@ -18,17 +18,17 @@ const Home = () => {
   const ctaComponents = useMemo(() => ({
     pill1: (
       <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
-        <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
+        <img src={ctaImg1} alt="" loading="eager" fetchPriority="high" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
         <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
-          <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
+          <img src={ctaImg1} alt="" loading="eager" fetchPriority="high" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
         </div>
       </span>
     ),
     pill2: (
       <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
-        <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
+        <img src={ctaImg2} alt="" loading="eager" fetchPriority="high" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
         <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
-          <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
+          <img src={ctaImg2} alt="" loading="eager" fetchPriority="high" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
         </div>
       </span>
     ),
