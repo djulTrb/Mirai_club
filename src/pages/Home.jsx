@@ -211,10 +211,11 @@ const Home = () => {
            const dur = index === 0 ? 0.6 : 0.4; // First half text is slightly slower
            // We increase the stagger slightly since we are animating whole words now instead of letters
            const stag = index === 0 ? 0.08 : 0.04;
-           tl.to(group, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
+           tl.fromTo(group, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
        } else {
            // Pill
-           tl.to(group, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, ">");
+           // Wrap group in an array to be absolutely safe with GSAP, and use fromTo to guarantee initial state
+           tl.fromTo([group], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, ">");
        }
     });
 
