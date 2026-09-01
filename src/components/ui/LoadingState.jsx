@@ -38,7 +38,7 @@ function useCyclingVerb() {
         } while (nextIndex === prev && VERBS.length > 1);
         return nextIndex;
       });
-    }, 4000);
+    }, 7000);
     return () => clearInterval(t);
   }, []);
   
