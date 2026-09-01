@@ -36,7 +36,8 @@ const Chatbot = () => {
                 <h3 className="font-display font-bold text-lg text-[#240046]">{t('ai_title')}</h3>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-[#240046]/80 hover:text-[#240046]"><span className="material-symbols-outlined text-sm">close</span>
+            <button onClick={() => setIsOpen(false)} aria-label="Close Chat" className="p-3 -mr-2 text-[#240046]/80 hover:text-[#240046]">
+              <span className="material-symbols-outlined text-xl font-black">close</span>
             </button>
           </div>
 

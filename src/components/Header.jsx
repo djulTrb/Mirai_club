@@ -82,7 +82,7 @@ const Header = () => {
         >
         {/* Logo */}
         <div className="flex items-center">
-          <Link to="/" className="hover:opacity-80 transition-opacity">
+          <Link to="/" aria-label="Mirai Club Home" className="hover:opacity-80 transition-opacity">
             <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
               <circle cx="12" cy="12" r="4"></circle>
@@ -101,6 +101,7 @@ const Header = () => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
+            aria-label="Toggle Dark Mode"
             className="flex items-center justify-center w-8 h-8 rounded-full text-black hover:bg-surface-variant transition-colors"
             title="Toggle Dark Mode"
           >
@@ -111,10 +112,7 @@ const Header = () => {
 
           {/* Language Dropdown */}
           <div className="flex items-center relative z-50" ref={langMenuRef}>
-            <button 
-              className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            >
+            <button className="flex items-center gap-2 hover:opacity-70 transition-opacity" onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} aria-label={`Language Selector: ${currentLang}`} aria-expanded={isLangMenuOpen}>
               <div className="w-5 h-5 rounded-full overflow-hidden border border-outline-variant flex items-center justify-center bg-surface-variant">
                 <img src={currentFlag} alt={currentLang} className="w-full h-full object-cover" />
               </div>
@@ -139,10 +137,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden flex items-center justify-center text-black hover:opacity-70 transition-opacity"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+          <button className="md:hidden flex items-center justify-center text-black hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle Mobile Menu" aria-expanded={isMobileMenuOpen}>
             <span className="material-symbols-outlined">menu</span>
           </button>
         </div>
@@ -160,10 +155,7 @@ const Header = () => {
       {/* Mobile Side Menu */}
       <div className={`md:hidden fixed top-0 right-0 h-screen w-[280px] bg-surface border-l border-outline-variant/20 shadow-xl transition-transform duration-300 ease-in-out z-50 flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 flex justify-end">
-          <button 
-            className="flex items-center justify-center text-black hover:text-[#9D4EDD] transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
+          <button className="flex items-center justify-center text-black hover:text-[#9D4EDD] transition-colors" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close Mobile Menu">
             <span className="material-symbols-outlined text-2xl">close</span>
           </button>
         </div>

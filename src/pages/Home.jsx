@@ -143,6 +143,8 @@ const Home = () => {
     
     if (!section || !h2 || !btn) return;
 
+    let ctx = gsap.context(() => {
+
     const splitNodes = (node) => {
       Array.from(node.childNodes).forEach(child => {
         if (child.nodeType === Node.TEXT_NODE) {
@@ -260,8 +262,10 @@ const Home = () => {
        }
     });
 
+    }); // end ctx
+
     return () => {
-      tl.kill();
+      ctx.revert();
     };
   }, [i18n.language, t("home_cta_title")]);
 
@@ -413,7 +417,7 @@ const Home = () => {
           </h2>
           
           <div className="md:col-span-1 flex justify-center md:justify-start rtl:md:justify-end w-full">
-            <Link ref={ctaButtonRef} to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
+            <Link ref={ctaButtonRef} to="/recruitment" aria-label="Join MIRAI Club" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />

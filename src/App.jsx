@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import SmoothScroller from './components/SmoothScroller';
@@ -6,16 +6,16 @@ import RouteLoader from './components/ui/RouteLoader';
 
 import { HelmetProvider } from 'react-helmet-async';
 
-import Home from './pages/Home';
-import Events from './pages/Events';
-import Gallery from './pages/Gallery';
-import Resources from './pages/Resources';
-import Contact from './pages/Contact';
-import Recruitment from './pages/Recruitment';
-import Admin from './pages/Admin';
-import AdminAuth from './pages/AdminAuth';
-import EventDetails from './pages/EventDetails';
-import NotFound from './pages/NotFound';
+const Home = React.lazy(() => import('./pages/Home'));
+const Events = React.lazy(() => import('./pages/Events'));
+const Gallery = React.lazy(() => import('./pages/Gallery'));
+const Resources = React.lazy(() => import('./pages/Resources'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const Recruitment = React.lazy(() => import('./pages/Recruitment'));
+const Admin = React.lazy(() => import('./pages/Admin'));
+const AdminAuth = React.lazy(() => import('./pages/AdminAuth'));
+const EventDetails = React.lazy(() => import('./pages/EventDetails'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 import { ThemeProvider } from './contexts/ThemeContext';
 
 const ScrollToTop = () => {
@@ -60,6 +60,7 @@ function App() {
             <RouteLoader />
           <ScrollToTop />
           
+            <Suspense fallback={<div className="min-h-screen w-full flex items-center justify-center bg-background"><div className="w-12 h-12 rounded-full border-4 border-[#c87fff] border-t-transparent animate-spin"></div></div>}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
@@ -75,6 +76,7 @@ function App() {
               {/* 404 Catch-all Outside Layout */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           
         </Router>
       </HelmetProvider>
