@@ -14,11 +14,28 @@ const DUMMY_IMAGES = [
   "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012&auto=format&fit=crop",
 ];
 
+import api from '../lib/api';
+
 const Gallery = () => {
   
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  const [albums, setAlbums] = useState([]);
+  const [selectedAlbumId, setSelectedAlbumId] = useState(null);
+
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const response = await api.get('/gallery/albums/');
+        setAlbums(response.data);
+      } catch (error) {
+        console.error('Failed to fetch albums:', error);
+      }
+    };
+    fetchAlbums();
+  }, []);
 
   useEffect(() => {
     if (selectedImage) {
@@ -30,6 +47,10 @@ const Gallery = () => {
       document.body.style.overflow = '';
     };
   }, [selectedImage]);
+  
+  const displayImages = selectedAlbumId 
+    ? albums.find(a => a.id === selectedAlbumId)?.images || []
+    : albums.flatMap(a => a.images);
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
@@ -48,24 +69,44 @@ const Gallery = () => {
         </div>
         
         <div className="w-full flex overflow-x-auto gap-3 mb-8 pb-4 scrollbar-hide justify-start md:justify-center flex-nowrap md:flex-wrap snap-x px-2 md:px-0">
-          <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">All</button>
-          <button className="px-5 py-2 rounded-full bg-[#9D4EDD] text-white text-xs sm:text-sm font-body font-semibold whitespace-nowrap shadow-sm snap-start">Fundamentals ML Workshop</button>
-          <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Local AI Hackathon</button>
-          <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Deep Learning Conference</button>
-          <button className="px-5 py-2 rounded-full border border-outline-variant/40 text-xs sm:text-sm font-body font-medium hover:bg-surface-variant transition-colors whitespace-nowrap text-on-surface snap-start">Social Meetups</button>
-        </div>
-        
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-          {DUMMY_IMAGES.map((imgSrc, index) => (
-            <div 
-              key={index} 
-              className="group relative w-full aspect-[4/3] bg-surface-variant rounded-3xl border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-[#9D4EDD] hover:shadow-md transition-all duration-300"
-              onClick={() => setSelectedImage(imgSrc)}
+          <button 
+            onClick={() => setSelectedAlbumId(null)}
+            className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === null ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
+          >
+            All
+          </button>
+          {albums.map(album => (
+            <button 
+              key={album.id}
+              onClick={() => setSelectedAlbumId(album.id)}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-body font-medium transition-colors whitespace-nowrap snap-start ${selectedAlbumId === album.id ? 'bg-[#9D4EDD] text-white shadow-sm' : 'border border-outline-variant/40 text-on-surface hover:bg-surface-variant'}`}
             >
-              <img src={imgSrc} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
+              {album.title}
+            </button>
           ))}
         </div>
+        
+        {displayImages.length === 0 ? (
+          <div className="w-full py-24 flex flex-col items-center justify-center gap-4 bg-surface-container-low rounded-3xl border border-outline-variant/30">
+            <span className="material-symbols-outlined text-4xl text-on-surface-variant/50">photo_library</span>
+            <p className="font-body font-semibold text-sm text-on-surface-variant uppercase tracking-widest text-center px-4">No images available in this album yet.</p>
+          </div>
+        ) : (
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {displayImages.map((imgObj, index) => {
+              const imgSrc = typeof imgObj === 'string' ? imgObj : imgObj.image;
+              return (
+                <div 
+                  key={index} 
+                  className="group relative w-full aspect-[4/3] bg-surface-variant rounded-3xl border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-[#9D4EDD] hover:shadow-md transition-all duration-300"
+                  onClick={() => setSelectedImage(imgSrc)}
+                >
+                  <img src={imgSrc} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       
       {/* Lightbox / Overlay */}

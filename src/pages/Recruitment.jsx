@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
+import api from '../lib/api';
 
 const Recruitment = () => {
   
@@ -11,27 +12,56 @@ const Recruitment = () => {
   const { t } = useTranslation();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [status, setStatus] = useState('idle');
-  const [isOpen, setIsOpen] = useState(() => localStorage.getItem('mirai_recruitment_status') === 'open');
+  const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
-    // Cross-tab sync via polling
-    const interval = setInterval(() => {
-      const currentStatus = localStorage.getItem('mirai_recruitment_status');
-      setIsOpen(currentStatus === 'open');
-    }, 1000);
-    
-    return () => clearInterval(interval);
+    const fetchSettings = async () => {
+      try {
+        const response = await api.get('/recruitment/settings/');
+        // Assume API returns an object or an array. If array, get first item.
+        const settings = Array.isArray(response.data) ? response.data[0] : response.data;
+        if (settings && settings.phase === 'ouvert') {
+          setIsOpen(true);
+        } else {
+          setIsOpen(false);
+        }
+      } catch (error) {
+        console.error('Failed to fetch recruitment settings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSettings();
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setStatus('loading');
-    setTimeout(() => {
+    try {
+      await api.post('/recruitment/candidatures/', {
+        nom_complet: data.fullName,
+        email: data.email,
+        filiere: data.fieldOfStudy,
+        annee_etude: data.yearOfStudy,
+        lettre_motivation: data.reason
+      });
       setStatus('success');
       reset();
       setTimeout(() => setStatus('idle'), 4000);
-    }, 1000);
+    } catch (error) {
+      console.error('Failed to submit application:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
+
+  if (loading) {
+    return (
+      <main className="flex-grow flex flex-col justify-start relative w-full pt-16 bg-background font-body items-center justify-center">
+        <p>Loading...</p>
+      </main>
+    );
+  }
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full pt-16 bg-background font-body">

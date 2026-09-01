@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
-import { DUMMY_EVENTS } from '../data/events';
+import api from '../lib/api';
 
 const EventDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
   
-  const event = DUMMY_EVENTS.find(e => e.id === parseInt(id));
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     motivation: ''
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const response = await api.get(`/events/${id}/`);
+        setEvent(response.data);
+      } catch (error) {
+        console.error('Failed to fetch event:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvent();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <main className="flex-grow flex flex-col items-center justify-center pt-32 pb-16 font-body">
+        <p>Loading event...</p>
+      </main>
+    );
+  }
 
   if (!event) {
     return (
@@ -57,7 +79,7 @@ const EventDetails = () => {
           {/* Left Column: Event Details */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             <div className="w-full aspect-video rounded-3xl overflow-hidden relative shadow-sm border border-outline-variant/30">
-              <img src={event.image} alt={event.title} loading="lazy" className="w-full h-full object-cover" />
+              <img src={event.image || event.image_url} alt={event.title || event.titre} loading="lazy" className="w-full h-full object-cover" />
               {isEnded && (
                 <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-[#9D4EDD] text-white px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest text-xs shadow-md">
                   Ended
@@ -66,17 +88,17 @@ const EventDetails = () => {
             </div>
             
             <div>
-              <p className="font-accent font-semibold text-xs text-[#9D4EDD] tracking-wide uppercase mb-2">{event.date}</p>
-              <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight mb-4">{event.title}</h1>
+              <p className="font-accent font-semibold text-xs text-[#9D4EDD] tracking-wide uppercase mb-2">{event.date || event.date_event}</p>
+              <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight mb-4">{event.title || event.titre}</h1>
               
               <div className="flex items-center gap-2 text-on-surface-variant text-sm font-body mb-8 bg-surface-variant/40 p-4 rounded-2xl border border-outline-variant/20">
                 <span className="material-symbols-outlined text-[#9D4EDD] shrink-0">location_on</span>
-                <p className="font-medium">{event.location}</p>
+                <p className="font-medium">{event.location || event.lieu}</p>
               </div>
 
               <div className="prose prose-sm sm:prose-base max-w-none font-body text-on-surface-variant leading-relaxed">
                 <h3 className="font-semibold text-black text-xl mb-4 font-display">About this event</h3>
-                <p>{event.details}</p>
+                <p>{event.details || event.description}</p>
               </div>
             </div>
           </div>

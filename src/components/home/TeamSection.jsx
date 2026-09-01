@@ -2,32 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import api from '../../lib/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TEAM_MEMBERS = [
-  {
-    name: "Amine Hamidi", role: "President", skills: ["Management", "Strategy"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDIU7DXVGhLTvu5SQ9jeBh_5LBUN6oz6p1eYLjOlMHqbg0Yw7t4WKqVNE4hTBPqryOG694CrKZGB5iyOA4-vHMedFwZgITTKcVZv2N-7OuvXZQppHV5AsgWTZXWCYOcnGQ8Fjqzb-Py6PViLSb-gg_1DiKnLJU8NI7TfQEYij5Tu4-hSFSyjgeBKcdV_Ohjs-Gm-0WacZjnRyGO5rs5hYi8Jq9QVnK8BoFcVd7yu3kAOCMP-occR1wW4ElRVWL0kkyj4Cc"
-  },
-  {
-    name: "Sara Moussaoui", role: "Vice-President", skills: ["Operations", "Logistics"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NfbPsOTPBIeO9tc09MXmHjTSEPl5bD3zly9MRvLIfkcCfc-rVGcxW0xk4N8SdpzwJX82JCV4Np5Mt-ijbVDk8xC6T-CivUK19elmM3tTHd9QEvMsR949NNgZljq53ZrlcDvvLtpS16r4GwTFmAaB7pC-e18_-ykLCLbq0YWS9bBDB_kag6uuCTR0p0uo3TSadA-G4a2k2iIJrioWOFlC5LEG5dz5zyDGs-kbQTgFnI_t88Pyaljk6JUpZ16BPrzSIY"
-  },
-  {
-    name: "Member Name 3", role: "Secretary General", skills: ["Outreach", "Support"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8id0Vtz_n1xSUF5dzm3zhOuGdswxHtgIFJwuvB92swpAVJnEFWfsIPGj6qVcqh7M-bRIpr6fPvY0SfICO6GSgW1M60ph440pHmg1pklMqEinaVyB7g5tB_a8MiND5ZWkAuR0Y-Cjl6SUA5fxm3jQh_3qTmVJIdPRP_ArgnHyTKXe-bsOUaS0joQKnyIMjL_c9j9Ifwk2nGO0WighAXArYvRMiOYcYAeXkXw2zW6CUFt-hO2XTeDBX1BD4TR5qD5M10ys-TIP7mMLx"
-  },
-  { name: "John Doe", role: "Design Lead", skills: ["UI/UX", "Branding"], image: "" },
-  { name: "Jane Smith", role: "Tech Lead", skills: ["React", "Node.js"], image: "" },
-  { name: "Alex Johnson", role: "Events", skills: ["Planning", "Social"], image: "" },
-  { name: "Emily Davis", role: "Marketing", skills: ["Social Media", "Copy"], image: "" },
-  { name: "Michael Brown", role: "Manager", skills: ["Agile", "Scrum"], image: "" },
-  { name: "Sarah Wilson", role: "AI Research", skills: ["Python", "TensorFlow"], image: "" },
-  { name: "David Martinez", role: "Web Dev", skills: ["Frontend", "Tailwind"], image: "" },
-  { name: "Jessica Taylor", role: "Design", skills: ["Illustrator", "Figma"], image: "" },
-  { name: "Olivia Martin", role: "Community", skills: ["Discord", "Engagement"], image: "" }
-];
+// TEAM_MEMBERS fetched from API
 
 const MemberRow = ({ member, elRef, avatarRef }) => {
   const { t } = useTranslation();
@@ -107,6 +86,7 @@ const TeamSection = () => {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [teamMembers, setTeamMembers] = useState([]);
   
   const sectionRef = useRef(null);
   const headerTagRef = useRef(null);
@@ -123,8 +103,24 @@ const TeamSection = () => {
   const arrowRef = useRef(null);
   const ctaRef = useRef(null);
 
-  const initialMembers = TEAM_MEMBERS.slice(0, 4);
-  const hiddenMembers = TEAM_MEMBERS.slice(4);
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const response = await api.get('/team/');
+        const parsedMembers = response.data.map(member => ({
+          ...member,
+          skills: member.skills ? member.skills.split(',').map(s => s.trim()) : []
+        }));
+        setTeamMembers(parsedMembers);
+      } catch (error) {
+        console.error('Failed to fetch team members:', error);
+      }
+    };
+    fetchTeam();
+  }, []);
+
+  const initialMembers = teamMembers.slice(0, 4);
+  const hiddenMembers = teamMembers.slice(4);
 
   useEffect(() => {
     let mm = gsap.matchMedia();

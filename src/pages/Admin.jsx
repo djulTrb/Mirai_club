@@ -28,52 +28,51 @@ const DUMMY_GALLERIES = [
 
 const Admin = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(true);
+
   const [isRecruitmentOpen, setIsRecruitmentOpen] = useState(false);
-  const [events, setEvents] = useState(DUMMY_EVENTS);
-  const [, setSelectedProject] = useState(null);
-  const [newProject, setNewProject] = useState({ title: '', category: '', description: '', link: '' });
-  const [projects, setProjects] = useState(() => {
-    try {
-      const saved = localStorage.getItem('mirai_projects');
-      if (saved) return JSON.parse(saved);
-    } catch(e) {}
-    const defaultProjects = [
-      { id: 1, title: 'Sentiment Analyzer DZ', category: 'NLP', description: 'Analyse de sentiments sur le dialecte algA©rien. ModA¨le BERT fine-tunA©.', link: '#' },
-      { id: 2, title: 'DA©tection Objets Temps RA©el', category: 'VISION', description: 'SystA¨me de dA©tection basA© sur YOLOv8 pour applications locales.', link: '#' },
-      { id: 3, title: 'PrA©diction Agricole Locale', category: 'ML', description: "ModA¨le de prA©diction de rendements pour l'agriculture en Kabylie.", link: '#' },
-      { id: 4, title: 'Smart Campus Assistant', category: 'AI', description: 'Chatbot intelligent multilingue pour guider les A©tudiants sur le campus universitaire.', link: '#' }
-    ];
-    return defaultProjects;
-  });
-
-  const saveProjects = (newProjects) => {
-    setProjects(newProjects);
-    localStorage.setItem('mirai_projects', JSON.stringify(newProjects));
-  };
-
-  const handleAddProject = (e) => {
-    e.preventDefault();
-    if (!newProject.title) return;
-    const project = { ...newProject, id: Date.now() };
-    saveProjects([...projects, project]);
-    setNewProject({ title: '', category: '', description: '', link: '' });
-  };
-
-  const handleDeleteProject = (id) => {
-    saveProjects(projects.filter(p => p.id !== id));
-    setSelectedProject(null);
-  };
-
-  const [galleries, setGalleries] = useState(DUMMY_GALLERIES);
+  const [events, setEvents] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [galleries, setGalleries] = useState([]);
   
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [selectedGallery, setSelectedGallery] = useState(null);
 
+  const [newEvent, setNewEvent] = useState({ title: '', date: '', snippet: '', details: '', location: '', deadline: '' });
+  const [newProject, setNewProject] = useState({ title: '', category: '', description: '', link: '' });
+  const [newGalleryTitle, setNewGalleryTitle] = useState('');
+  const [newResource, setNewResource] = useState({ title: '', description: '', link: '' });
+
   useEffect(() => {
-    const status = localStorage.getItem('mirai_recruitment_status');
-    if (status === 'open') {
-      setIsRecruitmentOpen(true);
-    }
+    const fetchData = async () => {
+      try {
+        await api.get('/accounts/me/');
+        
+        const [eventsRes, projectsRes, galleriesRes, recruitmentRes] = await Promise.all([
+          api.get('/events/').catch(() => ({ data: [] })),
+          api.get('/website/projects/').catch(() => ({ data: [] })),
+          api.get('/gallery/albums/').catch(() => ({ data: [] })),
+          api.get('/recruitment/settings/').catch(() => ({ data: {} }))
+        ]);
+        
+        setEvents(eventsRes.data || []);
+        setProjects(projectsRes.data || []);
+        setGalleries(galleriesRes.data || []);
+        
+        const phase = recruitmentRes.data?.phase || (Array.isArray(recruitmentRes.data) && recruitmentRes.data[0]?.phase);
+        setIsRecruitmentOpen(phase === 'ouvert');
+      } catch (err) {
+        console.error('Auth error or API error:', err);
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          window.location.href = '/admin-auth';
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -82,55 +81,152 @@ const Admin = () => {
     } else {
       document.body.style.overflow = '';
     }
-    const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    window.location.href = '/';
-  };
-
-  return () => {
+    return () => {
       document.body.style.overflow = '';
     };
   }, [selectedEvent, selectedGallery]);
 
-  const toggleRecruitment = () => {
-    const newState = !isRecruitmentOpen;
-    setIsRecruitmentOpen(newState);
-    localStorage.setItem('mirai_recruitment_status', newState ? 'open' : 'closed');
-  };
-
-  const handleDeleteEvent = (id) => {
-    setEvents(events.filter(e => e.id !== id));
-    setSelectedEvent(null);
-  };
-
-  const handleDeleteGallery = (id) => {
-    setGalleries(galleries.filter(g => g.id !== id));
-    setSelectedGallery(null);
-  };
-
-  const handleDeleteImage = (galleryId, imageId) => {
-    setGalleries(galleries.map(g => {
-      if (g.id === galleryId) {
-        return { ...g, images: g.images.filter(img => img.id !== imageId) };
-      }
-      return g;
-    }));
-    if (selectedGallery && selectedGallery.id === galleryId) {
-      setSelectedGallery({
-        ...selectedGallery,
-        images: selectedGallery.images.filter(img => img.id !== imageId)
-      });
+  const handleLogout = async () => {
+    try {
+      await api.post('/accounts/logout/');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      window.location.href = '/admin-auth';
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    window.location.href = '/';
+  const toggleRecruitment = async () => {
+    try {
+      const newPhase = isRecruitmentOpen ? 'ferme' : 'ouvert';
+      await api.post('/recruitment/settings/', { phase: newPhase }).catch(async () => {
+         await api.patch('/recruitment/settings/', { phase: newPhase });
+      });
+      setIsRecruitmentOpen(!isRecruitmentOpen);
+    } catch (err) {
+      console.error(err);
+      setIsRecruitmentOpen(!isRecruitmentOpen); 
+    }
   };
+
+  const handleAddEvent = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.post('/events/', newEvent);
+      setEvents([...events, res.data]);
+      setNewEvent({ title: '', date: '', snippet: '', details: '', location: '', deadline: '' });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteEvent = async (id) => {
+    try {
+      await api.delete(`/events/${id}/`);
+      setEvents(events.filter(ev => ev.id !== id));
+      setSelectedEvent(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddProject = async (e) => {
+    e.preventDefault();
+    if (!newProject.title) return;
+    try {
+      const res = await api.post('/website/projects/', newProject);
+      setProjects([...projects, res.data]);
+      setNewProject({ title: '', category: '', description: '', link: '' });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteProject = async (id) => {
+    try {
+      await api.delete(`/website/projects/${id}/`);
+      setProjects(projects.filter(p => p.id !== id));
+      setSelectedProject(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddGallery = async (e) => {
+    e.preventDefault();
+    if (!newGalleryTitle) return;
+    try {
+      const res = await api.post('/gallery/albums/', { title: newGalleryTitle });
+      setGalleries([...galleries, { ...res.data, images: [] }]);
+      setNewGalleryTitle('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteGallery = async (id) => {
+    try {
+      await api.delete(`/gallery/albums/${id}/`);
+      setGalleries(galleries.filter(g => g.id !== id));
+      setSelectedGallery(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteImage = async (galleryId, imageId) => {
+    try {
+      await api.delete(`/gallery/images/${imageId}/`);
+      setGalleries(galleries.map(g => {
+        if (g.id === galleryId) {
+          return { ...g, images: (g.images || []).filter(img => img.id !== imageId) };
+        }
+        return g;
+      }));
+      if (selectedGallery && selectedGallery.id === galleryId) {
+        setSelectedGallery({
+          ...selectedGallery,
+          images: (selectedGallery.images || []).filter(img => img.id !== imageId)
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddResource = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = {
+        titre: newResource.title,
+        description: newResource.description,
+        fichier_url: newResource.link,
+        type_ressource: 'DOCUMENT'
+      };
+      await api.post('/resources/', payload);
+      setNewResource({ title: '', description: '', link: '' });
+      alert("Resource added successfully!");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  if (loading) {
+    return (
+      <main className="flex-grow flex items-center justify-center w-full h-screen bg-background font-body">
+        <div className="w-16 h-16 border-4 border-[#9D4EDD] border-t-transparent rounded-full animate-spin"></div>
+      </main>
+    );
+  }
 
   return (
     <main className="flex-grow flex flex-col justify-start relative w-full py-16 bg-background font-body">
       <div className="max-w-[1400px] mx-auto w-full px-6 md:px-24 pt-32 pb-16 flex flex-col items-center relative z-10 gap-4">
+        <div className="absolute top-8 right-8 z-20">
+          <button onClick={handleLogout} className="px-6 py-2 bg-red-50 text-red-600 font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:bg-red-100 transition-colors flex items-center gap-1.5 shadow-sm">
+            <span className="material-symbols-outlined text-sm">logout</span> Logout
+          </button>
+        </div>
         <span className="font-accent font-semibold text-xs text-[#9D4EDD] uppercase tracking-wider mb-2">{t('admin_portal', 'Backoffice Portal')}</span>
         <h1 className="text-black mb-4 text-center font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight">{t('admin_title', 'Admin Page')}</h1>
         <p className="font-body text-base text-on-surface-variant mb-8 text-center max-w-xl">{t('admin_desc', 'Manage executive members, calendar events, media galleries, and public learning resources.')}</p>
@@ -188,30 +284,30 @@ const Admin = () => {
             <div className="flex justify-between items-center mb-2">
               <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_events_title", "Manage Events")}</h2>
             </div>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
+            <form onSubmit={handleAddEvent} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_name", "Event Name")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_name_ph", "Enter event name")} type="text" />
+                <input required value={newEvent.title} onChange={e => setNewEvent({...newEvent, title: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_name_ph", "Enter event name")} type="text" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_date", "Date")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
+                <input required value={newEvent.date} onChange={e => setNewEvent({...newEvent, date: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_snippet", "Short Snippet")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_snippet_ph", "Brief summary for the event card...")} rows="2"></textarea>
+                <textarea required value={newEvent.snippet} onChange={e => setNewEvent({...newEvent, snippet: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_snippet_ph", "Brief summary for the event card...")} rows="2"></textarea>
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_details", "Full Details")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_details_ph", "Enter full event information for the details window...")} rows="4"></textarea>
+                <textarea required value={newEvent.details} onChange={e => setNewEvent({...newEvent, details: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_event_details_ph", "Enter full event information for the details window...")} rows="4"></textarea>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_event_location", "Location")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_location_ph", "Enter location")} type="text" />
+                <input required value={newEvent.location} onChange={e => setNewEvent({...newEvent, location: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_event_location_ph", "Enter location")} type="text" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">Deadline {t("admin_event_date", "Date")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
+                <input required value={newEvent.deadline} onChange={e => setNewEvent({...newEvent, deadline: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" type="date" />
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
                 <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
@@ -293,10 +389,10 @@ const Admin = () => {
             <div className="flex justify-between items-center mb-2">
               <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_gallery_title", "Manage Gallery")}</h2>
             </div>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
+            <form onSubmit={handleAddGallery} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-b border-outline-variant/30 pb-8">
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_gallery_group", "Group Title")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_gallery_group_ph", "Enter group title (e.g. Workshop 2024)")} type="text" />
+                <input required value={newGalleryTitle} onChange={e => setNewGalleryTitle(e.target.value)} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_gallery_group_ph", "Enter group title (e.g. Workshop 2024)")} type="text" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_gallery_upload", "Upload Images")}</label>
@@ -318,7 +414,7 @@ const Admin = () => {
                 <div key={gallery.id} className="py-4 font-body text-black flex justify-between items-center hover:bg-surface-container-low px-4 -mx-4 rounded-xl cursor-pointer transition-colors" onClick={() => setSelectedGallery(gallery)}>
                   <div>
                     <span className="font-medium text-sm sm:text-base block">{gallery.title}</span>
-                    <span className="text-xs text-on-surface-variant">{gallery.images.length} {t("admin_gallery_images", "images")}</span>
+                    <span className="text-xs text-on-surface-variant">{gallery.images?.length || 0} {t("admin_gallery_images", "images")}</span>
                   </div>
                   <div className="flex gap-4">
                     <button className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
@@ -335,14 +431,14 @@ const Admin = () => {
             <div className="flex justify-between items-center mb-2">
               <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_resources_title", "Manage Resources")}</h2>
             </div>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleAddResource} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_title", "Resource Title")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_resource_title_ph", "Enter resource title (e.g. ML Cheat Sheet)")} type="text" />
+                <input required value={newResource.title} onChange={e => setNewResource({...newResource, title: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder={t("admin_resource_title_ph", "Enter resource title (e.g. ML Cheat Sheet)")} type="text" />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_desc", "Description")}</label>
-                <textarea className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_resource_desc_ph", "Enter resource description...")} rows="3"></textarea>
+                <textarea required value={newResource.description} onChange={e => setNewResource({...newResource, description: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all resize-none" placeholder={t("admin_resource_desc_ph", "Enter resource description...")} rows="3"></textarea>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_pdf", "Upload PDF")}</label>
@@ -353,7 +449,7 @@ const Admin = () => {
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant">{t("admin_resource_link", "Resource Link")}</label>
-                <input className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="https://..." type="url" />
+                <input required value={newResource.link} onChange={e => setNewResource({...newResource, link: e.target.value})} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none transition-all" placeholder="https://..." type="url" />
               </div>
               <div className="md:col-span-2 flex justify-end mt-2">
                 <button className="px-8 py-3 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-80 transition-opacity flex items-center gap-2 shadow-sm" type="submit">
@@ -408,7 +504,7 @@ const Admin = () => {
             
             <h3 className="font-display font-bold text-lg mb-4">{t("admin_modal_gallery_images", "Images")}</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-              {selectedGallery.images.map(img => (
+              {(selectedGallery.images || []).map(img => (
                 <div key={img.id} className="relative group rounded-xl overflow-hidden aspect-square border border-outline-variant/30">
                   <img src={img.url} alt="Gallery item" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

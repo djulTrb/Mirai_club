@@ -4,13 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
 import { usePageEntrance } from '../hooks/usePageEntrance';
+import api from '../lib/api';
 
 const Contact = () => {
   const containerRef = usePageEntrance();
   const { t } = useTranslation();
   const location = useLocation();
   const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
-    const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     if (location.state?.prefillEmail) {
@@ -18,18 +19,23 @@ const Contact = () => {
     }
   }, [location]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setStatus('loading');
-    setTimeout(() => {
-      if (Math.random() > 0.1) {
-        setStatus('success');
-        reset();
-        setTimeout(() => setStatus('idle'), 4000);
-      } else {
-        setStatus('error');
-        setTimeout(() => setStatus('idle'), 4000);
-      }
-    }, 1000);
+    try {
+      await api.post('/contact/', {
+        nom: data.name,
+        email: data.email,
+        sujet: 'Message from Website Contact Form',
+        message: data.message
+      });
+      setStatus('success');
+      reset();
+      setTimeout(() => setStatus('idle'), 4000);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (

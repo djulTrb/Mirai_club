@@ -1,15 +1,25 @@
-from rest_framework import viewsets, filters
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from django_filters.rest_framework import DjangoFilterBackend
-from .models import GalleryItem
-from .serializers import GalleryItemSerializer
+from rest_framework import viewsets
+from .models import Album, GalleryImage
+from .serializers import AlbumSerializer, GalleryImageSerializer
+from apps.accounts.permissions import IsAdminOrReadOnly
 
 
-class GalleryItemViewSet(viewsets.ModelViewSet):
-    queryset = GalleryItem.objects.all()
-    serializer_class = GalleryItemSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ["evenement", "type"]
-    search_fields    = ["description"]
-    ordering         = ["-created_at"]
+class AlbumViewSet(viewsets.ModelViewSet):
+    queryset = Album.objects.prefetch_related('images').all()
+    serializer_class = AlbumSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+
+class GalleryImageViewSet(viewsets.ModelViewSet):
+    queryset = GalleryImage.objects.all()
+    serializer_class = GalleryImageSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+    def perform_create(self, serializer):
+        # We assume the frontend passes 'album_id' in the request,
+        # or we could make it a nested router. Let's just allow standard create.
+        album_id = self.request.data.get('album')
+        if album_id:
+            serializer.save(album_id=album_id)
+        else:
+            serializer.save()

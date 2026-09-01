@@ -2,21 +2,28 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import PageTitleBlob from '../components/ui/PageTitleBlob';
+import api from '../lib/api';
 
 const AdminAuth = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [status, setStatus] = useState('idle');
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setStatus('loading');
-    setTimeout(() => {
+    try {
+      await api.post('/accounts/login/', {
+        username: data.username,
+        password: data.password
+      });
       setStatus('success');
-      localStorage.setItem('adminAuth', 'true');
-      setTimeout(() => {
-        navigate('/admin');
-      }, 500);
-    }, 1000);
+      // Let the session cookie handle the state. Redirect to admin.
+      navigate('/admin');
+    } catch (error) {
+      console.error(error);
+      setStatus('idle');
+      alert(error.response?.data?.detail || "Login failed");
+    }
   };
 
   return (

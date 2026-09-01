@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WebsiteSettings
+from .models import WebsiteSettings, Project
 
 
 @admin.register(WebsiteSettings)
@@ -11,3 +11,8 @@ class WebsiteSettingsAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ["title", "category", "created_at"]
+    search_fields = ["title", "category"]

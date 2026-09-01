@@ -42,10 +42,8 @@ const ScrollToTop = () => {
 };
 
 const ProtectedAdminRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem('adminAuth') === 'true';
-  if (!isAuthenticated) {
-    return <Navigate to="/admin-auth" replace />;
-  }
+  // Authentication check is now handled directly inside the Admin component
+  // via a secure API call to /api/accounts/me/ instead of localStorage.
   return children;
 };
 

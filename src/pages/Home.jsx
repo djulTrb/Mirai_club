@@ -11,6 +11,7 @@ import HeroSection from '../components/home/HeroSection';
 import MarqueeSection from '../components/home/MarqueeSection';
 import MissionSection from '../components/home/MissionSection';
 import TeamSection from '../components/home/TeamSection';
+import api from '../lib/api';
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -44,20 +45,19 @@ const Home = () => {
   const projectsSectionRef = useRef(null);
   const projectsHeaderTagRef = useRef(null);
   const projectsHeaderTitleRef = useRef(null);
-  const [projects] = useState(() => {
-    try {
-      const saved = localStorage.getItem('mirai_projects');
-      if (saved) return JSON.parse(saved);
-    } catch(e) {}
-    const defaultProjects = [
-      { id: 1, title: 'Sentiment Analyzer DZ', category: 'NLP', description: 'Analyse de sentiments sur le dialecte algA©rien. ModA¨le BERT fine-tunA©.', link: '#' },
-      { id: 2, title: 'DA©tection Objets Temps RA©el', category: 'VISION', description: 'SystA¨me de dA©tection basA© sur YOLOv8 pour applications locales.', link: '#' },
-      { id: 3, title: 'PrA©diction Agricole Locale', category: 'ML', description: "ModA¨le de prA©diction de rendements pour l'agriculture en Kabylie.", link: '#' },
-      { id: 4, title: 'Smart Campus Assistant', category: 'AI', description: 'Chatbot intelligent multilingue pour guider les A©tudiants sur le campus universitaire.', link: '#' }
-    ];
-    localStorage.setItem('mirai_projects', JSON.stringify(defaultProjects));
-    return defaultProjects;
-  });
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await api.get('/website/projects/');
+        setProjects(response.data);
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -326,10 +326,10 @@ const Home = () => {
                   >
                     {projects.map(proj => (
                       <div key={proj.id} className="w-full min-w-full md:min-w-[calc(50%-16px)] md:w-[calc(50%-16px)] xl:min-w-[calc(33.3333%-21.33px)] xl:w-[calc(33.3333%-21.33px)] h-auto snap-start shrink-0 bg-white border border-outline-variant/30 rounded-2xl shadow-sm flex flex-col p-8 transition-all hover:shadow-md group/card">
-                        <p className="font-accent font-semibold uppercase tracking-wider text-xs text-[#9D4EDD] mb-4">{proj.category}</p>
-                        <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title}</h3>
+                        <p className="font-accent font-semibold uppercase tracking-wider text-xs text-[#9D4EDD] mb-4">{proj.category || proj.categorie}</p>
+                        <h3 className="text-black font-display font-bold text-2xl mb-4 tracking-tight">{proj.title || proj.titre}</h3>
                         <p className="text-on-surface-variant font-body text-sm leading-relaxed mb-8 line-clamp-3">{proj.description}</p>
-                        <a href={proj.link || '#'} className="mt-auto flex items-center gap-1 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
+                        <a href={proj.link || proj.lien || '#'} className="mt-auto flex items-center gap-1 text-[#9D4EDD] font-body font-semibold text-xs uppercase tracking-wider w-fit hover:opacity-80">
                           {t('proj_explore')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
                       </div>
