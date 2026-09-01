@@ -31,6 +31,10 @@ const Admin = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
 
+  const [members, setMembers] = useState([]);
+  const [selectedMember, setSelectedMember] = useState(null);
+
+
   const [isRecruitmentOpen, setIsRecruitmentOpen] = useState(false);
   const [events, setEvents] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -50,16 +54,18 @@ const Admin = () => {
       try {
         await api.get('/accounts/me/');
         
-        const [eventsRes, projectsRes, galleriesRes, recruitmentRes] = await Promise.all([
+        const [eventsRes, projectsRes, galleriesRes, recruitmentRes, membersRes] = await Promise.all([
           api.get('/events/').catch(() => ({ data: [] })),
           api.get('/website/projects/').catch(() => ({ data: [] })),
           api.get('/gallery/albums/').catch(() => ({ data: [] })),
-          api.get('/recruitment/settings/').catch(() => ({ data: {} }))
+          api.get('/recruitment/settings/').catch(() => ({ data: {} })),
+          api.get('/team/').catch(() => ({ data: [] }))
         ]);
         
         setEvents(eventsRes.data || []);
         setProjects(projectsRes.data || []);
         setGalleries(galleriesRes.data || []);
+        setMembers(membersRes.data || []);
         
         const phase = recruitmentRes.data?.phase || (Array.isArray(recruitmentRes.data) && recruitmentRes.data[0]?.phase);
         setIsRecruitmentOpen(phase === 'ouvert');
@@ -77,7 +83,7 @@ const Admin = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedEvent || selectedGallery) {
+    if (selectedEvent || selectedGallery || selectedMember) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -85,7 +91,35 @@ const Admin = () => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedEvent, selectedGallery]);
+  }, [selectedEvent, selectedGallery, selectedMember]);
+
+  
+  const handleSaveMember = async (e) => {
+    e.preventDefault();
+    try {
+      if (selectedMember.id) {
+        await api.put(`/team/${selectedMember.id}/`, selectedMember);
+      } else {
+        await api.post('/team/', selectedMember);
+      }
+      const membersRes = await api.get('/team/');
+      setMembers(membersRes.data);
+      setSelectedMember(null);
+    } catch (err) {
+      console.error("Failed to save member", err);
+      alert("Failed to save member");
+    }
+  };
+
+  const handleDeleteMember = async (id) => {
+    if (!window.confirm("Are you sure?")) return;
+    try {
+      await api.delete(`/team/${id}/`);
+      setMembers(members.filter(m => m.id !== id));
+    } catch (err) {
+      console.error("Failed to delete member", err);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -468,6 +502,78 @@ const Admin = () => {
       </div>
 
       {/* Modals */}
+
+        {selectedMember && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedMember(null)}></div>
+            <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
+              <button onClick={() => setSelectedMember(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
+                <span className="material-symbols-outlined text-black">close</span>
+              </button>
+              
+              <h3 className="font-display font-bold text-2xl text-black mb-6">{selectedMember.id ? 'Edit Member' : 'Add Member'}</h3>
+              
+              <form onSubmit={handleSaveMember} className="flex flex-col gap-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">First Name</label>
+                    <input type="text" required value={selectedMember.prenom} onChange={e => setSelectedMember({...selectedMember, prenom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. John" />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Last Name</label>
+                    <input type="text" required value={selectedMember.nom} onChange={e => setSelectedMember({...selectedMember, nom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Doe" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Role / Position</label>
+                  <input type="text" required value={selectedMember.poste} onChange={e => setSelectedMember({...selectedMember, poste: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Developer" />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Description (Optional)</label>
+                  <textarea value={selectedMember.description} onChange={e => setSelectedMember({...selectedMember, description: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors resize-none h-24" placeholder="Short bio..." />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skills (Optional)</label>
+                  <input type="text" value={selectedMember.skills} onChange={e => setSelectedMember({...selectedMember, skills: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. React, Python, UI/UX" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">LinkedIn URL</label>
+                    <input type="url" value={selectedMember.linkedin} onChange={e => setSelectedMember({...selectedMember, linkedin: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://linkedin.com/in/..." />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">GitHub URL</label>
+                    <input type="url" value={selectedMember.github} onChange={e => setSelectedMember({...selectedMember, github: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://github.com/..." />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Photo URL</label>
+                  <input type="url" value={selectedMember.photo_url} onChange={e => setSelectedMember({...selectedMember, photo_url: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://example.com/photo.jpg" />
+                </div>
+                
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Display Order</label>
+                  <input type="number" value={selectedMember.ordre_affichage} onChange={e => setSelectedMember({...selectedMember, ordre_affichage: parseInt(e.target.value) || 0})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" />
+                </div>
+
+                <div className="flex justify-end gap-3 mt-4">
+                  <button type="button" onClick={() => setSelectedMember(null)} className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:bg-surface-variant transition-colors border border-outline-variant/30">
+                    Cancel
+                  </button>
+                  <button type="submit" className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider bg-[#9D4EDD] text-white hover:opacity-90 transition-opacity shadow-sm">
+                    {t("admin_modal_save", "Save Changes")}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedEvent(null)}></div>
