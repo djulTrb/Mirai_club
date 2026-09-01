@@ -85,81 +85,7 @@ const Home = () => {
     };
     updateVisibleCards();
     window.addEventListener('resize', debouncedUpdate);
-  
-  useEffect(() => {
-    const section = ctaSectionRef.current;
-    const h2 = ctaTitleRef.current;
-    const btn = ctaButtonRef.current;
-    
-    if (!section || !h2 || !btn) return;
-
-    // We split the text recursively to preserve HTML tags like <br/>
-    const splitNodes = (node) => {
-      Array.from(node.childNodes).forEach(child => {
-        if (child.nodeType === Node.TEXT_NODE) {
-          const text = child.textContent;
-          if (!text.trim()) return;
-          
-          const frag = document.createDocumentFragment();
-          for (const char of text) {
-             if (char === ' ') {
-                frag.appendChild(document.createTextNode(' '));
-             } else {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.className = 'cta-char inline-block opacity-0 translate-y-4';
-                frag.appendChild(span);
-             }
-          }
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
-          splitNodes(child);
-        }
-      });
-    };
-
-    if (!h2.dataset.splitDone) {
-      splitNodes(h2);
-      h2.dataset.splitDone = "true";
-    }
-
-    const chars = h2.querySelectorAll('.cta-char');
-    const pills = h2.querySelectorAll('.cta-pill');
-
-    gsap.set(chars, { opacity: 0, y: 20 });
-    gsap.set(pills, { scale: 0, opacity: 0 });
-    gsap.set(btn, { scale: 0.8, opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 75%",
-      }
-    });
-
-    tl.to(chars, {
-      opacity: 1,
-      y: 0,
-      duration: 0.4,
-      stagger: 0.02,
-      ease: "power2.out"
-    });
-
-    tl.to([pills, btn], {
-      scale: 1,
-      opacity: 1,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "back.out(1.5)",
-      clearProps: "transform"
-    }, "+=0.1");
-
     return () => {
-      tl.kill();
-    };
-  }, [i18n.language]);
-
-  return () => {
       window.removeEventListener('resize', debouncedUpdate);
       clearTimeout(timeoutId);
     };
@@ -184,81 +110,7 @@ const Home = () => {
       tl.to(projectsHeaderTagRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
         .to(projectsHeaderTitleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.1");
     }, projectsSectionRef);
-  
-  useEffect(() => {
-    const section = ctaSectionRef.current;
-    const h2 = ctaTitleRef.current;
-    const btn = ctaButtonRef.current;
-    
-    if (!section || !h2 || !btn) return;
-
-    // We split the text recursively to preserve HTML tags like <br/>
-    const splitNodes = (node) => {
-      Array.from(node.childNodes).forEach(child => {
-        if (child.nodeType === Node.TEXT_NODE) {
-          const text = child.textContent;
-          if (!text.trim()) return;
-          
-          const frag = document.createDocumentFragment();
-          for (const char of text) {
-             if (char === ' ') {
-                frag.appendChild(document.createTextNode(' '));
-             } else {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.className = 'cta-char inline-block opacity-0 translate-y-4';
-                frag.appendChild(span);
-             }
-          }
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
-          splitNodes(child);
-        }
-      });
-    };
-
-    if (!h2.dataset.splitDone) {
-      splitNodes(h2);
-      h2.dataset.splitDone = "true";
-    }
-
-    const chars = h2.querySelectorAll('.cta-char');
-    const pills = h2.querySelectorAll('.cta-pill');
-
-    gsap.set(chars, { opacity: 0, y: 20 });
-    gsap.set(pills, { scale: 0, opacity: 0 });
-    gsap.set(btn, { scale: 0.8, opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 75%",
-      }
-    });
-
-    tl.to(chars, {
-      opacity: 1,
-      y: 0,
-      duration: 0.4,
-      stagger: 0.02,
-      ease: "power2.out"
-    });
-
-    tl.to([pills, btn], {
-      scale: 1,
-      opacity: 1,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "back.out(1.5)",
-      clearProps: "transform"
-    }, "+=0.1");
-
-    return () => {
-      tl.kill();
-    };
-  }, [i18n.language]);
-
-  return () => ctx.revert();
+    return () => ctx.revert();
   }, []);
 
 
@@ -269,7 +121,6 @@ const Home = () => {
     
     if (!section || !h2 || !btn) return;
 
-    // We split the text recursively to preserve HTML tags like <br/>
     const splitNodes = (node) => {
       Array.from(node.childNodes).forEach(child => {
         if (child.nodeType === Node.TEXT_NODE) {
@@ -433,81 +284,7 @@ const Home = () => {
                   <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
                     {Array.from({ length: Math.ceil(projects.length / visibleCards) }).map((_, pageIdx) => {
                       const isActive = Math.floor(activeProjectIdx / visibleCards) === pageIdx;
-                    
-  useEffect(() => {
-    const section = ctaSectionRef.current;
-    const h2 = ctaTitleRef.current;
-    const btn = ctaButtonRef.current;
-    
-    if (!section || !h2 || !btn) return;
-
-    // We split the text recursively to preserve HTML tags like <br/>
-    const splitNodes = (node) => {
-      Array.from(node.childNodes).forEach(child => {
-        if (child.nodeType === Node.TEXT_NODE) {
-          const text = child.textContent;
-          if (!text.trim()) return;
-          
-          const frag = document.createDocumentFragment();
-          for (const char of text) {
-             if (char === ' ') {
-                frag.appendChild(document.createTextNode(' '));
-             } else {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.className = 'cta-char inline-block opacity-0 translate-y-4';
-                frag.appendChild(span);
-             }
-          }
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
-          splitNodes(child);
-        }
-      });
-    };
-
-    if (!h2.dataset.splitDone) {
-      splitNodes(h2);
-      h2.dataset.splitDone = "true";
-    }
-
-    const chars = h2.querySelectorAll('.cta-char');
-    const pills = h2.querySelectorAll('.cta-pill');
-
-    gsap.set(chars, { opacity: 0, y: 20 });
-    gsap.set(pills, { scale: 0, opacity: 0 });
-    gsap.set(btn, { scale: 0.8, opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 75%",
-      }
-    });
-
-    tl.to(chars, {
-      opacity: 1,
-      y: 0,
-      duration: 0.4,
-      stagger: 0.02,
-      ease: "power2.out"
-    });
-
-    tl.to([pills, btn], {
-      scale: 1,
-      opacity: 1,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "back.out(1.5)",
-      clearProps: "transform"
-    }, "+=0.1");
-
-    return () => {
-      tl.kill();
-    };
-  }, [i18n.language]);
-
-  return (
+                      return (
                         <button 
                           key={pageIdx}
                           onClick={() => {
@@ -554,7 +331,7 @@ const Home = () => {
               i18nKey="home_cta_title"
               components={{
                 pill1: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
@@ -562,7 +339,7 @@ const Home = () => {
                   </span>
                 ),
                 pill2: (
-                  <span className="inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
