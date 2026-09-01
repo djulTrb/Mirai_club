@@ -121,7 +121,7 @@ const Home = () => {
     
     if (!section || !h2 || !btn) return;
 
-    const splitNodes = (node) => {
+    const splitNodes = (node, state = { group: 0 }) => {
       Array.from(node.childNodes).forEach(child => {
         if (child.nodeType === Node.TEXT_NODE) {
           const text = child.textContent;
@@ -134,13 +134,18 @@ const Home = () => {
              } else {
                 const span = document.createElement('span');
                 span.textContent = char;
-                span.className = 'cta-char inline-block opacity-0 translate-y-4';
+                span.className = `cta-group-${state.group} inline-block opacity-0 translate-y-4`;
                 frag.appendChild(span);
              }
           }
           node.replaceChild(frag, child);
-        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('cta-pill')) {
-          splitNodes(child);
+        } else if (child.nodeType === Node.ELEMENT_NODE) {
+          if (child.classList.contains('cta-pill')) {
+            child.classList.add(`cta-img-${state.group}`);
+            state.group++;
+          } else {
+            splitNodes(child, state);
+          }
         }
       });
     };
@@ -150,11 +155,16 @@ const Home = () => {
       h2.dataset.splitDone = "true";
     }
 
-    const chars = h2.querySelectorAll('.cta-char');
-    const pills = h2.querySelectorAll('.cta-pill');
+    const g0 = h2.querySelectorAll('.cta-group-0');
+    const img0 = h2.querySelectorAll('.cta-img-0');
+    const g1 = h2.querySelectorAll('.cta-group-1');
+    const img1 = h2.querySelectorAll('.cta-img-1');
+    const g2 = h2.querySelectorAll('.cta-group-2');
 
-    gsap.set(chars, { opacity: 0, y: 20 });
-    gsap.set(pills, { scale: 0, opacity: 0 });
+    const secondHalfText = [...Array.from(g1), ...Array.from(g2)];
+
+    gsap.set([g0, g1, g2], { opacity: 0, y: 20 });
+    gsap.set([img0, img1], { scale: 0, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -163,22 +173,29 @@ const Home = () => {
       }
     });
 
-    tl.to(chars, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.035,
-      ease: "power2.out"
-    });
+    if (g0.length) {
+      tl.to(g0, {
+        opacity: 1, y: 0, duration: 0.6, stagger: 0.04, ease: "power2.out"
+      });
+    }
 
-    tl.to(pills, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "back.out(1.5)",
-      clearProps: "transform"
-    }, "<0.6");
+    if (img0.length) {
+      tl.to(img0, {
+        scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
+      }, "-=0.2");
+    }
+
+    if (secondHalfText.length) {
+      tl.to(secondHalfText, {
+        opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: "power2.out"
+      }, "+=0.3");
+    }
+
+    if (img1.length) {
+      tl.to(img1, {
+        scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
+      }, "-=0.2");
+    }
 
     return () => {
       tl.kill();
