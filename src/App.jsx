@@ -61,7 +61,7 @@ function App() {
       <HelmetProvider>
         <Router>
             <SmoothScroller />
-            {/* <RouteLoader /> */}
+            <RouteLoader />
           <ScrollToTop />
           
             <Suspense fallback={<SuspenseFallback />}>
