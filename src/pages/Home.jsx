@@ -121,6 +121,7 @@ const Home = () => {
     
     if (!section || !h2 || !btn) return;
 
+    // We must robustly assign classes because React re-renders might wipe them out on the pills
     const splitNodes = (node, state = { group: 0 }) => {
       Array.from(node.childNodes).forEach(child => {
         if (child.nodeType === Node.TEXT_NODE) {
@@ -134,13 +135,18 @@ const Home = () => {
              } else {
                 const span = document.createElement('span');
                 span.textContent = char;
-                span.className = `cta-group-${state.group} inline-block opacity-0 translate-y-4`;
+                // Add an explicit cta-char class to identify it later
+                span.className = `cta-char cta-group-${state.group} inline-block opacity-0 translate-y-4`;
                 frag.appendChild(span);
              }
           }
           node.replaceChild(frag, child);
         } else if (child.nodeType === Node.ELEMENT_NODE) {
-          if (child.classList.contains('cta-pill')) {
+          if (child.classList.contains('cta-char')) {
+            // Already split. Just read the group from its class if possible, though we don't strictly need to mutate it.
+            // But we must NOT enter it to avoid infinitely nesting spans!
+          } else if (child.classList.contains('cta-pill')) {
+            // Always ensure the pill has the correct group class, React might have wiped it!
             child.classList.add(`cta-img-${state.group}`);
             state.group++;
           } else {
@@ -150,10 +156,8 @@ const Home = () => {
       });
     };
 
-    if (!h2.dataset.splitDone) {
-      splitNodes(h2);
-      h2.dataset.splitDone = "true";
-    }
+    // ALWAYS run this, not just once. This fixes the issue where images lose their animation classes on re-render.
+    splitNodes(h2);
 
     const g0 = h2.querySelectorAll('.cta-group-0');
     const img0 = h2.querySelectorAll('.cta-img-0');
@@ -166,7 +170,9 @@ const Home = () => {
     const allImgs = [...Array.from(img0), ...Array.from(img1)];
 
     if (allText.length) gsap.set(allText, { opacity: 0, y: 20 });
-    if (allImgs.length) gsap.set(allImgs, { scale: 0, opacity: 0 });
+    
+    // User requested images to animate exactly like text: invisible to visible, bottom to top (y: 20)
+    if (allImgs.length) gsap.set(allImgs, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -182,21 +188,22 @@ const Home = () => {
     }
 
     if (img0.length) {
+      // No position parameter = starts exactly when previous animation finishes, NO DELAY
       tl.to(Array.from(img0), {
-        scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
-      }, "-=0.2");
+        opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "transform"
+      });
     }
 
     if (secondHalfText.length) {
       tl.to(secondHalfText, {
         opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: "power2.out"
-      }, "-=0.2"); // overlap slightly so it flows continuously without delay
+      }); 
     }
 
     if (img1.length) {
       tl.to(Array.from(img1), {
-        scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)", clearProps: "transform"
-      }, "-=0.2");
+        opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "transform"
+      });
     }
 
     return () => {
