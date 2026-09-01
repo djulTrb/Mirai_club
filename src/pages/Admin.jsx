@@ -524,127 +524,137 @@ const Admin = () => {
       {/* Modals */}
 
         {selectedMember && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedMember(null)}></div>
-            <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
-              <button onClick={() => setSelectedMember(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
-                <span className="material-symbols-outlined text-black">close</span>
-              </button>
-              
-              <h3 className="font-display font-bold text-2xl text-black mb-6">{selectedMember.id ? 'Edit Member' : 'Add Member'}</h3>
-              
-              <form onSubmit={handleSaveMember} className="flex flex-col gap-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">First Name</label>
-                    <input type="text" required value={selectedMember.prenom} onChange={e => setSelectedMember({...selectedMember, prenom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. John" />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Last Name</label>
-                    <input type="text" required value={selectedMember.nom} onChange={e => setSelectedMember({...selectedMember, nom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Doe" />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Role / Position</label>
-                  <input type="text" required value={selectedMember.poste} onChange={e => setSelectedMember({...selectedMember, poste: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Developer" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 1 (Optional)</label>
-                    <input type="text" value={(selectedMember.skills || '').split(',')[0]?.trim() || ''} onChange={e => {
-                      const val = e.target.value.trim();
-                      const s2 = (selectedMember.skills || '').split(',')[1]?.trim() || '';
-                      setSelectedMember({...selectedMember, skills: [val, s2].filter(Boolean).join(', ')});
-                    }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. React" />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 2 (Optional)</label>
-                    <input type="text" value={(selectedMember.skills || '').split(',')[1]?.trim() || ''} onChange={e => {
-                      const val = e.target.value.trim();
-                      const s1 = (selectedMember.skills || '').split(',')[0]?.trim() || '';
-                      setSelectedMember({...selectedMember, skills: [s1, val].filter(Boolean).join(', ')});
-                    }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Figma" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">LinkedIn URL</label>
-                    <input type="url" value={selectedMember.linkedin} onChange={e => setSelectedMember({...selectedMember, linkedin: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://linkedin.com/in/..." />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">GitHub URL</label>
-                    <input type="url" value={selectedMember.github} onChange={e => setSelectedMember({...selectedMember, github: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://github.com/..." />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Photo URL</label>
-                  <input type="url" value={selectedMember.photo_url} onChange={e => setSelectedMember({...selectedMember, photo_url: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://example.com/photo.jpg" />
-                </div>
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            <div className="min-h-full flex items-center justify-center p-4">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedMember(null)}></div>
+              <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl my-8">
+                <button onClick={() => setSelectedMember(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
+                  <span className="material-symbols-outlined text-black">close</span>
+                </button>
                 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Display Order</label>
-                  <input type="number" value={selectedMember.ordre_affichage} onChange={e => setSelectedMember({...selectedMember, ordre_affichage: parseInt(e.target.value) || 0})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" />
-                </div>
+                <h3 className="font-display font-bold text-2xl text-black mb-6">{selectedMember.id ? 'Edit Member' : 'Add Member'}</h3>
+                
+                <form onSubmit={handleSaveMember} className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">First Name</label>
+                      <input type="text" required value={selectedMember.prenom} onChange={e => setSelectedMember({...selectedMember, prenom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. John" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Last Name</label>
+                      <input type="text" required value={selectedMember.nom} onChange={e => setSelectedMember({...selectedMember, nom: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Doe" />
+                    </div>
+                  </div>
 
-                <div className="flex justify-end gap-3 mt-4">
-                  <button type="button" onClick={() => setSelectedMember(null)} className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:bg-surface-variant transition-colors border border-outline-variant/30">
-                    Cancel
-                  </button>
-                  <button type="submit" className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider bg-[#9D4EDD] text-white hover:opacity-90 transition-opacity shadow-sm">
-                    {t("admin_modal_save", "Save Changes")}
-                  </button>
-                </div>
-              </form>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Role / Position</label>
+                    <input type="text" required value={selectedMember.poste} onChange={e => setSelectedMember({...selectedMember, poste: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Developer" />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 1 (Optional)</label>
+                      <input type="text" value={(selectedMember.skills || '').split(',')[0]?.trim() || ''} onChange={e => {
+                        const val = e.target.value.trim();
+                        const s2 = (selectedMember.skills || '').split(',')[1]?.trim() || '';
+                        setSelectedMember({...selectedMember, skills: [val, s2].filter(Boolean).join(', ')});
+                      }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. React" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Skill 2 (Optional)</label>
+                      <input type="text" value={(selectedMember.skills || '').split(',')[1]?.trim() || ''} onChange={e => {
+                        const val = e.target.value.trim();
+                        const s1 = (selectedMember.skills || '').split(',')[0]?.trim() || '';
+                        setSelectedMember({...selectedMember, skills: [s1, val].filter(Boolean).join(', ')});
+                      }} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="e.g. Figma" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">LinkedIn URL</label>
+                      <input type="url" value={selectedMember.linkedin} onChange={e => setSelectedMember({...selectedMember, linkedin: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://linkedin.com/in/..." />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">GitHub URL</label>
+                      <input type="url" value={selectedMember.github} onChange={e => setSelectedMember({...selectedMember, github: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://github.com/..." />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Photo URL</label>
+                    <input type="url" value={selectedMember.photo_url} onChange={e => setSelectedMember({...selectedMember, photo_url: e.target.value})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" placeholder="https://example.com/photo.jpg" />
+                  </div>
+                  
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-body font-semibold text-xs uppercase tracking-wider text-black">Display Order</label>
+                    <input type="number" value={selectedMember.ordre_affichage} onChange={e => setSelectedMember({...selectedMember, ordre_affichage: parseInt(e.target.value) || 0})} className="w-full bg-surface-variant border border-outline-variant/30 rounded-xl px-4 py-3 font-body text-sm text-black focus:outline-none focus:border-[#9D4EDD] transition-colors" />
+                  </div>
+
+                  <div className="flex justify-end gap-3 mt-4">
+                    <button type="button" onClick={() => setSelectedMember(null)} className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:bg-surface-variant transition-colors border border-outline-variant/30">
+                      Cancel
+                    </button>
+                    <button type="submit" className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider bg-[#9D4EDD] text-white hover:opacity-90 transition-opacity shadow-sm">
+                      {t("admin_modal_save", "Save Changes")}
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         )}
 
       {selectedEvent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedEvent(null)}></div>
-          <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setSelectedEvent(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
-              <span className="material-symbols-outlined">close</span>
-            </button>
-            
-            <h2 className="font-display font-bold text-2xl mb-6">{t("admin_modal_edit_event", "Edit Event")}</h2>
-            <form className="flex flex-col gap-4">
-              <input defaultValue={selectedEvent.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
-              <input defaultValue={selectedEvent.date} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="date" />
-              <textarea defaultValue={selectedEvent.snippet} rows="2" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
-              <textarea defaultValue={selectedEvent.details} rows="4" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
-              <input defaultValue={selectedEvent.location} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedEvent(null)}></div>
+            <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl my-8">
+              <button onClick={() => setSelectedEvent(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
+                <span className="material-symbols-outlined">close</span>
+              </button>
               
-              <div className="flex justify-between mt-6">
-                <button type="button" onClick={() => handleDeleteEvent(selectedEvent.id)} className="px-6 py-3 bg-red-50 text-red-600 font-semibold text-xs uppercase tracking-wider rounded-xl hover:bg-red-100 transition-colors flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm">delete</span> {t("admin_member_delete", "Delete")} Event
-                </button>
-                <button type="button" onClick={() => setSelectedEvent(null)} className="px-8 py-3 bg-[#9D4EDD] text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
-                  {t("admin_modal_save", "Save Changes")}
-                </button>
-              </div>
-            </form>
+              <h2 className="font-display font-bold text-2xl mb-6">{t("admin_modal_edit_event", "Edit Event")}</h2>
+              <form className="flex flex-col gap-4">
+                <input defaultValue={selectedEvent.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
+                <input defaultValue={selectedEvent.date} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="date" />
+                <textarea defaultValue={selectedEvent.snippet} rows="2" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
+                <textarea defaultValue={selectedEvent.details} rows="4" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none resize-none"></textarea>
+                <input defaultValue={selectedEvent.location} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none" type="text" />
+                
+                <div className="flex justify-between mt-6">
+                  <button type="button" onClick={() => handleDeleteEvent(selectedEvent.id)} className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider text-error border border-error hover:bg-error/10 transition-colors">
+                    {t("admin_modal_delete", "Delete Event")}
+                  </button>
+                  <div className="flex gap-3">
+                    <button type="button" onClick={() => setSelectedEvent(null)} className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider text-on-surface-variant hover:bg-surface-variant transition-colors">
+                      {t("admin_modal_cancel", "Cancel")}
+                    </button>
+                    <button type="button" className="px-6 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider bg-[#9D4EDD] text-white hover:opacity-90 transition-opacity shadow-sm">
+                      {t("admin_modal_save", "Save Changes")}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}
 
       {selectedGallery && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedGallery(null)}></div>
-          <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-4xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setSelectedGallery(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
-              <span className="material-symbols-outlined">close</span>
-            </button>
-            
-            <h2 className="font-display font-bold text-2xl mb-2">{t("admin_modal_edit_gallery", "Edit Gallery")}</h2>
-            <input defaultValue={selectedGallery.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none mb-6" type="text" />
-            
-            <h3 className="font-display font-bold text-lg mb-4">{t("admin_modal_gallery_images", "Images")}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedGallery(null)}></div>
+            <div className="relative bg-surface-container rounded-3xl p-6 md:p-8 max-w-4xl w-full shadow-2xl my-8">
+              <button onClick={() => setSelectedGallery(null)} className="absolute top-6 right-6 w-10 h-10 bg-surface-container hover:bg-surface-variant rounded-full flex items-center justify-center transition-colors">
+                <span className="material-symbols-outlined">close</span>
+              </button>
+              
+              <h2 className="font-display font-bold text-2xl mb-2">{t("admin_modal_edit_gallery", "Edit Gallery")}</h2>
+              <input defaultValue={selectedGallery.title} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#9D4EDD] outline-none mb-6" type="text" />
+              
+              <h3 className="font-display font-bold text-lg mb-4">{t("admin_modal_gallery_images", "Images")}</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
               {(selectedGallery.images || []).map(img => (
                 <div key={img.id} className="relative group rounded-xl overflow-hidden aspect-square border border-outline-variant/30">
                   <img src={img.url} alt="Gallery item" className="w-full h-full object-cover" />
@@ -664,6 +674,7 @@ const Admin = () => {
               <button type="button" onClick={() => setSelectedGallery(null)} className="px-8 py-3 bg-[#9D4EDD] text-white font-semibold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity">
                 Done
               </button>
+            </div>
             </div>
           </div>
         </div>
