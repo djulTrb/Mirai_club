@@ -12,12 +12,10 @@ const RouteLoader = () => {
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Show loader if:
-    // 1. It's the initial app load (regardless of route)
-    // 2. The route changed to "/"
-    
-    if (!isInitialMount.current && location.pathname !== '/') {
+    // Show loader ONLY if the route is "/" (the hero section)
+    if (location.pathname !== '/') {
       setShowLoader(false);
+      isInitialMount.current = false;
       return;
     }
     
