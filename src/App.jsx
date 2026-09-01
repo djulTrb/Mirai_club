@@ -57,7 +57,7 @@ function App() {
       <HelmetProvider>
         <Router>
             <SmoothScroller />
-            <RouteLoader />
+            {/* <RouteLoader /> */}
           <ScrollToTop />
           
             <Suspense fallback={<div className="min-h-screen w-full flex items-center justify-center bg-background"><div className="w-12 h-12 rounded-full border-4 border-[#c87fff] border-t-transparent animate-spin"></div></div>}>
