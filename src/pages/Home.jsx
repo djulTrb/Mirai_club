@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 import { Helmet } from 'react-helmet-async';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/home/HeroSection';
@@ -14,6 +14,28 @@ import TeamSection from '../components/home/TeamSection';
 
 const Home = () => {
   const { t, i18n } = useTranslation();
+
+  const ctaComponents = useMemo(() => ({
+    pill1: (
+      <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+        <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
+        <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
+          <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
+        </div>
+      </span>
+    ),
+    pill2: (
+      <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+        <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
+        <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
+          <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
+        </div>
+      </span>
+    ),
+    br: <br />,
+    brDesktop: <br className="hidden md:block" />,
+    nowrap: <span className="inline-block whitespace-nowrap" />
+  }), []);
 
   const scrollRef = useRef(null);
   const ctaSectionRef = useRef(null);
@@ -368,27 +390,7 @@ const Home = () => {
           <h2 key={i18n.language + t("home_cta_title")} ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
             <Trans 
               i18nKey="home_cta_title"
-              components={{
-                pill1: (
-                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
-                    <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
-                    <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
-                      <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
-                    </div>
-                  </span>
-                ),
-                pill2: (
-                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
-                    <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
-                    <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
-                      <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
-                    </div>
-                  </span>
-                ),
-                br: <br />,
-                brDesktop: <br className="hidden md:block" />,
-                nowrap: <span className="inline-block whitespace-nowrap" />
-              }}
+              components={ctaComponents}
             />
           </h2>
           
