@@ -114,7 +114,7 @@ const MissionSection = () => {
         (tl) => {
            tl.to(ringRef.current, { strokeDashoffset: "70", duration: 1.2, ease: "power2.out" }, "-=0.2");
            tl.to(count1Ref.current, {
-              innerText: 38,
+              innerText: 3,
               duration: 1.2,
               snap: { innerText: 1 },
               ease: "power2.out"
@@ -245,12 +245,7 @@ const MissionSection = () => {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span
-                  ref={count1Ref}
-                  className="font-display font-bold text-[14px] text-[#3c096c] dark:text-[#F8F6FC]"
-                >
-                  0/8
-                </span>
+                <span className="font-display font-bold text-[14px] text-[#3c096c] dark:text-[#F8F6FC] flex"><span ref={count1Ref}>0</span>/8</span>
               </div>
               <span className="font-accent text-[9px] font-bold uppercase tracking-wider text-[#6A5A82] text-center leading-tight">
                 DEEP LEARNING

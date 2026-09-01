@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import SmoothScroller from './components/SmoothScroller';
+import RouteLoader from './components/ui/RouteLoader';
 
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -56,6 +57,7 @@ function App() {
       <HelmetProvider>
         <Router>
             <SmoothScroller />
+            <RouteLoader />
           <ScrollToTop />
           
             <Routes>
