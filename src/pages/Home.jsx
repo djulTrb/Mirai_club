@@ -5,6 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 import { Helmet } from 'react-helmet-async';
 import React, { useState, useEffect, useRef } from 'react';
+import LoadingState from '../components/ui/LoadingState';
+import heroDesktop from '../assets/hero_screens/hero_bg_desktop_16x9.webp';
+import heroMobile from '../assets/hero_screens/hero_bg_mobile_9x16.webp';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/home/HeroSection';
@@ -13,6 +16,42 @@ import MissionSection from '../components/home/MissionSection';
 import TeamSection from '../components/home/TeamSection';
 
 const Home = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const targetSrc = window.innerWidth < 640 ? heroMobile : heroDesktop;
+    
+    const fallbackTimer = setInterval(() => {
+      setProgress(p => (p < 85 ? p + Math.floor(Math.random() * 5) : p));
+    }, 200);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', targetSrc, true);
+    xhr.responseType = 'blob';
+    
+    xhr.onprogress = (event) => {
+      if (event.lengthComputable) {
+        const p = Math.floor((event.loaded / event.total) * 100);
+        setProgress(Math.max(p, 10));
+      }
+    };
+    
+    const complete = () => {
+      clearInterval(fallbackTimer);
+      setProgress(100);
+      setTimeout(() => setIsLoaded(true), 600);
+    };
+
+    xhr.onload = complete;
+    xhr.onerror = complete;
+    xhr.send();
+
+    return () => {
+      clearInterval(fallbackTimer);
+      xhr.abort();
+    };
+  }, []);
   const { t, i18n } = useTranslation();
 
   const scrollRef = useRef(null);
@@ -111,6 +150,12 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+      {!isLoaded && (
+        <div className="fixed inset-0 z-[9999] bg-background flex items-center justify-center">
+          <LoadingState progress={progress} variant="Dots" />
+        </div>
+      )}
     <main className="w-full min-h-screen bg-surface flex flex-col pt-20">
       <Helmet>
         <title>Home | Mirai Club</title>
@@ -303,6 +348,7 @@ const Home = () => {
         </div>
       </section>
     </main>
+    </>
   );
 };
 

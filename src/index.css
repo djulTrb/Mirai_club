@@ -267,3 +267,13 @@ html[lang="ar"] .material-symbols-outlined {
     background-position: -200% 0;
   }
 }
+
+
+@keyframes text-wave {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}

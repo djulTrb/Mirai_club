@@ -72,7 +72,7 @@ const LoadingState = ({ variant = "Dots", progress = 0 }) => {
               <span
                 key={i}
                 style={{
-                  animation: `pixel-on ${dur}ms ease-in-out ${i * 70}ms infinite`
+                  animation: `text-wave ${dur}ms ease-in-out ${i * 70}ms infinite`
                 }}
               >
                 {char}

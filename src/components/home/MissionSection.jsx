@@ -151,7 +151,7 @@ const MissionSection = () => {
               ease: "back.out(2)"
            }, "-=0.2");
            tl.to(count3Ref.current, {
-              innerText: 12,
+              innerText: 11,
               duration: 1,
               snap: { innerText: 1 },
               ease: "power2.out"

@@ -78,27 +78,27 @@ const HeroSection = () => {
       );
     }
 
-    // Parallax ScrollTrigger
-    let parallaxTween;
-    if (bgRef.current && sectionRef.current) {
-      parallaxTween = gsap.to(bgRef.current, {
-        yPercent: 15, // Move down by 15% of its height
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.5
-        }
-      });
-    }
+    // Parallax ScrollTrigger (Desktop only to prevent mobile lag)
+    let mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 768px)", () => {
+      if (bgRef.current && sectionRef.current) {
+        gsap.to(bgRef.current, {
+          yPercent: 15, // Move down by 15% of its height
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5
+          }
+        });
+      }
+    });
 
     return () => {
       tl.kill();
-      if (parallaxTween) {
-        parallaxTween.scrollTrigger?.kill();
-        parallaxTween.kill();
-      }
+      mm.revert();
     };
   }, []);
 
