@@ -121,8 +121,7 @@ const Home = () => {
     
     if (!section || !h2 || !btn) return;
 
-    // We must robustly assign classes because React re-renders might wipe them out on the pills
-    const splitNodes = (node, state = { group: 0 }) => {
+    const splitNodes = (node) => {
       Array.from(node.childNodes).forEach(child => {
         if (child.nodeType === Node.TEXT_NODE) {
           const text = child.textContent;
@@ -135,44 +134,63 @@ const Home = () => {
              } else {
                 const span = document.createElement('span');
                 span.textContent = char;
-                // Add an explicit cta-char class to identify it later
-                span.className = `cta-char cta-group-${state.group} inline-block opacity-0 translate-y-4`;
+                span.className = `cta-char inline-block opacity-0 translate-y-4`;
                 frag.appendChild(span);
              }
           }
           node.replaceChild(frag, child);
         } else if (child.nodeType === Node.ELEMENT_NODE) {
           if (child.classList.contains('cta-char')) {
-            // Already split. Just read the group from its class if possible, though we don't strictly need to mutate it.
-            // But we must NOT enter it to avoid infinitely nesting spans!
-          } else if (child.classList.contains('cta-pill')) {
-            // Always ensure the pill has the correct group class, React might have wiped it!
-            child.classList.add(`cta-img-${state.group}`);
-            state.group++;
+            // Already split.
           } else {
-            splitNodes(child, state);
+            splitNodes(child);
           }
         }
       });
     };
 
-    // ALWAYS run this, not just once. This fixes the issue where images lose their animation classes on re-render.
     splitNodes(h2);
 
-    const g0 = h2.querySelectorAll('.cta-group-0');
-    const img0 = h2.querySelectorAll('.cta-img-0');
-    const g1 = h2.querySelectorAll('.cta-group-1');
-    const img1 = h2.querySelectorAll('.cta-img-1');
-    const g2 = h2.querySelectorAll('.cta-group-2');
+    // Build the exact DOM visual sequence (Text -> Pill -> Text -> Pill...)
+    const sequence = [];
+    const collectItems = (node) => {
+       Array.from(node.childNodes).forEach(child => {
+         if (child.nodeType === Node.ELEMENT_NODE) {
+           if (child.classList.contains('cta-char')) {
+              sequence.push(child);
+           } else if (child.classList.contains('cta-pill')) {
+              sequence.push(child);
+           } else {
+              collectItems(child);
+           }
+         }
+       });
+    };
+    collectItems(h2);
 
-    const secondHalfText = [...Array.from(g1), ...Array.from(g2)];
-    const allText = [...Array.from(g0), ...secondHalfText];
-    const allImgs = [...Array.from(img0), ...Array.from(img1)];
+    // Group adjacent chars into arrays so we can stagger them!
+    const groupedSequence = [];
+    let currentCharGroup = [];
+    sequence.forEach(item => {
+       if (item.classList.contains('cta-char')) {
+          currentCharGroup.push(item);
+       } else {
+          if (currentCharGroup.length) {
+             groupedSequence.push(currentCharGroup);
+             currentCharGroup = [];
+          }
+          groupedSequence.push(item); // The pill element
+       }
+    });
+    if (currentCharGroup.length) {
+       groupedSequence.push(currentCharGroup);
+    }
 
-    if (allText.length) gsap.set(allText, { opacity: 0, y: 20 });
-    
-    // User requested images to animate exactly like text: invisible to visible, bottom to top (y: 20)
-    if (allImgs.length) gsap.set(allImgs, { opacity: 0, y: 20 });
+    // Set initial states
+    const allChars = h2.querySelectorAll('.cta-char');
+    const allPills = h2.querySelectorAll('.cta-pill');
+    if (allChars.length) gsap.set(allChars, { opacity: 0, y: 20 });
+    if (allPills.length) gsap.set(allPills, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -181,30 +199,20 @@ const Home = () => {
       }
     });
 
-    if (g0.length) {
-      tl.to(Array.from(g0), {
-        opacity: 1, y: 0, duration: 0.6, stagger: 0.04, ease: "power2.out"
-      });
-    }
-
-    if (img0.length) {
-      // No position parameter = starts exactly when previous animation finishes, NO DELAY
-      tl.to(Array.from(img0), {
-        opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "transform"
-      });
-    }
-
-    if (secondHalfText.length) {
-      tl.to(secondHalfText, {
-        opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: "power2.out"
-      }); 
-    }
-
-    if (img1.length) {
-      tl.to(Array.from(img1), {
-        opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "transform"
-      });
-    }
+    // Animate exactly as they appear in the DOM! No hardcoded indexes.
+    // This perfectly adapts to Arabic/English translations.
+    groupedSequence.forEach((group, index) => {
+       if (Array.isArray(group)) {
+           // Text group
+           const dur = index === 0 ? 0.6 : 0.4; // First half text is slightly slower
+           const stag = index === 0 ? 0.04 : 0.02;
+           tl.to(group, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
+       } else {
+           // Pill
+           // No clearProps: "transform" to prevent layout jumps against Tailwind!
+           tl.to(group, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, ">");
+       }
+    });
 
     return () => {
       tl.kill();
@@ -351,12 +359,12 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-16 md:gap-8 text-center md:text-left rtl:md:text-right">
-          <h2 ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
+          <h2 key={i18n.language} ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
             <Trans 
               i18nKey="home_cta_title"
               components={{
                 pill1: (
-                  <span className="cta-pill inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#c87fff] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg1} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-auto" />
@@ -364,7 +372,7 @@ const Home = () => {
                   </span>
                 ),
                 pill2: (
-                  <span className="cta-pill inline-block align-middle -translate-y-1 md:-translate-y-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
+                  <span className="cta-pill inline-block align-middle -top-1 md:-top-2 w-24 md:w-36 h-12 md:h-16 lg:h-[72px] bg-[#9D4EDD] rounded-[3rem] mx-2 md:mx-4 relative shadow-inner">
                     <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto pointer-events-none z-10" style={{ clipPath: 'inset(0 0 20% 0)' }} />
                     <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
                       <img src={ctaImg2} alt="" loading="lazy" className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-[85%] h-auto" />
