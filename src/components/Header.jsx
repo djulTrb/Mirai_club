@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
+import { preloadRoute } from '../utils/routePreloader';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -93,7 +94,15 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 z-20">
           {navLinks.map((link) => (
-            <Link key={link.path} className="text-xs font-body font-semibold uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" to={link.path}>{link.name}</Link>
+            <Link 
+              key={link.path} 
+              className="text-xs font-body font-semibold uppercase tracking-wider text-on-surface-variant hover:text-[#9D4EDD] transition-colors" 
+              to={link.path}
+              onMouseEnter={() => preloadRoute(link.path)}
+              onFocus={() => preloadRoute(link.path)}
+            >
+              {link.name}
+            </Link>
           ))}
         </nav>
 
@@ -166,6 +175,8 @@ const Header = () => {
               className="text-base font-body font-bold uppercase tracking-widest text-black hover:text-[#9D4EDD] transition-colors border-b border-outline-variant/10 pb-4 block" 
               to={link.path}
               onClick={() => setIsMobileMenuOpen(false)}
+              onMouseEnter={() => preloadRoute(link.path)}
+              onFocus={() => preloadRoute(link.path)}
             >
               {link.name}
             </Link>

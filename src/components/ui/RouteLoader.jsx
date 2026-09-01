@@ -3,17 +3,19 @@ import { useLocation } from 'react-router-dom';
 import LoadingState from './LoadingState';
 import heroDesktop from '../../assets/hero_screens/hero_bg_desktop_16x9.webp';
 import heroMobile from '../../assets/hero_screens/hero_bg_mobile_9x16.webp';
+import { useLoader } from '../../contexts/LoaderContext';
 
 const RouteLoader = () => {
   const location = useLocation();
+  const { hasVisited, markVisited, isReady } = useLoader();
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showLoader, setShowLoader] = useState(true);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Show loader ONLY if the route is "/" (the hero section)
-    if (location.pathname !== '/') {
+    // Show loader ONLY if the route is "/" and they haven't visited before in this session
+    if (location.pathname !== '/' || hasVisited || !isReady) {
       setShowLoader(false);
       isInitialMount.current = false;
       return;
@@ -39,7 +41,10 @@ const RouteLoader = () => {
           currentProg = 100;
           setProgress(100);
           clearInterval(artificialTimer);
-          setTimeout(() => setIsLoaded(true), 400); // slight pause at 100%
+          setTimeout(() => {
+            setIsLoaded(true);
+            markVisited();
+          }, 400); // slight pause at 100%
         } else {
           currentProg = 99; // hold at 99% if XHR is actually taking a long time
           setProgress(99);
@@ -75,7 +80,7 @@ const RouteLoader = () => {
       clearInterval(artificialTimer);
       xhr.abort();
     };
-  }, [location.pathname]);
+  }, [location.pathname, hasVisited, isReady, markVisited]);
 
   if (!showLoader || isLoaded) return null;
 
