@@ -221,7 +221,7 @@ const Home = () => {
     return () => {
       tl.kill();
     };
-  }, [i18n.language]);
+  }, [i18n.language, t("home_cta_title")]);
 
   return (
     <main className="w-full min-h-screen bg-surface flex flex-col pt-20">
@@ -363,7 +363,7 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-16 md:gap-8 text-center md:text-left rtl:md:text-right">
-          <h2 key={i18n.language} ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
+          <h2 key={i18n.language + t("home_cta_title")} ref={ctaTitleRef} className={`md:col-span-2 font-display font-bold tracking-tighter whitespace-pre-line text-on-surface ${i18n.language?.startsWith('ar') ? 'text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] leading-[1.6] sm:leading-[1.7] md:leading-[1.5]' : 'text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.4] sm:leading-[1.5] md:leading-[1.1]'}`}>
             <Trans 
               i18nKey="home_cta_title"
               components={{
