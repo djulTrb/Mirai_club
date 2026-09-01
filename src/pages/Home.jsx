@@ -150,23 +150,37 @@ const Home = () => {
           if (!text.trim()) return;
           
           const frag = document.createDocumentFragment();
-          // Split by words instead of letters to preserve cursive connection in Arabic!
-          // We capture whitespace so we can re-insert it as pure text nodes.
-          const tokens = text.split(/(\s+)/);
+          const isArabic = i18n.language?.startsWith('ar');
           
-          for (const token of tokens) {
-             if (!token) continue;
-             if (token.trim() === '') {
-                // It's whitespace
-                frag.appendChild(document.createTextNode(token));
-             } else {
-                // It's a word
-                const span = document.createElement('span');
-                span.textContent = token;
-                span.className = `cta-char inline-block`;
-                frag.appendChild(span);
-             }
+          if (isArabic) {
+            // Split by words for Arabic to preserve cursive ligatures
+            const tokens = text.split(/(\s+)/);
+            for (const token of tokens) {
+               if (!token) continue;
+               if (token.trim() === '') {
+                  frag.appendChild(document.createTextNode(token));
+               } else {
+                  const span = document.createElement('span');
+                  span.textContent = token;
+                  span.className = `cta-char inline-block`;
+                  frag.appendChild(span);
+               }
+            }
+          } else {
+            // Split by letters for English/French
+            const chars = text.split('');
+            for (const char of chars) {
+               if (char === ' ') {
+                  frag.appendChild(document.createTextNode(' '));
+               } else {
+                  const span = document.createElement('span');
+                  span.textContent = char;
+                  span.className = `cta-char inline-block`;
+                  frag.appendChild(span);
+               }
+            }
           }
+          
           node.replaceChild(frag, child);
         } else if (child.nodeType === Node.ELEMENT_NODE) {
           if (child.classList.contains('cta-char')) {
@@ -232,9 +246,13 @@ const Home = () => {
     // Animate exactly as they appear in the DOM! No hardcoded indexes.
     groupedSequence.forEach((group, index) => {
        if (Array.isArray(group)) {
-           // Text group (now words instead of letters)
+           const isArabic = i18n.language?.startsWith('ar');
            const dur = index === 0 ? 0.6 : 0.4; // First half text is slightly slower
-           const stag = index === 0 ? 0.08 : 0.04;
+           // Use tighter stagger for letters (non-Arabic), wider for words (Arabic)
+           const stag = isArabic 
+              ? (index === 0 ? 0.08 : 0.04) 
+              : (index === 0 ? 0.04 : 0.02);
+              
            tl.to(group, { opacity: 1, y: 0, duration: dur, stagger: stag, ease: "power2.out" }, ">");
        } else {
            // Pill
