@@ -296,28 +296,45 @@ const Admin = () => {
 
           {/* Manage Members */}
           <div className="flex flex-col gap-4 bg-surface-container p-6 md:p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_members_title", "Manage members")}</h2>
-              <button className="px-6 py-2 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:opacity-80 transition-opacity flex items-center gap-1.5 shadow-sm">
-                <span className="material-symbols-outlined text-sm">add</span>{t("admin_member_add", "Add Member")}
-              </button>
-            </div>
-            <div className="flex flex-col divide-y divide-outline-variant/30 border-y border-outline-variant/30">
-              {[1, 2, 3, 4, 5].map((num) => (
-                <div key={num} className="py-4 font-body text-black flex justify-between items-center">
-                  <span className="font-medium text-sm sm:text-base">{t("admin_member_name", "Member Name")} {num}</span>
-                  <div className="flex gap-4">
-                    <button className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
-                      <span className="material-symbols-outlined text-sm">edit</span>{t("admin_member_modify", "Modify")}
-                    </button>
-                    <button className="hover:text-error transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
-                      <span className="material-symbols-outlined text-sm">delete</span>{t("admin_member_delete", "Delete")}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="font-display font-bold text-xl text-black tracking-tight">{t("admin_members_title", "Manage members")}</h2>
+                <button 
+                  onClick={() => setSelectedMember({ prenom: '', nom: '', poste: '', description: '', skills: '', linkedin: '', github: '', photo_url: '', ordre_affichage: 0 })}
+                  className="px-6 py-2 bg-[#9D4EDD] text-white font-body font-semibold text-xs uppercase tracking-wider rounded-full hover:opacity-80 transition-opacity flex items-center gap-1.5 shadow-sm">
+                  <span className="material-symbols-outlined text-sm">add</span>{t("admin_member_add", "Add Member")}
+                </button>
+              </div>
+              <div className="flex flex-col divide-y divide-outline-variant/30 border-y border-outline-variant/30">
+                {members.length === 0 ? (
+                  <div className="py-4 font-body text-on-surface-variant text-sm">No members found.</div>
+                ) : (
+                  members.map((member) => (
+                    <div key={member.id} className="py-4 font-body text-black flex justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        {member.photo_url ? (
+                          <img src={member.photo_url} alt={member.prenom} className="w-10 h-10 rounded-full object-cover border border-outline-variant/30" />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant/30">
+                            <span className="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+                          </div>
+                        )}
+                        <div>
+                          <p className="font-medium text-sm sm:text-base">{member.prenom} {member.nom}</p>
+                          <p className="text-xs text-on-surface-variant">{member.poste}</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-4">
+                        <button onClick={() => setSelectedMember(member)} className="hover:text-[#9D4EDD] transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
+                          <span className="material-symbols-outlined text-sm">edit</span>{t("admin_member_modify", "Modify")}
+                        </button>
+                        <button onClick={() => handleDeleteMember(member.id)} className="hover:text-error transition-colors flex items-center gap-1 font-body font-semibold text-xs uppercase tracking-wider">
+                          <span className="material-symbols-outlined text-sm">delete</span>{t("admin_member_delete", "Delete")}
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div></div>
 
           {/* Add & Manage Event */}
           <div className="flex flex-col gap-4 bg-surface-container p-6 md:p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
