@@ -155,7 +155,6 @@ const Home = () => {
 
     gsap.set(chars, { opacity: 0, y: 20 });
     gsap.set(pills, { scale: 0, opacity: 0 });
-    gsap.set(btn, { scale: 0.8, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -167,19 +166,19 @@ const Home = () => {
     tl.to(chars, {
       opacity: 1,
       y: 0,
-      duration: 0.4,
-      stagger: 0.02,
+      duration: 0.6,
+      stagger: 0.035,
       ease: "power2.out"
     });
 
-    tl.to([pills, btn], {
+    tl.to(pills, {
       scale: 1,
       opacity: 1,
       duration: 0.7,
       stagger: 0.1,
       ease: "back.out(1.5)",
       clearProps: "transform"
-    }, "+=0.1");
+    }, "<0.6");
 
     return () => {
       tl.kill();
@@ -354,7 +353,7 @@ const Home = () => {
           </h2>
           
           <div className="md:col-span-1 flex justify-center md:justify-start rtl:md:justify-end w-full">
-            <Link ref={ctaButtonRef} to="/recruitment" className="group relative opacity-0 scale-75 flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
+            <Link ref={ctaButtonRef} to="/recruitment" className="group relative flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-[100%] overflow-hidden shrink-0 bg-[#240046] dark:bg-[#c87fff] shadow-xl">
              {/* The Spinning Circular Text */}
              <svg className="absolute inset-0 w-full h-full p-4 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
                <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
